@@ -1,61 +1,214 @@
+/* ---------------------------------- body style ---------------------------------- */
+body {
+    font-family: system-ui;
+
+}
+
+/* ---------------------------------- SITE CAP ---------------------------------- */
+.site-cap {
+    font-size: 60px;
+}
+.site-cap .site-slogan {
+    margin: 0;
+    color: aquamarine;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+
+/* ---------------------------------- ALL CARDS ---------------------------------- */
+.card {
+    border-radius: 7px; 
+    width: 100px;
+    height: 100px; 
+    background: rgba(46, 49, 49, 1);
+}
+.card .card-body {
+
+}
+.card .card-body .title {
+    font-size: 80px;
+}
+
+.card .card-body {
+    font-size: 30px;
+}
+
+.card .card-body h5 {
+    margin: 0;
+}
+.card-main {
+    margin: 25px;
+    width: auto;
+    height: auto;
+}
+.card-employee {
+    text-align: left;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 7px; 
+    height: 200px; 
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+}
+
+/* ---------------------------------- DIVIDER HORIZONTAL ---------------------------------- */
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------- IMAGE SIZE ---------------------------------- */
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0 0 7px 7px;
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* ---------------------------------- main image text ---------------------------------- */
+.text{
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;        
+    text-align: center;
+    top: 70%; /* Adjust this value to move the positioned div up and down */
+    color: #fff;
+    width: 60%; /* Set the width of the positioned div */
+}
+
+/* ---------------------------------- GRID ---------------------------------- */
+
+.grid-employee {
+    grid-column-gap: 25px;
+    display: grid;
+    height: max-content;   
+    margin: 40px 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.grid {
+    grid-gap: 25px;
+    display: grid;
+    height: max-content;   
+    margin: 40px 0;
+    /*grid-template-rows: 100px;*/
+}
+.grid-col-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+.grid-col-2 {
+    
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.one-more-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------------------------------- STUFF for NAVBAR ---------------------------------- */
+nav {
+    background: rgb(52, 152, 219);
+    border-radius: 7px 7px 0 0;
+}
+
+nav ul {
+    color: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    border-left: 1px solid rgba(189, 195, 199, 1);
+    transition: background .5s ease-out;
+    color: wheat;
+    display: inline-flex;
+    font-size: 20px;
+    padding: 30px;
+    margin: 0;
+}
+
+.nav-item:last-child {
+    border-right: 1px solid rgba(189, 195, 199, 1);
+}
+
+.nav-item:hover {
+    transition: background .5s ease;
+    background: whitesmoke;
+}
+
+.nav-item:hover a.nav-link {
+    color: rgb(52, 152, 219);
+}
+
+/* ---------------------------------- EXTENSIONS or just WIP styles ---------------------------------- */
+.card .card-body button {
+    background: rgb(52, 152, 219);
+    color: white;
+}
+
+.card .card-body button:hover {
+    background: whitesmoke;
+    color: rgb(52, 152, 219);
+}
+
+button {
+    transition: background .5s ease-out;
+    padding: 10px 30px;
+    border-radius: 50px;
+    background: rgb(52, 152, 219);
+    border: none;
+    font: inherit;
+    color: white;
+}
+
+button:hover {
+    transition: background .5s ease;
+    background: black;
+    color: white;
+}
+
+a.nav-link {
+    text-decoration: none;
+    color: white;
+}
+
 .center {
     margin: 0 auto;
     align-content: center;
     align-items: center;
+    text-align: center;
+
 }
 
-.card {
-    border-radius: 7px;
-    text-align: center; 
-    padding: 15px;
-    height: 120px; 
-    color: white
+.employee-info-title {
+    font-size: 20px
+}
+.employee-info-text {
+    font-size: 20px
 }
 
-a.nav-link {
-    color: white;
-    text-decoration: none;
-}
-
-.card-header
-{
-    border-radius: 7px 7px 0 0; 
+.info {
     width: 100%;
-    background: #0080FF;
-}
-
-.card-body
-{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-radius: 0 0 7px 7px; 
-    width: 100%;
-    background-image: url("../HTML&CSS/img/space.jpg");
-    object-fit: cover;
-}
-
-ul {
-
-    color: white;
-    list-style: none;
-    margin: 0; /* Обнуляем значение отступов */
-    padding: 20px;
-}
-
-ul li {
-    display: inline; /* Отображать как строчный элемент */
-    margin-right: 5px; /* Отступ слева */
-    border-right: 1px solid beige; /* Рамка вокруг текста */
-    padding: inherit;
-}
-
-li:first-child {
-    border-left: 1px solid beige; /* Рамка вокруг текста */
-}
-
-.card-dody-title
-{
-    margin-top: 0;
-    padding-top: 20px;
-    font-size: 40px
+    height: 150px;
+    background: rgba(218, 223, 225, 1);
+    margin: 0;
 }
