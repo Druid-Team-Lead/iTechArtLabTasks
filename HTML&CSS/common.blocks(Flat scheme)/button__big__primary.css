@@ -1,16 +1,15 @@
-
-button {
+.btn-primary {
     transition: background .5s ease-out;
     padding: 10px 30px;
     border-radius: 50px;
     background: rgb(52, 152, 219);
     border: none;
-    font: inherit;
+    font-size: 25px;
     color: white;
 }
 
-button:hover {
+.btn-primary:hover {
     transition: background .5s ease;
-    background: black;
-    color: white;
+    background: white;
+    color: rgb(52, 152, 219);;
 }

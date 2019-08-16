@@ -1,11 +1,19 @@
-.fill {
+.fillspace {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+
+.fillspace-radius-botom {
     border-radius: 0 0 7px 7px;
 }
-.fill img {
+
+.fillspace-radius-top {
+    border-radius: 7px 7px 0 0;
+}
+
+.fillspace img {
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;

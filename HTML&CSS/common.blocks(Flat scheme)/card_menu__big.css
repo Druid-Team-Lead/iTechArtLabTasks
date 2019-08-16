@@ -3,3 +3,14 @@
     width: auto;
     height: auto;
 }
+
+.card-menu .text {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;        
+    text-align: center;
+    color: #fff;
+    margin-top: -400px;
+}

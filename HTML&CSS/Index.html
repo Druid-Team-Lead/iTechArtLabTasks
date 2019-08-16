@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="common.blocks(Flat scheme)/card_menu_body_description__centered__large.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/card_menu_body_title__centered__large.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/card_services.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_info.css" type="text/css" media="screen">
 
         <link rel="stylesheet" href="common.blocks(Flat scheme)/grid.css" type="text/css" media="screen">
 
@@ -22,23 +23,24 @@
         <link rel="stylesheet" href="common.blocks(Flat scheme)/header.css" type="text/css" media="screen">
 
         <link rel="stylesheet" href="common.blocks(Flat scheme)/img__fillspace.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/img_text.css" type="text/css" media="screen">
 
         <link rel="stylesheet" href="common.blocks(Flat scheme)/link_info__gray.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/link_menu__primary.css" type="text/css" media="screen">
 
         <link rel="stylesheet" href="common.blocks(Flat scheme)/text__big__bold.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/text__default_black.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/text__default__gray.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/text__large__bold.css" type="text/css" media="screen">
 
         <link rel="stylesheet" href="site.css" type="text/css" media="screen">
     </head>
     <body>  
+
       <header class="header centered">
           <img src="../HTML&CSS/img/logo.jpg"></br>
           <strong class="name">SITENAME</strong></br>
           <p class="slogan">lorem ipsum dolor sit amet vivamus</p>
-      </header>          
+      </header>  
+
       <div class="card-menu centered">
         <nav>
           <ul>
@@ -62,125 +64,137 @@
             </li>
           </ul>
         </nav>
-        <div class="fill">
+        <div class="fillspace fillspace-radius-botom">
           <img src="../HTML&CSS/img/planet.png">
         </div>
         <div class="body text">
-          <h5 class="title">
-            <strong>MORBI SEMUIS</strong>     
-          </h5>
+          <strong class="title">MORBI SEMUIS</strong>
           <p class="description">Praesent dapibus, neque id cursus faucibus tor</br>tas augue eu vulputate</p>
-          <button>
+          <button class="btn-primary">
             <strong>FACILIS</strong>
           </button>
         </div>
       </div>
-        <div class="grid-employee">
-          <div class="fill">
-            <img src="img/employee_1.jpg">
-          </div>
-          <div class="fill">
-            <img src="img/employee_2.jpg">
-          </div>
-          <div class="fill">
-            <img src="img/employee_3.jpg">
-          </div>
-          <div class="fill">
-            <img src="img/employee_4.jpg">
-          </div>
-          <div class="card-employee employee-text">
-            <strong class="epm-name">LOREM IPSUM</strong>
-            <p>Cuibstui ipsum dolor sit amet, con-</br>sectetuer adipiscing eli onec odio</br>cuisque volutpat mattis</p>
-            <button><strong>MORE</strong></button>
-          </div>
-          <div class="card-employee">
-            <strong class="epm-name">FUSCE LACINIA ARCU</strong>
-          </div>
-          <div class="card-employee">
-            <strong class="epm-name">MORBIIN SEMQUIS</strong>
-          </div>
-          <div class="card-employee">
-            <strong class="epm-name">ALIQUAM LECTUS</strong>
-          </div>
+
+      <div class="grid-row-2-col-4">
+        <div class="fillspace fillspace-radius-top">
+          <img src="img/employee_1.jpg">
         </div>
-        <hr>
-        <div class="grid one-more-grid">
-          <div>
-            <strong class="epm-name">CRAS ORNARE TRISTI</strong>
-            <p class="site-slogan">Vivamus vestibulum nulla ante pellentsesque</p> 
-          </div>
-          <div>
-            <strong class="epm-name">ALIQUAM TINCIDUNT</strong>
-            <p class="site-slogan">Integer vitae libero ac risus egestas placerat</p>
-          </div>
+        <div class="fillspace fillspace-radius-top">
+          <img src="img/employee_2.jpg">
         </div>
-  
-        <div class="grid grid-col-2" style="width: 50%">
-          <div class="grid-col-4">
-              <div class="card">
-  
-              </div>
-              <div>
-                <strong>TIM NULLA NEC</strong>
-                <p>Cuibstui ipsum dolor sit</br>amet, consectetu</p>
-              </div>
-              <div class="card">
-        
-              </div>
-              <div>
-                <strong>VIVAMUS MOL</strong>
-                <p>Phasellus ultrices nulla</br>quis nibh lorem</p>
-              </div>
-          </div>
-          <div class="grid-col-4">
-              <div class="card">
-  
-              </div>
-              <div>
-                <strong>PHAS ELLUS</strong>
-                <p>Aliquam erat volutpat.</br>Nam dui mi, tinci</p>
-              </div>
-              <div class="card">
-        
-              </div>
-              <div>
-                <strong>FUSCE LOBORTIS</strong>
-                <p>Class aptent taciti</br>sociosqu ad litora torqu</p>
-              </div>
-          </div>
-          <div class="grid-col-4">
-              <div class="card">
-  
-              </div>
-              <div>
-                <strong>SED ADIPISCING</strong>
-                <p>Praesent dapibus, neque</br>id cursus faucibus</p>
-              </div>
-              <div class="card">
-        
-              </div>
-              <div>
-                <strong>NAM CONVALLIS</strong>
-                <p>Lorem ipsum dolor sit amet</br>amet, consectetuer</p>
-              </div>
-          </div>
+        <div class="fillspace fillspace-radius-top">
+          <img src="img/employee_3.jpg">
+        </div>
+        <div class="fillspace fillspace-radius-top">
+          <img src="img/employee_4.jpg">
+        </div>
+        <div class="card-employee">
+          <strong class="name">LOREM IPSUM</strong>
+          <p class="text">Cuibstui ipsum dolor sit amet, con-</br>sectetuer adipiscing eli onec odio</br>cuisque volutpat mattis</p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+        <div class="card-employee">
+          <strong class="name">FUSCE LACINIA ARCU</strong>
+          <p class="text">Pellentesque fermentum dolor.</br>Aliquam quam lectus, facilisis ctor,</br>ultrices ut, element</p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+        <div class="card-employee">
+          <strong class="name">MORBIIN SEMQUIS</strong>
+          <p class="text">Donec nec justo eget felis facilis</br>fermentum. Aliquam porttitor</br>mauris sit amet orci. Aenean</p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+        <div class="card-employee">
+          <strong class="name">ALIQUAM LECTUS</strong>
+          <p class="text">Morbi in sem quis placerat</br>ornare. Pellentesque odio nisi, mod</br>in, pharetra ultrici</p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="grid-col-2">
         <div>
-
+          <strong class="title-40">CRAS ORNARE TRISTI</strong>
+          <p class="text">Vivamus vestibulum nulla ante pellentsesque</p> 
         </div>
+        <div>
+          <strong class="title-40">ALIQUAM TINCIDUNT</strong>
+          <p class="text">Integer vitae libero ac risus egestas placerat</p>
         </div>
-        <hr>
-        <div class="grid one-more-grid">
-          <div>
-            <strong class="epm-name2">QUISQUE A LECTUS DONEC</strong>
-            <p class="site-slogan">consectetuer ligua</p> 
+      </div>
+      <div class="grid-col-2">
+        <div class="grid-row-3-col-4">
+          <div class="card-service fillspace">
+            <img src="img/rocket.PNG">
           </div>
           <div>
-            <strong class="epm-name2">SED ADIPISCING ORNARE</strong>
-            <p class="site-slogan">Morbi est est</p>
+            <a class="link-primary" href="#"><strong>TIM NULLA NEC</strong></a>
+            <p class="text">Cuibstui ipsum dolor sit</br>amet, consectetu</p>
+          </div>
+          <div class="card-service fillspace">
+            <img src="img/shield.PNG">
+         </div>
+         <div>
+            <a class="link-primary" href="#"><strong>VIVAMUS MOL</strong></a>
+            <p class="text">Phasellus ultrices nulla</br>quis nibh lorem</p>
+          </div>
+          <div class="card-service fillspace">
+            <img src="img/puzle.PNG">
+          </div>
+          <div>
+            <a class="link-primary" href="#"><strong>PHAS ELLUS</strong></a>
+            <p class="text">Aliquam erat volutpat.</br>Nam dui mi, tinci</p>
+          </div>
+          <div class="card-service fillspace">
+           <img src="img/anchor.PNG">
+          </div>
+          <div>
+            <a class="link-primary" href="#"><strong>FUSCE LOBORTIS</strong></a>
+            <p class="text">Class aptent taciti</br>sociosqu ad litora torqu</p>
+          </div>
+          <div class="card-service fillspace">
+            <img src="img/umbrella.PNG">
+          </div>
+          <div>
+            <a class="link-primary" href="#"><strong>SED ADIPISCING</strong></a>
+            <p class="text">Praesent dapibus, neque</br>id cursus faucibus</p>
+          </div>
+          <div class="card-service fillspace">
+            <img src="img/cup.PNG">
+          </div>
+          <div>
+            <a class="link-primary" href="#"><strong>NAM CONVALLIS</strong></a>
+            <p class="text">Lorem ipsum dolor sit amet</br>amet, consectetuer</p>
           </div>
         </div>
-        <div class="info">
+        <div>
+          <div class="card-info">
 
+          </div>
+          <div>
+            <input/><button>PLUS</button>
+          </div>
+          <div>
+            <input/><button>PLUS</button>
+          </div>
+          <div>
+            <input/><button>PLUS</button>
+          </div>
         </div>
+      </div>
+
+      <hr>
+
+      <div class="grid one-more-grid">
+        <div>
+          <strong class="epm-name2">QUISQUE A LECTUS DONEC</strong>
+          <p class="site-slogan">consectetuer ligua</p> 
+        </div>
+        <div>
+          <strong class="epm-name2">SED ADIPISCING ORNARE</strong>
+          <p class="site-slogan">Morbi est est</p>
+        </div>
+      </div>
     </body>
 </html>
