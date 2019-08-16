@@ -1,0 +1,31 @@
+.grid-employee {
+    grid-column-gap: 25px;
+    display: grid;
+    height: max-content;   
+    margin: 40px 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.grid {
+    grid-gap: 25px;
+    display: grid;
+    height: max-content;   
+    margin: 40px 0;
+    /*grid-template-rows: 100px;*/
+}
+.grid-col-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+.grid-col-2 {
+    
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.one-more-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

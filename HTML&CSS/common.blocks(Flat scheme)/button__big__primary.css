@@ -1,0 +1,16 @@
+
+button {
+    transition: background .5s ease-out;
+    padding: 10px 30px;
+    border-radius: 50px;
+    background: rgb(52, 152, 219);
+    border: none;
+    font: inherit;
+    color: white;
+}
+
+button:hover {
+    transition: background .5s ease;
+    background: black;
+    color: white;
+}
