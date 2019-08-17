@@ -1,3 +1,13 @@
 .header {
  
 }
+.header .name {
+    font-size: 60px;
+}
+
+.header .slogan {
+    margin: 0;
+    color: aquamarine;
+    font-weight: normal;
+    font-size: 30px;
+}

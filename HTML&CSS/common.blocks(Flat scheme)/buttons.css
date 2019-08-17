@@ -1,0 +1,51 @@
+.btn-default-black {
+    transition: background .5s ease-out;
+    padding: 10px 30px;
+    border-radius: 50px;
+    background: rgb(52, 152, 219);
+    border: none;
+    font-size: 14px;
+    color: white;
+}
+
+.btn-default-black:hover {
+    transition: background .5s ease;
+    background: rgba(46, 49, 49, 1);
+    color: white;
+}
+
+.btn-primary {
+    transition: background .5s ease-out;
+    padding: 10px 30px;
+    border-radius: 50px;
+    background: rgb(52, 152, 219);
+    border: none;
+    font-size: 25px;
+    color: white;
+}
+
+.btn-primary:hover {
+    transition: background .5s ease;
+    background: white;
+    color: rgb(52, 152, 219);;
+}
+
+.btn-subscribe {
+    border-radius: 0 50px 50px 0;
+    padding: 10px 10px;
+}
+
+.btn-circle {
+    padding: 0;
+    display:block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.btn-plus {
+    height: 37px;
+    width: 40px;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+}

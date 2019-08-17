@@ -1,7 +1,13 @@
 
 body {
     font-family: system-ui;
-
+    margin: 0;
+    background: rgb(46, 49, 49);
+}
+.site-card {
+    background: white;
+    border-radius: 7px;
+    margin: 20px;
 }
 
 hr {
@@ -11,4 +17,16 @@ hr {
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    margin-top: 50px; 
+    width: 100%;
+    height: 100%;
+    background: rgba(236, 236, 236, 1);
+    
+}
+
+.ul-info {
+    list-style-type: none;
 }

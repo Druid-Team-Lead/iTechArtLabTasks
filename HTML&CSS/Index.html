@@ -4,37 +4,20 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/anycontent__centered.css" type="text/css" media="screen">
-
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/button__big__primary.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/button__circle.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/button__default__blackhover.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/button__square.css" type="text/css" media="screen">
-
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_employee__cropped.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_menu__big.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_menu_body_description__centered__large.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_menu_body_title__centered__large.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_services.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/card_info.css" type="text/css" media="screen">
-
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/buttons.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/cards.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/grid.css" type="text/css" media="screen">
-
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/header_text.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/header.css" type="text/css" media="screen">
-
         <link rel="stylesheet" href="common.blocks(Flat scheme)/img__fillspace.css" type="text/css" media="screen">
-
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/link_info__gray.css" type="text/css" media="screen">
         <link rel="stylesheet" href="common.blocks(Flat scheme)/link_menu__primary.css" type="text/css" media="screen">
-
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/text__big__bold.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/text__default__gray.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="common.blocks(Flat scheme)/text__large__bold.css" type="text/css" media="screen">
-
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/text.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="common.blocks(Flat scheme)/input.css" type="text/css" media="screen">
         <link rel="stylesheet" href="site.css" type="text/css" media="screen">
     </head>
     <body>  
+      <div class="site-card">
 
+      
       <header class="header centered">
           <img src="../HTML&CSS/img/logo.jpg"></br>
           <strong class="name">SITENAME</strong></br>
@@ -170,31 +153,135 @@
         </div>
         <div>
           <div class="card-info">
-
+            <input class="input-news-dark" value="Donec quis dui at dolor tempor" readonly/><button class="btn-default-black btn-plus"><strong>-</strong></button>
+            <p class="text">
+              Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra</br>
+              ultricies in, diam. Sed arcu. Cras consequat. 
+            </p>
           </div>
           <div>
-            <input/><button>PLUS</button>
+            <input class="input-news" value="Vivamus molestia gravida turpis" readonly/><button class="btn-default-black btn-plus"><strong>+</strong></button>
           </div>
           <div>
-            <input/><button>PLUS</button>
+            <input class="input-news" value="Fusce lobortis lorem at ipsum semper" readonly/><button class="btn-default-black btn-plus"><strong>+</strong></button>
           </div>
           <div>
-            <input/><button>PLUS</button>
+            <input class="input-news" value="Nam convallis pellentesque nisl" readonly/><button class="btn-default-black btn-plus"><strong>+</strong></button>
           </div>
         </div>
       </div>
 
       <hr>
 
-      <div class="grid one-more-grid">
-        <div>
-          <strong class="epm-name2">QUISQUE A LECTUS DONEC</strong>
-          <p class="site-slogan">consectetuer ligua</p> 
+      <div class="grid-col-2">
+        <div class="grid-col-2">
+          <div class="card-news fillspace">
+            <img src="img/notebook.jpg">
+          </div>
+          <div>
+              <strong class="epm-name2">QUISQUE A LECTUS DONEC</strong>
+              <p class="site-slogan">consectetuer ligua</p> 
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer</br>
+                adipiscing elit. Phasellus hendrerit. len-</br>
+                tesque aliquet nibh nec urna.</br>
+                In nisi neque, aliquet vel, dapibus id,</br>
+                mattis vel, nisi. Sed pretium, ligula sollici-</br>
+                tudin laoreet viverra, tortor libero
+              </p>
+            </div>
         </div>
-        <div>
-          <strong class="epm-name2">SED ADIPISCING ORNARE</strong>
-          <p class="site-slogan">Morbi est est</p>
+        <div class="grid-col-2">
+          <div class="card-news fillspace">
+            <img src="img/mouse.jpg">
+          </div>
+          <div>
+            <strong class="epm-name2">SED ADIPISCING ORNARE</strong>
+            <p class="site-slogan">Morbi est est</p>
+            <p>
+              Cupsim ipsum dolor sit amet, consect-</br>
+              etuer adipiscing elit. Phasellus hendrerit.</br>
+              lentesque aliquet nibh nec urna.</br>
+              In nisi neque, aliquet vel, dapibus id,</br>
+              mattis vel, nisi. Sed pretium, ligula sollici-</br>
+              tudin laoreet viverra, tortor libero
+            </p>
+          </div>
         </div>
       </div>
+      <div class="grid-col-2">
+        <div>
+          <p>
+            Sed egestas, ante et vilputate volutpat, eros pede semper est, vitae luctus metus livero</br>
+            eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed</br>
+            lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis.
+          </p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+        <div>
+          <p>
+            Vivamus ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu</br>
+            augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed</br>
+            lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis.
+          </p>
+          <button class="btn-default-black"><strong>MORE</strong></button>
+        </div>
+      </div>
+      <footer>
+        <div class="grid">
+          <div>
+            <strong>VITAE LIN</strong>
+            <ul class="ul-info">
+              <li><a class="text" href="#">Phasellus ultrices</a></li>
+              <li><a class="text" href="#">Sed adipiscing lipsum</a></li>
+              <li><a class="text" href="#">Nulla sed leoniton</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>LUCTRUS</strong>
+            <ul class="ul-info">
+              <li><a class="text" href="#">Lorem ipsum</a></li>
+              <li><a class="text" href="#">Donec nec justo</a></li>
+              <li><a class="text" href="#">Morbi in se</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>CONSETU</strong>
+            <ul class="ul-info">
+              <li><a class="text" href="#">Quisque a lectus</a></li>
+              <li><a class="text" href="#">Donec consecte</a></li>
+              <li><a class="text" href="#">Nulla sed leoniton</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>PRAESENT DAPIBUS, NEQUE</br>ID CURUS FAUCIBUS</strong></br>
+            <input class="input-subscribe"/><button class="btn-default-black btn-subscribe"><strong>SUBSCRIBE</strong></button>
+          </div>
+          <div>
+            <strong>ALIQUAM QUAM LECTUS</br>FACILISIS AUCTOR</strong></br>
+            <div style="display: inline-flex; margin-top: 20px;">
+              <button class="btn-default-black btn-circle fillspace">
+                <img src="img/twitter.png">
+              </button>
+              <button class="btn-default-black btn-circle fillspace">
+                <img src="img/facebook.png">
+              </button>
+              <button class="btn-default-black btn-circle fillspace">
+                <img src="img/in.png">
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+      <div class="grid-col-2">
+        <p>
+          Copyright(c) website name. Designed by: <a href="www.alltemplateneeds.com">www.alltemplateneeds.com</a>
+        </p>
+        <p>
+          Images from: <a href="http://wallpaperwide.com">http://wallpaperwide.com</a> / <a href="www.wallcoo.net">www.wallcoo.net</a>
+        </p>
+      </div>
+    </div>
     </body>
 </html>
