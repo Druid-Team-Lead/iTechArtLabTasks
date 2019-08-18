@@ -1,7 +1,30 @@
 .text {
-    font-size: 17px;
-    color:rgb(46, 49, 49);
+    font-size: 15px;
+    color: rgba(108, 122, 137, 1);
+    line-height: 20pt;
+    font-weight: 400;
 }
+
+.news-text {
+    font-size: 15px;
+    color: rgba(108, 122, 137, 1);
+    line-height: initial;
+    padding-left: 30px;
+    font-weight: 400;
+}
+
 .title-40 {
     font-size: 30px;
+}
+
+.text-news {
+    font-size: 18px;
+    color: rgba(108, 122, 137, 1);
+    line-height: 21pt;
+    font-weight: 400;
+}
+
+.copyright {
+    color: blueviolet;
+    padding-bottom: 40px;
 }

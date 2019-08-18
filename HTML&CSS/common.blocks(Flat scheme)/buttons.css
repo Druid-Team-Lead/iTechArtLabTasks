@@ -1,6 +1,6 @@
 .btn-default-black {
     transition: background .5s ease-out;
-    padding: 10px 30px;
+    padding: 10px 15px;
     border-radius: 50px;
     background: rgb(52, 152, 219);
     border: none;
@@ -40,12 +40,20 @@
     display:block;
     height: 40px;
     width: 40px;
+    margin-right: 10px;
     border-radius: 50%;
 }
 
 .btn-plus {
-    height: 37px;
+    height: 40px;
     width: 40px;
     padding: 5px;
     border-radius: 0 5px 5px 0;
+}
+
+.btn-minus {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    border-radius: 0 5px 0 0;
 }

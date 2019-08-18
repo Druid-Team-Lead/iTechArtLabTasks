@@ -1,5 +1,6 @@
 .header {
- 
+    padding-top: 30px;
+    padding-bottom: 25px;
 }
 .header .name {
     font-size: 60px;
@@ -7,7 +8,8 @@
 
 .header .slogan {
     margin: 0;
-    color: aquamarine;
+    color: rgba(108, 122, 137, 1);
     font-weight: normal;
+    font-family: 'Amaranth';
     font-size: 30px;
 }

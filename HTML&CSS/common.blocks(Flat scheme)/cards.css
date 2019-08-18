@@ -12,15 +12,18 @@
     font-size: 80px;
 }
 .card-menu .body .description {
-    font-size: 25px;
+    font-weight: 100;
+    font-size: 40px;
+    margin-top: 0px;
 }
 .card-menu {
-    margin: 25px;
+    margin: 30px;
     width: auto;
     height: auto;
 }
 
 .card-menu .text {
+    line-height: initial;
     position: absolute;
     z-index: 999;
     margin: 0 auto;
@@ -48,4 +51,10 @@
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
+}
+
+.card-employee .text {
+    font-size: 15px;
+    color: rgba(108, 122, 137, 1);
+    line-height: 20pt;
 }

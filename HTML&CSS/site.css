@@ -29,4 +29,15 @@ footer {
 
 .ul-info {
     list-style-type: none;
+    padding: 0px;
+}
+
+.news {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.social-network {
+    display: inline-flex;
+    margin-top: 20px;
 }
