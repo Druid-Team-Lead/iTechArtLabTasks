@@ -4,10 +4,10 @@
     ▪️ Responsive ❌</br>
     ▪️ BEM (Block, Element, Modifier) ❌</br>
 2. JS:</br>
-    ▪️ Array Processing Tool
-    ▪️ Date Display Formatter
-    ▪️ Text Formatter
-    ▪️ String calculator
-    ▪️ Array Sorter
-    ▪️ Binary Converter
-    ▪️ Caching calculator*
+    ▪️ Array Processing Tool</br>
+    ▪️ Date Display Formatter</br>
+    ▪️ Text Formatter</br>
+    ▪️ String calculator</br>
+    ▪️ Array Sorter</br>
+    ▪️ Binary Converter</br>
+    ▪️ Caching calculator*</br>
