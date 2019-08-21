@@ -1,0 +1,23 @@
+button {
+    transition: background .5s ease-out;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: rgb(52, 152, 219);
+    border: none;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+button:hover {
+    transition: background .5s ease;
+    background: rgba(46, 49, 49, 1);
+    color: rgb(255, 255, 255);;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid rgba(46, 49, 49, 1);
+    font-size: 14px;
+    padding: 10px 15px;
+    margin-right: 5px;
+}
