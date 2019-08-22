@@ -1,0 +1,50 @@
+.about-us {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    align-content: space-between;
+}
+
+.about-us .about-us__name {
+    margin-bottom: 43px;
+}
+
+.about-us section .about-us__info {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.about-us section .about-us__info .about-us__element {
+    flex-basis: 23%;
+    min-width: 270px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.about-us section {
+    flex-basis: 49%;
+}
+
+.about-us__icon {
+    margin-right: 30px;
+}
+
+.about-us__name .about-us__title {
+    font-size: 28px;
+    color: rgb(69, 72, 85);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.about-us__name .about-us__description {
+    font-size: 18px;
+    color: rgb(130, 130, 130);
+    text-align: left;
+}
+
+.about-us__content {
+    
+}
