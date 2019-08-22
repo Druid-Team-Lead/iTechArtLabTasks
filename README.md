@@ -1,5 +1,5 @@
 # iTechArtLabTasks
-1. HTML/CSS:</br>
+1. Landing page:</br>
     ▪️ Static page</br>
     ▪️ Responsive</br>
     ▪️ BEM (Block, Element, Modifier)</br>
