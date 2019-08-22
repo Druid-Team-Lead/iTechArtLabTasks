@@ -1,8 +1,8 @@
 # iTechArtLabTasks
 1. HTML/CSS:</br>
-    ▪️ Static page
-    ▪️ Responsive
-    ▪️ BEM (Block, Element, Modifier)
+    ▪️ Static page</br>
+    ▪️ Responsive</br>
+    ▪️ BEM (Block, Element, Modifier)</br>
 2. JS:</br>
     ▪️ Array Processing Tool</br>
     ▪️ Date Display Formatter</br>
