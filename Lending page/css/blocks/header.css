@@ -1,9 +1,9 @@
 .header {  
-    margin-top: 27px;
+    padding-top: 27px;   
     margin-bottom: 30px;   
 }
 
-.header__center {
+.header_center {
     text-align: center;
 }
 

@@ -1,0 +1,18 @@
+.employees {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.employees__element {
+    flex-basis: 21%;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.employees__border_cup {
+    margin-top: -5px;
+    border: 1px solid rgb(230, 230, 230);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}

@@ -4,14 +4,36 @@
 }
 
 .container {
+    margin: 0 auto;
     max-width: 100%;
-    min-width: 1231px;
+    min-width: 1231px; 
+    background: url('../img/bg.gif') center no-repeat;
 }
 
 .wrap {
     max-width: 1170px;
-    padding: 0 15px;
-    margin: 0 auto;
+    padding: 0;
+    margin-right: 32px;
+    margin-left: 29px;
+}
+
+.white-card {
+    max-width: 1231px; 
+    background: white;
+    border-radius: 7px;
+}
+
+.white-card_wrap {
+    margin: 110px auto;
+}
+
+@media (max-width: 768px) {
+    .white-card {
+        border-radius: 0;
+    }
+    .white-card_wrap {
+        margin: 0 auto;
+    }
 }
 
 body {
