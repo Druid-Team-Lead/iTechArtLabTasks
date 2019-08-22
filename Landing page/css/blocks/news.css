@@ -6,6 +6,24 @@
     margin-bottom: 40px;
 }
 
+@media (max-width: 1084px) {
+    .news article {
+        flex-basis: 100% !important;
+        margin: 40px 40px;
+    }
+    .news .news__title {
+        font-size: 28px !important;
+    }
+    
+    .news .news__under-title {
+        font-size: 18px !important;
+    }
+    
+    .news .news__text {
+        font-size: 16px !important;
+    }
+}
+
 .news article {
     flex-basis: 49%;
 }

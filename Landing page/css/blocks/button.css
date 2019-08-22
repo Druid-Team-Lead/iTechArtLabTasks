@@ -18,6 +18,18 @@
     text-transform: uppercase;
 }
 
+.fact__button {
+    margin-left: auto;
+    border-radius: 0;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+}
+
+.subscribe-button {
+    border-radius: 0 50px 50px 0;
+}
+
 .about-us__facts .fact_close .fact__button {
     border-radius: 0 5px 5px 0;
 }
