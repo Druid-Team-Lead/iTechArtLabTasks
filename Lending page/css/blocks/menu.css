@@ -9,12 +9,13 @@
 .menu ul {
     display: inline-flex;
     list-style: none;
-    height: inherit;
+    height: 100%;
 }
 
 .menu ul li {
     display: flex;
     align-items: center;
+    flex-basis: 10%;
     padding: 0 20px;
     height: 100%;
     border-left: .5px solid rgba(189, 195, 199, 1);
