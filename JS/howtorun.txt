@@ -1,0 +1,5 @@
+1. Open cmd in that folder.
+	For windows cd/d <folder url>
+2. Write -> npm start 
+3. Now browser should open
+4. Done

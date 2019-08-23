@@ -1,4 +1,5 @@
-import _ from './custom_modules/arrayProcessingTool'
+import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
+import './style.css'
 
 document.getElementsByClassName("btn-subsum-on2")[0].addEventListener("click", () => {
     const input = document.getElementsByClassName("input-subsum-on2")[0].value;
