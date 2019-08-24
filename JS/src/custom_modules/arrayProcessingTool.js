@@ -1,14 +1,9 @@
 export class ArrayPrecessingTool {
 
     getMaxSubSum_On2(input) {
-
-        const array = input.split(" ").map(function(item) {
-            return parseInt(item);
-        });
+        const array = this._arrayFormatter(input);
         let sum = 0;
         let max = 0;
-        let firstIndex;
-        let lastIndex;
         
         for (let i = 0; i < array.length; i++) {   
 
@@ -17,26 +12,46 @@ export class ArrayPrecessingTool {
                 sum += array[j];
 
                 if(sum > max) {
-                    firstIndex = i;
-                    lastIndex = j;
                     max = sum;
                 }
             }
             sum = 0;
         }
 
-        const subarray = array.slice(firstIndex, lastIndex + 1);
-        return {
-            subarraySum: max,
-            subarray
-        };
+        return max;
     }
 
     getMaxSubSum_On(input) {
         console.log("Sub Sum O(n)");
+
+        const array = this._arrayFormatter(input);
+        let tmp = 0;
+        let max = array[0];
+
+        array.forEach((element) => {
+            tmp = Math.max(element, tmp + element);
+            max = Math.max(max, tmp);
+        })
+
+        return max < 0 ? 0 : max;
+    }
+
+    searchMax(input) {
+
+    }
+
+    searchMin(input) {
+
+    }
+
+    searchMedium(input) {
+
     }
 
     _arrayFormatter(array) {
-        return 0;
+        const result = array.split(", ").map(function(item) {
+            return parseInt(item);
+        });
+        return result;
     }
 }
