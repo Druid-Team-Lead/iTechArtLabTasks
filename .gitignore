@@ -16,5 +16,4 @@ package-lock.json
 
 #Custom addition for webpack .gitignore
 */node_modules
-*/dist/*
-!*/dist/*.html
+*/dist

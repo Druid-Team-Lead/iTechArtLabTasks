@@ -1,5 +1,7 @@
 import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
 import './style.css'
+require ('../src/img/bg.gif')
+require ('../src/img/logo.png')
 
 document.querySelector(".btn-array-precessing-tool").addEventListener("click", () => {
     const input = document.querySelector(".input-array-precessing-tool").value;

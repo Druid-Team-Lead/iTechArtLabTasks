@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -37,23 +38,27 @@ module.exports = {
         }
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/,
+        test: /\.html$/,
+        use: ['html-loader']
+      },
+      {
+        test: /\.(png|gif|svg)$/, 
         use: [
-            {
-                loader: 'file-loader',
-                options: {
-                    outputPath: '/dist/images/'
-                }
-            },
-            {
-                loader: 'image-webpack-loader',
-                options: {
-                  bypassOnDebug: true, // webpack@1.x
-                  disable: true, // webpack@2.x and newer
-                }
+          {
+            loader: "file-loader",
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img/',
+              publicPath: 'img/'
             }
+          }
         ]
-    }
+      }
     ]
-  }, 
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+  ] 
 };
