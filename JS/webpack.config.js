@@ -35,7 +35,25 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    outputPath: '/dist/images/'
+                }
+            },
+            {
+                loader: 'image-webpack-loader',
+                options: {
+                  bypassOnDebug: true, // webpack@1.x
+                  disable: true, // webpack@2.x and newer
+                }
+            }
+        ]
+    }
     ]
   }, 
 };

@@ -1,0 +1,37 @@
+.banner {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.banner__content_centered {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 150px; /* Adjust this value to move the positioned div up and down */
+    text-align: center;
+    width: 60%; /* Set the width of the positioned div */
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.banner__title {
+    font-size: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.banner__description {
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+@media (max-width: 980px) {
+    .banner__description {
+        font-size: 22px;
+    }
+}

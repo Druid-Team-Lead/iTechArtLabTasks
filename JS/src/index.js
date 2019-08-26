@@ -1,14 +1,24 @@
 import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
 import './style.css'
 
-document.getElementsByClassName("btn-subsum-on2")[0].addEventListener("click", () => {
-    const input = document.getElementsByClassName("input-subsum-on2")[0].value;
-    const result = new ArrayPrecessingTool().getMaxSubSum_On2(input);
-    document.getElementsByClassName("subsum-on2-result")[0].innerHTML = `Сумма подмассива = ${result}`;
-});
+document.querySelector(".btn-array-precessing-tool").addEventListener("click", () => {
+    const input = document.querySelector(".input-array-precessing-tool").value;
+    const apt = new ArrayPrecessingTool(input);
 
-document.getElementsByClassName("btn-subsum-on")[0].addEventListener("click", () => {
-    const input = document.getElementsByClassName("input-subsum-on")[0].value;
-    const result = new ArrayPrecessingTool().getMaxSubSum_On(input);
-    document.getElementsByClassName("subsum-on-result")[0].innerHTML = `Сумма подмассива = ${result}`;
+    const maxSubSumOn2 = apt.getMaxSubSum_On2(input);
+    const maxSubSumOn = apt.getMaxSubSum_On(input);
+    const max = apt.searchMax(input);
+    const min = apt.searchMin(input);
+    const medium = apt.searchMedian(input);
+    const maximumSequence = apt.getMaximumSequence(input);
+
+
+    document.querySelector(".result-array-precessing-tool").innerHTML = `
+    Сумма подмассива O(n)^2 = ${maxSubSumOn2};
+    Сумма подмассива O(n) = ${maxSubSumOn};
+    Максимальное значение = ${max};
+    Минимальное значение ${min};
+    Медианное значение ${medium};
+    Макс последовательность = ${maximumSequence}.
+    `;
 });

@@ -1,57 +1,62 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Lending page</title>
 </head>
 
-<body>
-    <section>
-        <h1>Sub sum</h1>
+<body class="container">
+    <div class="white-card white-card_wrap">
+        <div class="header header_center">
+            <header class="wrap">
+                <img src="../src/logo.png">
+                <h1>JavaScript Task</h1>
+            </header>
+        </div>
+
         <section>
+            <h1>Sub sum</h1>
+            <section>
+                <ul>
+                    <li>
+                        1. ([ -1, <strong>2, 3,</strong> -9 ]) = 5
+                    </li>
+                    <li>
+                        2. ([ <strong>2, -1, 2, 3,</strong> -9 ]) = 6
+                    </li>
+                    <li>
+                        3. ([ -1, 2, 3, -9, <strong>11</strong> ]) = 11
+                    </li>
+                    <li>
+                        4. ([ -2, -1, <strong>1, 2</strong> ]) = 3
+                    </li>
+                    <li>
+                        5. ([ <strong>100</strong>, -9, 2, -3, 5 ]) = 100
+                    </li>
+                    <li>
+                        6. ([ <strong>1, 2, 3</strong> ]) = 6
+                    </li>
+                    <li>
+                        7. ([ -1, -2, -3 ]) = 0
+                    </li>
+                </ul>
+    
+            </section>
             <ul>
                 <li>
-                    1. ([ -1, <strong>2, 3,</strong> -9 ]) = 5
-                </li>
-                <li>
-                    2. ([ <strong>2, -1, 2, 3,</strong> -9 ]) = 6
-                </li>
-                <li>
-                    3. ([ -1, 2, 3, -9, <strong>11</strong> ]) = 11
-                </li>
-                <li>
-                    4. ([ -2, -1, <strong>1, 2</strong> ]) = 3
-                </li>
-                <li>
-                    5. ([ <strong>100</strong>, -9, 2, -3, 5 ]) = 100
-                </li>
-                <li>
-                    6. ([ <strong>1, 2, 3</strong> ]) = 6
-                </li>
-                <li>
-                    7. ([ -1, -2, -3 ]) = 0
+                    <p>O(n^2) algorithm</p>
+                    <input class="input-array-precessing-tool" /><button class="btn-array-precessing-tool">Calculate</button>
+                    <p class="result-array-precessing-tool"></p>
                 </li>
             </ul>
-
-
-
-
-
         </section>
-        <ul>
-            <li>
-                <p>O(n^2) algorithm</p>
-                <input class="input-subsum-on2" /><button class="btn-subsum-on2">Calculate</button>
-                <p class="subsum-on2-result"></p>
-            </li>
-            <li>
-                <p>O(n) algorithm</p>
-                <input class="input-subsum-on" /><button class="btn-subsum-on">Calculate</button>
-                <p class="subsum-on-result"></p>
-            </li>
-        </ul>
-    </section>
-</body>
 
+        <hr class="wrap">
+    </div>
+
+</body>
 
 <script src="bundle.js"></script>
 
