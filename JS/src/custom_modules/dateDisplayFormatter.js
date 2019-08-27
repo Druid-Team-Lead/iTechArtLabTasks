@@ -2,19 +2,44 @@ export class DateDisplayFormatter {
 
     constructor(input) {
         this._input = this._inputHandler(input);
+        this.date = null;
+    }
+
+    setInput(input) {
+        this._input = this._inputHandler(input);
     }
 
     toShortFormat() {
         let reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         let formatted = this._input.match(reg);
-        return `${formatted[1]}-${formatted[2]}-${formatted[3]}`;
+
+        if(!formatted) {
+            return null;
+        }
+
+        this.date = {
+            year: formatted[3],
+            month: formatted[2],
+            day: formatted[1]
+        };
+        return `${this.date.day}-${this.date.month}-${this.date.year}`;
     }
 
     toFullFormate()
     {
         let reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         let formatted = this._input.match(reg);
-        return `${formatted[1]}-${this._getMonth(formatted[2])}-${formatted[3]}`;
+
+        if(!formatted) {
+            return null;
+        }
+
+        this.date = {
+            year: formatted[3],
+            month: formatted[2],
+            day: formatted[1]
+        };
+        return `${this.date.day}-${this._getMonth()}-${this.date.year}`;
     }
 
     toExactFormat(template) {
@@ -22,9 +47,9 @@ export class DateDisplayFormatter {
             return null;
         }
 
-        const formatted = this._getFormatFromTemplate(template);
-        
-        return `${formatted.day}-${this._getMonth(formatted.month)}-${formatted.year}`;
+        this.date = this._getDateFromTemplate(template);
+
+        return `${this.date.day} ${this._getMonth()} ${this.date.year}`;
     }
 
     toCustomFormat(template, customTemplate) {
@@ -32,22 +57,27 @@ export class DateDisplayFormatter {
             return null;
         }
 
-        const formatted = this._getFormatFromTemplate(template);
+        this.date = this._getDateFromTemplate(template);
 
         switch(customTemplate) {
             case "MM-DD-YYYY": {
-                return `${formatted.month}-${formatted.day}-${formatted.year}`;
+                return `${this.date.month}-${this.date.day}-${this.date.year}`;
             }
             default: {
-                return null;
+                return "That format not supported yet.";
             }
         }
     }
 
-
     fromNow()
     {
-        // how old _input date was ? 
+        if(!this.date) {
+            return null;
+        }
+
+        const timeFrom = new Date().getFullYear() - this.date.year;
+
+        return timeFrom > 0 ? `${timeFrom} year` : "It's future!";
     }
 
     _inputHandler(input) {
@@ -55,7 +85,7 @@ export class DateDisplayFormatter {
         return input;
     }
 
-    _getMonth(number) {
+    _getMonth() {
         const monthDictionary = {
             "01": "January",
             "02": "February",
@@ -70,10 +100,10 @@ export class DateDisplayFormatter {
             "11": "November",
             "12": "December"
         };
-        return monthDictionary[number];
+        return monthDictionary[this.date.month];
     }
 
-    _getFormatFromTemplate(template) {
+    _getDateFromTemplate(template) {
 
         switch(template) {
             case "YYYYMMDD": {
@@ -95,11 +125,7 @@ export class DateDisplayFormatter {
                 };
             }
             default: {
-                return {
-                    year: null,
-                    month: null,
-                    day: null
-                };
+                return null;
             }
         }
     }
