@@ -17,7 +17,7 @@ module.exports = {
     port: process.env.PORT,
     open: true,
     overlay: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'src'),
     watchContentBase: true,
     hot: true,
   },
