@@ -3,8 +3,8 @@ import './style.css'
 require ('../src/img/bg.gif')
 require ('../src/img/logo.png')
 
-document.querySelector(".btn-array-precessing-tool").addEventListener("click", () => {
-    const input = document.querySelector(".input-array-precessing-tool").value;
+document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
+    const input = document.querySelector(".array-precessing-tool input").value;
     const apt = new ArrayPrecessingTool(input);
 
     const maxSubSumOn2 = apt.getMaxSubSum_On2(input);
@@ -15,7 +15,7 @@ document.querySelector(".btn-array-precessing-tool").addEventListener("click", (
     const maximumSequence = apt.getMaximumSequence(input);
 
 
-    document.querySelector(".result-array-precessing-tool").innerHTML = `
+    document.querySelector(".array-precessing-tool .result").innerHTML = `
     Сумма подмассива O(n)^2 = ${maxSubSumOn2};
     Сумма подмассива O(n) = ${maxSubSumOn};
     Максимальное значение = ${max};
@@ -23,4 +23,8 @@ document.querySelector(".btn-array-precessing-tool").addEventListener("click", (
     Медианное значение ${medium};
     Макс последовательность = ${maximumSequence}.
     `;
+});
+
+document.querySelector(".date-display-formatter button").addEventListener("click", () => {
+    const input = document.querySelector(".date-display-formatter input").value;
 });

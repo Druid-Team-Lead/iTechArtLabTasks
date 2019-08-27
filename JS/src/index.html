@@ -18,9 +18,9 @@
 
         <hr class="wrap">
 
-        <section>
-            <h1>Sub sum</h1>
-            <section>
+        <main class="wrap">
+            <section class="array-precessing-tool">
+                <h1>Array Proccessing Tool</h1>
                 <ul>
                     <li>
                         1. ([ -1, <strong>2, 3,</strong> -9 ]) = 5
@@ -45,18 +45,59 @@
                     </li>
                 </ul>
 
+                <div>
+                    <p>Supported functionality</p>
+                    <ul>
+                        <li>
+                            Sub sum ✔️
+                        </li>
+                        <li>
+                            Search ✔️
+                        </li>
+                        <li>
+                            Selection Task ✔️
+                        </li>
+                    </ul>
+                    <input/><button>Calculate</button>
+                    <p class="result"></p>
+                </div>
             </section>
-            <ul>
-                <li>
-                    <p>O(n^2) algorithm</p>
-                    <input class="input-array-precessing-tool" /><button
-                        class="btn-array-precessing-tool">Calculate</button>
-                    <p class="result-array-precessing-tool"></p>
-                </li>
-            </ul>
-        </section>
 
-        <hr class="wrap">
+            <hr>
+
+            <section class="date-display-formatter">
+                <h1>Date Display Formatter</h1>
+                <ul>
+                    <li>
+                        1. “31102011” => “31-10-2011”
+                    </li>
+                    <li>
+                        2. “31102011” => “31 October 2011”
+                    </li>
+                    <li>
+                        3. (“20130431”, “YYYYMMDD”) => 31 April 2013
+                    </li>
+                    <li>
+                        4. (“20130431”, “YYYYMMDD”, “MM-DD-YYYY”) => 04-31-2013
+                    </li>
+                    <li>
+                        5. (“2013-04-31”, “YYYY-MM-DD”).fromNow() => 2 years ago
+                    </li>
+                </ul>
+                <div>
+                    <p>Supported functionality</p>
+                    <ul>
+                        <li>
+                            Any functionality? &#10060;
+                        </li>
+                    </ul>
+                    <input/><button>Format</button>
+                    <p class="result"></p>
+                </div>
+            </section>
+
+        </main>
+
     </div>
 
 </body>
