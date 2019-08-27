@@ -1,7 +1,6 @@
 import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
+import { DateDisplayFormatter } from './custom_modules/dateDisplayFormatter'
 import './style.css'
-require ('../src/img/bg.gif')
-require ('../src/img/logo.png')
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
     const input = document.querySelector(".array-precessing-tool input").value;
@@ -25,6 +24,41 @@ document.querySelector(".array-precessing-tool button").addEventListener("click"
     `;
 });
 
-document.querySelector(".date-display-formatter button").addEventListener("click", () => {
+document.querySelector(".date-display-formatter .short-format").addEventListener("click", () => {
     const input = document.querySelector(".date-display-formatter input").value;
+
+    const ddf = new DateDisplayFormatter(input);
+    const result = ddf.toShortFormat();
+
+    document.querySelector(".date-display-formatter .result").innerHTML = `Result: ${result}`;
+});
+
+document.querySelector(".date-display-formatter .full-format").addEventListener("click", () => {
+    const input = document.querySelector(".date-display-formatter input").value;
+
+    const ddf = new DateDisplayFormatter(input);
+    const result = ddf.toFullFormate();
+
+    document.querySelector(".date-display-formatter .result").innerHTML = `Result: ${result}`;
+});
+
+document.querySelector(".date-display-formatter .exact-format").addEventListener("click", () => {
+    const input = document.querySelector(".date-display-formatter input").value;
+    const template = document.querySelector(".date-display-formatter .regex").value;
+
+    const ddf = new DateDisplayFormatter(input);
+    const result = ddf.toExactFormat(template);
+
+    document.querySelector(".date-display-formatter .result").innerHTML = `Result: ${result}`;
+});
+
+document.querySelector(".date-display-formatter .custom-format").addEventListener("click", () => {
+    const input = document.querySelector(".date-display-formatter input").value;
+    const template = document.querySelector(".date-display-formatter .regex").value;
+    const customTemplate = document.querySelector(".date-display-formatter .regex-custom").value;
+
+    const ddf = new DateDisplayFormatter(input);
+    const result = ddf.toCustomFormat(template, customTemplate);
+
+    document.querySelector(".date-display-formatter .result").innerHTML = `Result: ${result}`;
 });
