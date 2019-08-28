@@ -2,6 +2,7 @@ import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
 import { DateDisplayFormatter } from './custom_modules/dateDisplayFormatter'
 import { TextFormatter } from './custom_modules/textFormatter'
 import { StringCalculator } from './custom_modules/stringCalculator'
+import { ArraySorter } from './custom_modules/arraySorter'
 import './style.css'
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
