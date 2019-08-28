@@ -254,14 +254,16 @@ export class TextFormatter {
     }
 
     static _getFormatType(type) {
+        let sym = type.match(/[a-z]/);
+        const symCase = sym != null ? sym[0] : null;
         switch(type) {
             // word wrap
             case "w": {
                 return / /;
             }
             // symbol wrap
-            case "sym": {
-                return "";
+            case symCase : {
+                return new RegExp(`(?<=[${symCase}])`);;
             }
             // sentence wrap
             case "sen": {
