@@ -1,6 +1,7 @@
 import { ArrayPrecessingTool } from './custom_modules/arrayProcessingTool'
 import { DateDisplayFormatter } from './custom_modules/dateDisplayFormatter'
 import { TextFormatter } from './custom_modules/textFormatter'
+import { StringCalculator } from './custom_modules/stringCalculator'
 import './style.css'
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
@@ -85,3 +86,10 @@ document.querySelector(".text-formatter button").addEventListener("click", () =>
 
     document.querySelector(".text-formatter .result").innerHTML = `Result: ${result}`;
 })
+
+document.querySelector(".string-calculator button").addEventListener("click", () => {
+    const input = document.querySelector(".string-calculator input").value;
+    const result = StringCalculator.doEvil(input);
+
+    document.querySelector(".string-calculator .result").innerHTML = `Result: ${result}`;
+});
