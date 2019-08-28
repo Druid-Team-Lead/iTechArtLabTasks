@@ -44,24 +44,39 @@ export class TextFormatter {
             return null;
         }
 
+        const splitType = TextFormatter._getFormatType(formatType);
+        if(splitType == null) {
+            return null;
+        } 
+
+        const formatted = string.split(splitType);
         let result = "";
         let lengthCounter = 0;
         let rowsCounter = 0;
-        for(let i in string) {
 
-            result += string[i];
-            lengthCounter++;
+        for(let substring of formatted) {
+            substring = substring.trim();
 
-            if(lengthCounter >= stringLength) {
-                lengthCounter = 0;
-                result += "<br\/>";
+            for(let i in substring) {
+                result += substring[i];
+                lengthCounter++;
+    
+                if(lengthCounter == stringLength) {
+                    lengthCounter = 0;
+                    result += "<br\/>";
+                    rowsCounter++;
+                }
+            }
+            
+            if(lengthCounter != 0) {
+                result += `<br\/>`;
                 rowsCounter++;
             }
+            lengthCounter = 0;
 
             if(rowsCounter == rowNumber) {
                 break;
             }
-
         }
 
         return result;
@@ -98,7 +113,7 @@ export class TextFormatter {
             result += string[i];
             counter++;
 
-            if(counter >= stringLength) {
+            if(counter == stringLength) {
                 counter = 0;
                 result += "<br\/>";
             }
@@ -193,13 +208,49 @@ export class TextFormatter {
             if (rowsCounter == rowNumber) {
               break;
             }
-          }
+        }
 
         return result;
     }
 
     static _formatWithLengthAndType(string, stringLength, formatType) {
+        stringLength = parseInt(stringLength);
+        if( (!string || typeof string !== "string") && 
+            (!formatType || typeof formatType !== "string") &&
+            (!stringLength || typeof stringLength !== "number") ) {
+            return null;
+        }
 
+        const splitType = TextFormatter._getFormatType(formatType);
+        if(splitType == null) {
+            return null;
+        } 
+
+        const formatted = string.split(splitType);
+        let result = "";
+        let lengthCounter = 0;
+
+        for(let substring of formatted) {
+            substring = substring.trim();
+
+            for(let i in substring) {
+                result += substring[i];
+                lengthCounter++;
+    
+                if(lengthCounter == stringLength) {
+                    lengthCounter = 0;
+                    result += "<br\/>";
+                }
+            }
+
+            if(lengthCounter != 0) {
+                result += `<br\/>`;
+            }
+            lengthCounter = 0;
+        }
+
+
+        return result;
     }
 
     static _getFormatType(type) {
@@ -216,7 +267,7 @@ export class TextFormatter {
             case "sen": {
                 return /(?<=[.!?])/;
             }
-            // none wrap
+            // none wrap for this
             default: {
                 return null;
             }
