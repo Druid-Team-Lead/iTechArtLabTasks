@@ -74,3 +74,14 @@ document.querySelector(".date-display-formatter .from-now").addEventListener("cl
 
     document.querySelector(".date-display-formatter .result").innerHTML = `Result: ${result}`;
 });
+
+document.querySelector(".text-formatter button").addEventListener("click", () => {
+    const text = document.querySelector(".text-formatter .text").value;
+    const length = document.querySelector(".text-formatter .length").value;
+    const rows = document.querySelector(".text-formatter .rows").value;
+    const type = document.querySelector(".text-formatter .format-type").value;
+
+    const result = TextFormatter.format(text, length, rows, type);
+
+    document.querySelector(".text-formatter .result").innerHTML = `Result: ${result}`;
+})

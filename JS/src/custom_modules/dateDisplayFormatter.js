@@ -1,17 +1,17 @@
 export class DateDisplayFormatter {
 
     constructor(input) {
-        this._input = this._inputHandler(input);
+        this._input = input;
         this.date = null;
     }
 
     setInput(input) {
-        this._input = this._inputHandler(input);
+        this._input = input;
     }
 
     toShortFormat() {
-        let reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
-        let formatted = this._input.match(reg);
+        const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
+        const formatted = this._input.match(reg);
 
         if(!formatted) {
             return null;
@@ -27,8 +27,8 @@ export class DateDisplayFormatter {
 
     toFullFormate()
     {
-        let reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
-        let formatted = this._input.match(reg);
+        const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
+        const formatted = this._input.match(reg);
 
         if(!formatted) {
             return null;
@@ -64,7 +64,7 @@ export class DateDisplayFormatter {
                 return `${this.date.month}-${this.date.day}-${this.date.year}`;
             }
             default: {
-                return "That format not supported yet.";
+                return "That format invalid or not supported yet.";
             }
         }
     }
@@ -78,11 +78,6 @@ export class DateDisplayFormatter {
         const timeFrom = new Date().getFullYear() - this.date.year;
 
         return timeFrom > 0 ? `${timeFrom} year` : "It's future!";
-    }
-
-    _inputHandler(input) {
-        // clean up input string with regex => return 
-        return input;
     }
 
     _getMonth() {
@@ -107,8 +102,8 @@ export class DateDisplayFormatter {
 
         switch(template) {
             case "YYYYMMDD": {
-                let reg = /([12]\d{3})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/
-                let formatted = this._input.match(reg);
+                const reg = /([12]\d{3})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/
+                const formatted = this._input.match(reg);
                 return {
                     year: formatted[1],
                     month: formatted[2],
@@ -116,8 +111,8 @@ export class DateDisplayFormatter {
                 };
             }
             case "YYYY-MM-DD": {
-                let reg = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
-                let formatted = this._input.match(reg);
+                const reg = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
+                const formatted = this._input.match(reg);
                 return {
                     year: formatted[1],
                     month: formatted[2],
