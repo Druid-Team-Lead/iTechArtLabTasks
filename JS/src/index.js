@@ -3,6 +3,7 @@ import { DateDisplayFormatter } from './custom_modules/dateDisplayFormatter'
 import { TextFormatter } from './custom_modules/textFormatter'
 import { StringCalculator } from './custom_modules/stringCalculator'
 import { ArraySorter } from './custom_modules/arraySorter'
+import { SystemConverter } from './custom_modules/systemConverter'
 import './style.css'
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
@@ -100,4 +101,17 @@ document.querySelector(".array-sorter button").addEventListener("click", () => {
     const result = new ArraySorter(input).sort();
 
     document.querySelector(".array-sorter .result").innerHTML = `Result: ${result}`;
+});
+
+document.querySelector(".binary-converter button").addEventListener("click", () => {
+    const input = document.querySelector(".binary-converter input").value;
+
+    const selectFrom = document.querySelector(".binary-converter .current-system");
+    const selectTo = document.querySelector(".binary-converter .next-system");
+
+    const from = selectFrom.options[selectFrom.selectedIndex].value;
+    const to = selectTo.options[selectTo.selectedIndex].value;
+
+    const result = SystemConverter.convert(input, from, to);
+    document.querySelector(".binary-converter .result").innerHTML = `Result: ${result}`;
 });
