@@ -5,6 +5,7 @@ import { StringCalculator } from './custom_modules/stringCalculator'
 import { ArraySorter } from './custom_modules/arraySorter'
 import { SystemConverter } from './custom_modules/systemConverter'
 import './style.css'
+import { cachingCalculator } from './custom_modules/cachingCalculator';
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
     const input = document.querySelector(".array-precessing-tool input").value;
@@ -114,4 +115,11 @@ document.querySelector(".binary-converter button").addEventListener("click", () 
 
     const result = SystemConverter.convert(input, from, to);
     document.querySelector(".binary-converter .result").innerHTML = `Result: ${result}`;
+});
+
+const memoizedResult = cachingCalculator();
+document.querySelector(".caching-calculator button").addEventListener("click", () => {
+    const input = document.querySelector(".caching-calculator input").value;
+    
+    document.querySelector(".caching-calculator .result").innerHTML = `Result: ${memoizedResult(input)}`;
 });
