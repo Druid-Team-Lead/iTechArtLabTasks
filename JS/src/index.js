@@ -4,8 +4,8 @@ import { TextFormatter } from './custom_modules/textFormatter'
 import { StringCalculator } from './custom_modules/stringCalculator'
 import { ArraySorter } from './custom_modules/arraySorter'
 import { SystemConverter } from './custom_modules/systemConverter'
-import './style.css'
 import { cachingCalculator } from './custom_modules/cachingCalculator';
+import './style.css'
 
 document.querySelector(".array-precessing-tool button").addEventListener("click", () => {
     const input = document.querySelector(".array-precessing-tool input").value;

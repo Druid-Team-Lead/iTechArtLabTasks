@@ -263,11 +263,11 @@ export class TextFormatter {
             }
             // symbol wrap
             case symCase : {
-                return new RegExp(`(?<=[${symCase}])`);;
+                return new RegExp(`(?<=[${symCase}])`);
             }
             // sentence wrap
             case "sen": {
-                return /(?<=[.!?])/;
+                return  new RegExp("(?<=[.!?])");
             }
             // none wrap for this
             default: {
