@@ -94,3 +94,10 @@ document.querySelector(".string-calculator button").addEventListener("click", ()
 
     document.querySelector(".string-calculator .result").innerHTML = `Result: ${result}`;
 });
+
+document.querySelector(".array-sorter button").addEventListener("click", () => {
+    const input = document.querySelector(".array-sorter input").value;
+    const result = new ArraySorter(input).sort();
+
+    document.querySelector(".array-sorter .result").innerHTML = `Result: ${result}`;
+});
