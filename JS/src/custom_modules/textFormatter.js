@@ -44,12 +44,11 @@ export class TextFormatter {
             return null;
         }
 
-        const splitType = TextFormatter._getFormatType(formatType);
-        if(splitType == null) {
+        const formatted = TextFormatter._getMatch(string, formatType);
+        if(formatted == null) {
             return null;
         } 
-
-        const formatted = string.split(splitType);
+        
         let result = "";
         let lengthCounter = 0;
         let rowsCounter = 0;
@@ -169,15 +168,15 @@ export class TextFormatter {
             return null;
         }
 
-        const splitType = TextFormatter._getFormatType(formatType);
-        if(splitType == null) {
+        const formatted = TextFormatter._getMatch(string, formatType);
+        if(formatted == null) {
             return null;
         } 
 
-        const formatted = string.split(splitType);
         let result = "";
 
         formatted.forEach(function(element) {
+            element = element.trim();
             result += `${element} <br\/>`;
         });
 
@@ -192,12 +191,11 @@ export class TextFormatter {
             return null;
         }
 
-        const splitType = TextFormatter._getFormatType(formatType);
-        if(splitType == null) {
+        const formatted = TextFormatter._getMatch(string, formatType);
+        if(formatted == null) {
             return null;
         } 
 
-        const formatted = string.split(splitType);
         let result = "";
         let rowsCounter = 0;
 
@@ -221,12 +219,11 @@ export class TextFormatter {
             return null;
         }
 
-        const splitType = TextFormatter._getFormatType(formatType);
-        if(splitType == null) {
+        const formatted = TextFormatter._getMatch(string, formatType);
+        if(formatted == null) {
             return null;
         } 
 
-        const formatted = string.split(splitType);
         let result = "";
         let lengthCounter = 0;
 
@@ -253,21 +250,25 @@ export class TextFormatter {
         return result;
     }
 
-    static _getFormatType(type) {
+    static _getMatch(string, type) {
         let sym = type.match(/[a-z]/);
         const symCase = sym != null ? sym[0] : null;
         switch(type) {
             // word wrap
             case "w": {
-                return / /;
+                const split = string.split(/ /);
+                return split;
             }
             // symbol wrap
             case symCase : {
-                return new RegExp(`(?<=[${symCase}])`);
+                const reg = new RegExp(`(?=${symCase})`, 'g');
+                const match = string.split(reg);
+                return match;
             }
             // sentence wrap
             case "sen": {
-                return  new RegExp("(?<=[.!?])");
+                const match = string.match(/[^\.!\?]+[\.!\?]+/g);
+                return  match;
             }
             // none wrap for this
             default: {
