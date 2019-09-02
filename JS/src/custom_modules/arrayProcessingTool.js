@@ -1,17 +1,14 @@
 export class ArrayPrecessingTool {
 
-
     constructor(array) {
         this._array = this._arrayFormatter(array);
     }
-
 
     getMaxSubSum_On2() {
         let sum = 0;
         let max = 0;
         
         for (let i = 0; i < this._array.length; i++) {   
-
             for(let j = i; j < this._array.length; j++) {
 
                 sum += this._array[j];
@@ -39,12 +36,10 @@ export class ArrayPrecessingTool {
     }
 
     searchMax() {
-
         return Math.max(...this._array);
     }
 
     searchMin() {
-
         return Math.min(...this._array);
     }
 
@@ -68,35 +63,26 @@ export class ArrayPrecessingTool {
         let dictionary = new Array();
 
         for(let i = 0; i < this._array.length; i ++) {
-
             if(this._array[i] > max) {
-
                 max = this._array[i];
                 sliceTo = i;
-
             } else {
-
                 dictionary.push(this._array.slice(sliceFrom, sliceTo + 1));
                 sliceFrom = i;
                 max = this._array[i];
-
             }
-            
         }
         dictionary.push(this._array.slice(sliceFrom, sliceTo + 1));
 
         let maxSum = 0
         let index = 0;
         for(let i in dictionary) {
-
             let seqSum = dictionary[i].reduce((a, b) => a + b, 0);
-
             if(seqSum > maxSum) {
                 index = i;
                 maxSum = seqSum;
             }
         }
-
         const sequance = dictionary[index];
 
         return sequance;
@@ -104,15 +90,12 @@ export class ArrayPrecessingTool {
 
     _arrayFormatter(array) {
         const regex = array.replace(/[^0-9.-]+/g, " ");
-        
         const dirtyResult = regex.split(" ").map(function(item) {
             return parseInt(item);
         });
-
         const result = dirtyResult.filter(function (value) {
             return !Number.isNaN(value) && value != null;
         });
-
 
         return result;
     }

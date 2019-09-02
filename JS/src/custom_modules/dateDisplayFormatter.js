@@ -12,16 +12,15 @@ export class DateDisplayFormatter {
     toShortFormat() {
         const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         const formatted = this._input.match(reg);
-
         if(!formatted) {
             return null;
         }
-
         this.date = {
             year: formatted[3],
             month: formatted[2],
             day: formatted[1]
         };
+
         return `${this.date.day}-${this.date.month}-${this.date.year}`;
     }
 
@@ -29,16 +28,15 @@ export class DateDisplayFormatter {
     {
         const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         const formatted = this._input.match(reg);
-
         if(!formatted) {
             return null;
         }
-
         this.date = {
             year: formatted[3],
             month: formatted[2],
             day: formatted[1]
         };
+
         return `${this.date.day}-${this._getMonth()}-${this.date.year}`;
     }
 
@@ -46,7 +44,6 @@ export class DateDisplayFormatter {
         if(!template) {
             return null;
         }
-
         this.date = this._getDateFromTemplate(template);
 
         return `${this.date.day} ${this._getMonth()} ${this.date.year}`;
@@ -56,9 +53,7 @@ export class DateDisplayFormatter {
         if(!template || !customTemplate) {
             return null;
         }
-
         this.date = this._getDateFromTemplate(template);
-
         switch(customTemplate) {
             case "MM-DD-YYYY": {
                 return `${this.date.month}-${this.date.day}-${this.date.year}`;
@@ -74,7 +69,6 @@ export class DateDisplayFormatter {
         if(!this.date) {
             return null;
         }
-
         const timeFrom = new Date().getFullYear() - this.date.year;
 
         return timeFrom > 0 ? `${timeFrom} year` : "It's future!";
@@ -99,7 +93,6 @@ export class DateDisplayFormatter {
     }
 
     _getDateFromTemplate(template) {
-
         switch(template) {
             case "YYYYMMDD": {
                 const reg = /([12]\d{3})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/

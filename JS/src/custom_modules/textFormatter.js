@@ -40,7 +40,6 @@ export class TextFormatter {
 
         if( typeof string !== "string" && typeof stringLength !== "number" && 
             typeof rowNumber !== "number" && typeof formatType !== "string" ) {
-
             return null;
         }
 
@@ -59,14 +58,13 @@ export class TextFormatter {
             for(let i in substring) {
                 result += substring[i];
                 lengthCounter++;
-    
+
                 if(lengthCounter == stringLength) {
                     lengthCounter = 0;
                     result += "<br\/>";
                     rowsCounter++;
                 }
             }
-            
             if(lengthCounter != 0) {
                 result += `<br\/>`;
                 rowsCounter++;
@@ -86,10 +84,8 @@ export class TextFormatter {
         if(!string || typeof string !== "string") {
             return null;
         }
-
         const formatted = string.split(" ");
         let result = "";
-
         formatted.forEach(function(word) {
             result += `${word} <br\/>`;
         });
@@ -104,19 +100,15 @@ export class TextFormatter {
             (!stringLength || typeof stringLength !== "number") ) {
             return null;
         }
-
         let result = "";
         let counter = 0;
         for(let i in string) {
-
             result += string[i];
             counter++;
-
             if(counter == stringLength) {
                 counter = 0;
                 result += "<br\/>";
             }
-
         }
 
         return result;
@@ -136,20 +128,16 @@ export class TextFormatter {
         let lengthCounter = 0;
         let rowsCounter = 0;
         for(let i in string) {
-
             result += string[i];
             lengthCounter++;
-
             if(lengthCounter >= stringLength) {
                 lengthCounter = 0;
                 result += "<br\/>";
                 rowsCounter++;
             }
-
             if(rowsCounter == rowNumber) {
                 break;
             }
-
         }
 
         return result;
@@ -167,14 +155,11 @@ export class TextFormatter {
             (!formatType || typeof formatType !== "string") ) {
             return null;
         }
-
         const formatted = TextFormatter._getMatch(string, formatType);
         if(formatted == null) {
             return null;
         } 
-
         let result = "";
-
         formatted.forEach(function(element) {
             element = element.trim();
             result += `${element} <br\/>`;
@@ -190,19 +175,15 @@ export class TextFormatter {
             (!rowNumber || typeof rowNumber !== "number") ) {
             return null;
         }
-
         const formatted = TextFormatter._getMatch(string, formatType);
         if(formatted == null) {
             return null;
         } 
-
         let result = "";
         let rowsCounter = 0;
-
         for (let element of formatted) {
             result += `${element} <br\/>`;
             rowsCounter++;
-
             if (rowsCounter == rowNumber) {
               break;
             }
@@ -218,34 +199,27 @@ export class TextFormatter {
             (!stringLength || typeof stringLength !== "number") ) {
             return null;
         }
-
         const formatted = TextFormatter._getMatch(string, formatType);
         if(formatted == null) {
             return null;
         } 
-
         let result = "";
         let lengthCounter = 0;
-
         for(let substring of formatted) {
             substring = substring.trim();
-
             for(let i in substring) {
                 result += substring[i];
                 lengthCounter++;
-    
                 if(lengthCounter == stringLength) {
                     lengthCounter = 0;
                     result += "<br\/>";
                 }
             }
-
             if(lengthCounter != 0) {
                 result += `<br\/>`;
             }
             lengthCounter = 0;
         }
-
 
         return result;
     }
