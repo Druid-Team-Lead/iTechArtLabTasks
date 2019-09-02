@@ -1,56 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
+      temp: null,
+      city: null
     };
   }
 
   componentDidMount() {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=Minsk")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
 
+    fetch("https://community-open-weather-map.p.rapidapi.com/weather?q=Minsk", {
+      headers: {
+        "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+        "x-rapidapi-key": "89fd4dcec1msh380ae180876442cp1622c7jsn1e9eaa994091"
+      }
+    })
+    .then(results => results.json())
+    .then(data => {
+      this.setState({
+        temp: data.main.temp,
+        city: data.name
+      });
+    })
+    .catch(err => console.log(err));
+  }
+      
   render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.price}
-            </li>
-          ))}
-        </ul>
-      );
-    }
+    const {temp, city} = this.state;
+    return <h1>Город: {city}, температура {temp-273.15} градусов</h1>
   }
 }
 
