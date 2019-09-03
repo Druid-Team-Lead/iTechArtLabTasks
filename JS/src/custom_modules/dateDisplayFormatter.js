@@ -245,7 +245,7 @@ export class DateDisplayFormatter {
             }
             // ------------ YY 
             case "YYMMDD": {
-                const reg = /(0[1-9]|[1-9][0-9])(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/
+                const reg = /([12]\d{3}|0[1-9]|[1-9][0-9])(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -257,7 +257,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "YY-MM-DD": {
-                const reg = /(0[1-9]|[1-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
+                const reg = /([12]\d{3}|0[1-9]|[1-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -269,7 +269,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "YYDDMM": {
-                const reg = /(0[1-9]|[1-9][0-9])(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])/;
+                const reg = /([12]\d{3}|0[1-9]|[1-9][0-9])(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -281,7 +281,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "YY-DD-MM": {
-                const reg = /(0[1-9]|[1-9][0-9])-(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])/;
+                const reg = /([12]\d{3}|0[1-9]|[1-9][0-9])-(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -293,7 +293,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "MMDDYY": {
-                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-9][0-9])/;
+                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([12]\d{3}|0[1-9]|[1-9][0-9])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -305,7 +305,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "MM-DD-YY": {
-                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-9][0-9])/;
+                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([12]\d{3}|0[1-9]|[1-9][0-9])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -317,7 +317,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "DD-MM-YY": {
-                const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])(0[1-9]|[1-9][0-9])/;
+                const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3}|0[1-9]|[1-9][0-9])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
@@ -329,7 +329,7 @@ export class DateDisplayFormatter {
                 return this.date.display;
             }
             case "DDMMYY": {
-                const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])(0[1-9]|[1-9][0-9])/;
+                const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3}|0[1-9]|[1-9][0-9])/;
                 const formatted = this._input.match(reg);
                 if(!formatted) return null;
                 this.date = {
