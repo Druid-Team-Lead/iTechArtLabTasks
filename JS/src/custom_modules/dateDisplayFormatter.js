@@ -13,7 +13,7 @@ export class DateDisplayFormatter {
         const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         const formatted = this._input.match(reg);
         if(!formatted) {
-            return null;
+            return "Invalid date. This formate for a date like 31102011 (DDMMYYYY). Use exact or custom.";
         }
         this.date = {
             year: formatted[3],
@@ -29,7 +29,7 @@ export class DateDisplayFormatter {
         const reg = /(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([12]\d{3})/
         const formatted = this._input.match(reg);
         if(!formatted) {
-            return null;
+            return "Invalid date. This formate for a date like 31102011 (DDMMYYYY). Use exact or custom.";
         }
         this.date = {
             year: formatted[3],
@@ -42,19 +42,35 @@ export class DateDisplayFormatter {
 
     toExactFormat(template) {
         if(!template) {
-            return null;
+            return "Regex/template not specified";
         }
-        this.date = this._getDateFromTemplate(template);
+        const display = this._getDateFromTemplate(template);
+        if(!display) {
+            return "Invalid date or regex(template)."
+        }
 
-        return `${this.date.day} ${this._getMonth()} ${this.date.year}`;
+        return display;
     }
 
     toCustomFormat(template, customTemplate) {
         if(!template || !customTemplate) {
-            return null;
+            return "Regex/template not specified";
         }
-        this.date = this._getDateFromTemplate(template);
+        const display = this._getDateFromTemplate(template);
+        if(!display) {
+            return "Invalid date or regex(template)."
+        }
+
         switch(customTemplate) {
+            case "YYYYMMDD": {
+                return `${this.date.year} ${this._getMonth()} ${this.date.day}`;
+            }
+            case "YYYY-MM-DD": {
+                return `${this.date.year}-${this.date.month}-${this.date.day}`;
+            }
+            case "MMDDYYYY": {
+                return `${this._getMonth()} ${this.date.day} ${this.date.year}`;
+            }
             case "MM-DD-YYYY": {
                 return `${this.date.month}-${this.date.day}-${this.date.year}`;
             }
@@ -97,20 +113,50 @@ export class DateDisplayFormatter {
             case "YYYYMMDD": {
                 const reg = /([12]\d{3})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])/
                 const formatted = this._input.match(reg);
-                return {
+                if(!formatted) return null;
+                this.date = {
                     year: formatted[1],
                     month: formatted[2],
                     day: formatted[3]
-                };
+                }
+                this.date.display = `${this.date.day} ${this._getMonth()} ${this.date.year}`
+                return this.date.display;
             }
             case "YYYY-MM-DD": {
                 const reg = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
                 const formatted = this._input.match(reg);
-                return {
+                if(!formatted) return null;
+                this.date = {
                     year: formatted[1],
                     month: formatted[2],
                     day: formatted[3]
+                }
+                this.date.display = `${this.date.day}-${this.date.month}-${this.date.year}`
+                return this.date.display;
+            }
+            case "MMDDYYYY": {
+                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([12]\d{3})/;
+                const formatted = this._input.match(reg);
+                if(!formatted) return null;
+                this.date = {
+                    year: formatted[3],
+                    month: formatted[1],
+                    day: formatted[2]
                 };
+                this.date.display = `${this.date.day} ${this._getMonth()} ${this.date.year}`
+                return this.date.display;
+            }
+            case "MM-DD-YYYY": {
+                const reg = /(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([12]\d{3})/;
+                const formatted = this._input.match(reg);
+                if(!formatted) return null;
+                this.date = {
+                    year: formatted[3],
+                    month: formatted[1],
+                    day: formatted[2]
+                };
+                this.date.display = `${this.date.day}-${this.date.month}-${this.date.year}`
+                return this.date.display;
             }
             default: {
                 return null;
