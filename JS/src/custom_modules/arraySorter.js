@@ -52,7 +52,7 @@ export class ArraySorter {
     _shellSort(array) {
         const size = array.length - 1;
         let tmp;
-        for(let k = size / 2; k > 0; k /= 2) {
+        for(let k = Math.floor(size / 2); k > 0; k = Math.floor(k/2)) {
             do {
                 tmp = 0;
                 for(let i = 0, j = k; j < size; i++, j++) {
