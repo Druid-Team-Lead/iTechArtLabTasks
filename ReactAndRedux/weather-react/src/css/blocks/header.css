@@ -1,0 +1,22 @@
+.header {  
+    padding-top: 27px;   
+    margin-bottom: 30px;   
+}
+
+.header_center {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 44px;
+    color: rgb(59, 62, 74);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.header p {
+    font-size: 18px;
+    color: rgb(130, 130, 130);
+    line-height: 1.2;
+}

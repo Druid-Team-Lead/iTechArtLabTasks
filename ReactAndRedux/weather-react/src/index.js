@@ -1,62 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
-function CallApi(props) {
-  
-}
-class Data extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      city: this.props.city,
-      temp: null,
-      weather: [],
-      wind: null
-    };
-  }
-
-  componentDidMount() {
-    fetch(`https://community-open-weather-map.p.rapidapi.com/weather?q=${this.props.city}`, {
-      headers: {
-        "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-        "x-rapidapi-key": "89fd4dcec1msh380ae180876442cp1622c7jsn1e9eaa994091"
-      }
-    })
-    .then(results => results.json())
-    .then(data => {
-      this.setState({
-        temp: data.main.temp,
-        weather: data.weather,
-        wind: data.wind.speed
-      });
-      console.log(data);
-    })
-    .catch(err => console.log(err));
-  }
-
-  render() {
-    const { city, temp, weather, wind } = this.state;
-    return (
-      <div>
-        <div>
-          <h1>City: {city}, {temp - 273.15} C°</h1>
-          <p>Weather:</p>
-          <ul>
-            {weather.map(item => (
-              <li key={item.id}>
-                {item.main} - {item.description}
-              </li>
-            ))}
-          </ul>
-          <p>Wind: {wind}</p>
-        </div>
-      </div>
-    );
-  }
-}
+import { Data } from './components/data'
+import './style.css';
+import logo from './img/logo.gif';
 
 class Weather extends React.Component {
 
@@ -64,15 +10,21 @@ class Weather extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.selectChange = this.selectChange.bind(this);
     this.state = {
       city: 'Minsk',
-      isSubmitted: false
+      isSubmitted: true,
+      isForecast: false,
     };
   }
 
   handleChange(e) {
-    this.setState({ city: e.target.value, isSubmitted: false  });
+    this.setState({ city: e.target.value, isSubmitted: false, isForecast: e.target.value });
     console.log(this.state.city);
+  }
+
+  selectChange(e) {
+    this.setState({ isForecast: e.target.value, isSubmitted: false });
   }
 
   handleSubmit(e) {
@@ -82,21 +34,41 @@ class Weather extends React.Component {
 
   render() {
     const city = this.state.city;
+    const isForecast = this.state.isForecast;
     return (
-      <div>
+      <div className="header_center">
+        {this.state.isSubmitted && <Data city={city} isForecast={isForecast} />}
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="Enter city..."
-            value={city}
-            onChange={this.handleChange} />
-          <input type="submit" value="Search"/>
+          <div>
+            <input placeholder="Enter city..." value={city} onChange={this.handleChange} />
+          </div>
+          <div>
+            <button onClick={this.selectChange} value="false">Today</button>
+            <button onClick={this.selectChange} value="true">Forecast 5 day</button>
+          </div>
         </form>
-        {this.state.isSubmitted && <Data city={city}/>}
       </div>
     );
   }
 }
 
+class Application extends React.Component {
+  render() {
+    return (
+      <div className="white-card white-card_wrap">
+        <div className="header header_center">
+          <header className="wrap">
+            <img src={logo} alt=""/>
+          </header>
+        </div>
+        <main className="wrap">
+          <Weather />
+        </main>
+      </div>
+    );
+  }
+}
 ReactDOM.render(
-  <Weather />,
+  <Application />,
   document.getElementById('root')
 );
