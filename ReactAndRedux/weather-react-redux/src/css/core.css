@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    max-width: 1170px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.white-card {
+    max-width: 1231px; 
+    background: white;
+    border-radius: 7px;
+}
+
+.white-card_wrap {
+    margin: 110px auto;
+}
+
+@media (max-width: 980px) {
+    .white-card {
+        border-radius: 0;
+    }
+    .white-card_wrap {
+        margin: 0 auto;
+    }
+}
+
+body {
+    margin: 0 auto;
+    max-width: 100%; 
+    background: url('./../img/bg.gif') center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid rgb(230, 230, 230);
+}

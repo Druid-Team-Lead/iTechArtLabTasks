@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap&subset=cyrillic');
+@import url('./css/core.css');
+@import url('./css/blocks/header.css');
+@import url('./css/blocks/menu.css');
+@import url('./css/blocks/banner.css');
+@import url('./css/blocks/button.css');
+@import url('./css/blocks/employees.css');
+@import url('./css/blocks/about-us.css');
+@import url('./css/blocks/news.css');
+@import url('./css/blocks/contact-link.css');
+@import url('./css/blocks/footer.css');
+@import url('./css/blocks/input.css');
