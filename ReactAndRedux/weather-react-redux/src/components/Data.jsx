@@ -2,7 +2,7 @@ import React from 'react';
 import { X_RAPIDAPI_HOST, X_RAPIDAPI_KEY } from '../settings/config'
 let counter = 0;
 
-export class Data extends React.Component {
+export class Data extends React.PureComponent {
 
   componentDidMount() {
     let url = "https://community-open-weather-map.p.rapidapi.com/";

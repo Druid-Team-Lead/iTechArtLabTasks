@@ -1,7 +1,7 @@
 import React from 'react';
 import {X_RAPIDAPI_HOST, X_RAPIDAPI_KEY} from '../settings/config'
 
-export class Data extends React.Component {
+export class Data extends React.PureComponent {
 
   constructor(props) {
     super(props);
