@@ -1,25 +1,16 @@
 import React from 'react';
+import { X_RAPIDAPI_HOST, X_RAPIDAPI_KEY } from '../settings/config'
 
 export class Data extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      city: this.props.city,
-      temp: null,
-      weather: [],
-      wind: null,
-      forecast: [],
-      isForecast: this.props.isForecast,
-      isLoaded: false,
-      error: null
-    };
+    console.log(props);
   }
 
   componentDidMount() {
     let url = "https://community-open-weather-map.p.rapidapi.com/";
-    if (this.props.isForecast === "true") {
+    if (this.props.isForecast) {
       url += "forecast";
     } else {
       url += "weather";
@@ -27,43 +18,49 @@ export class Data extends React.Component {
     fetch(`${url}?q=${this.props.city}`, {
       method: "GET",
       headers: {
-        "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-        "x-rapidapi-key": "89fd4dcec1msh380ae180876442cp1622c7jsn1e9eaa994091"
+        "x-rapidapi-host": X_RAPIDAPI_HOST,
+        "x-rapidapi-key": X_RAPIDAPI_KEY
       }
     })
       .then(results => results.json())
       .then(data => {
         console.log(data);
         if (data.cod != "404") {
-          if (this.props.isForecast === "true") {
-            this.setState({
-              forecast: data.list,
+          
+          if (this.props.isForecast) {
+            /*
+            data.list.map(item => {
+              this.props.setForecast()
+              this.props.setData({
+                clouds: item.clouds.all,
+                key: item.dt,
+                iconName: item.weather[0].icon,
+                temperature: Math.round(item.main.temp - 273.15),
+                windSpeed: item.wind.speed,
+                date: item.dt_txt,
+                weather: item.weather[0].main
+              })
             })
+            */
+           console.log('forecast');
           } else {
-            this.setState({
-              temp: data.main.temp,
-              weather: data.weather,
-              wind: data.wind.speed,
-              isLoaded: true
-            });
+            this.props.setTemperature(Math.round(data.main.temp - 273.15));
+            this.props.setIsLoaded(true);
+            this.props.setWeather(data.weather[0].main);
           }
-          this.setState({ isLoaded: true });
+          this.props.setIsLoaded(true);
         } else {
-          this.setState({
-            error: "Can't find the city."
-          });
+          this.props.setError("Can't find the city.");
         }
       },
       (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
+        this.props.setError(error);
+        this.props.setIsLoaded(true);
       });
   }
 
   render() {
-    const { city, temp, weather, wind, isLoaded, error, forecast, isForecast } = this.state;
+    const { city, temperature, weather, isLoaded, error, forecast, isForecast } = this.props;
     if (error) {
       console.log(error);
       return (
@@ -77,20 +74,20 @@ export class Data extends React.Component {
       } else {
         return (
           <div>
-            {isForecast == "true" ? <h1>City: {city}</h1> : <h1>City: {city}, {Math.round(temp - 273.15)} C°</h1>}
-            <section className="employees">
+            {isForecast ? <h1>City: {city}</h1> : <h1>City: {city}, {temperature} C°. {weather}</h1>}
+            <section className="forecast">
               {forecast.map(item => (
-                <div className="employees__element" key={item.dt}>
-                  <div className="employees__photo">
-                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt="" />
+                <div className="forecast__element" key={item.key}>
+                  <div className="forecast__icon">
+                    <img src={`http://openweathermap.org/img/wn/${item.iconName}.png`} alt="" />
                   </div>
-                  <div className="employees__border_cup">
-                    <p className="employees__name">{item.weather[0].main} - {Math.round(item.main.temp - 273.15)} C°</p>
-                    <p className="employees__description">{item.dt_txt}</p>
-                    <p className="employees__description">Wind speed: {item.wind.speed}</p>
+                  <div className="forecast__border_cup">
+                    <p className="forecast__title">{item.weather} - {item.temperature} C°</p>
+                    <p className="forecast__description">{item.date}</p>
+                    <p className="forecast__description">Wind speed: {item.windSpeed}</p>
                     {item.clouds.all > 0 ?
-                      <p className="employees__description">Number of clouds: {item.clouds.all}</p> :
-                      <p className="employees__description">No clouds.</p>}
+                      <p className="forecast__description">Number of clouds: {item.clouds}</p> :
+                      <p className="forecast__description">No clouds.</p>}
                   </div>
                 </div>
               ))}
