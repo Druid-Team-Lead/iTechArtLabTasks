@@ -44,7 +44,7 @@ export class Data extends React.Component {
                   temperature: Math.round(item.main.temp - 273.15),
                   windSpeed: item.wind.speed,
                   date: item.dt_txt,
-                  disc: item.weather[0].main
+                  weather: item.weather[0].main
                 }
               })
             })
@@ -93,7 +93,7 @@ export class Data extends React.Component {
                     <img src={`http://openweathermap.org/img/wn/${item.iconName}.png`} alt="" />
                   </div>
                   <div className="forecast__border_cup">
-                    <p className="forecast__title">{item.disc} - {item.temperature} C°</p>
+                    <p className="forecast__title">{item.weather} - {item.temperature} C°</p>
                     <p className="forecast__description">{item.date}</p>
                     <p className="forecast__description">Wind speed: {item.windSpeed}</p>
                     {item.clouds.all > 0 ?
