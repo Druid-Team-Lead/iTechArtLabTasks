@@ -1,13 +1,10 @@
 import React from 'react';
 import { Data } from './Data'
 
-export class Weather extends React.Component {
+export class Weather extends React.PureComponent {
 
     constructor(props) {
       super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.selectChange = this.selectChange.bind(this);
       this.state = {
         city: 'Minsk',
         isSubmitted: true,
@@ -15,16 +12,17 @@ export class Weather extends React.Component {
       };
     }
   
-    handleChange(e) {
+    handleChange = (e) => {
       this.setState({ city: e.target.value, isSubmitted: false, isForecast: e.target.value });
       console.log(this.state.city);
     }
   
-    selectChange(e) {
-      this.setState({ isForecast: e.target.value, isSubmitted: false });
+    selectForecast = (e) => {
+      const isForecast = e.target.value === "true" ? true : false;
+      this.setState({ isForecast: isForecast, isSubmitted: false });
     }
-  
-    handleSubmit(e) {
+
+    handleSubmit = (e) => {
       e.preventDefault();
       this.setState({ isSubmitted: true })
     }
@@ -40,8 +38,8 @@ export class Weather extends React.Component {
               <input placeholder="Enter city..." value={city} onChange={this.handleChange} />
             </div>
             <div>
-              <button onClick={this.selectChange} value="false">Today</button>
-              <button onClick={this.selectChange} value="true">Forecast 5 day</button>
+              <button onClick={this.selectForecast} value="false">Today</button>
+              <button onClick={this.selectForecast} value="true">Forecast 5 day</button>
             </div>
           </form>
         </div>

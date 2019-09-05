@@ -1,4 +1,4 @@
-.employees {
+.forecast {
     margin-top: 10px;
     display: flex;
     justify-content: space-around;
@@ -6,7 +6,7 @@
     margin-bottom: 40px;
 }
 
-.employees__element {
+.forecast__element {
     margin-bottom: 20px;
     flex-basis: 21%;
     border-radius: 5px;
@@ -14,7 +14,7 @@
     border: 1px solid rgb(230, 230, 230);
 }
 
-.employees__element .employees__border_cup {
+.forecast__element .forecast__border_cup {
     padding-left: 20px;
     padding-top: 11px;
     padding-bottom: 34px;
@@ -23,17 +23,17 @@
 }
 
 @media (max-width: 1084px) {
-    .employees {
+    .forecast {
         margin: 60px auto 20px;
         justify-content: center;
     }
-    .employees__element {
+    .forecast__element {
         margin-right: 20px;
         margin-bottom: 20px;
     }
 }
 
-.employees__element .employees__name {
+.forecast__element .forecast__title {
     font-size: 18px;
     color: rgb(59, 62, 74);
     font-weight: bold;
@@ -42,7 +42,7 @@
     margin-bottom: 20px;
 }
 
-.employees__element .employees__description {
+.forecast__element .forecast__description {
     font-size: 14px;
     color: rgb(130, 130, 130);
     line-height: 1.657;
