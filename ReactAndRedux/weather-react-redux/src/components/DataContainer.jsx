@@ -5,7 +5,7 @@ import { setTemperature, setError, setForecast, setIsLoaded, setWeather } from '
 
 class DataContainer extends React.PureComponent {
     render() {
-        const { city, temperature, forecast, isForecast, isLoaded, error, setTemperature, setError, setForecast, setIsLoaded, setWeather } = this.props;
+        const { city, temperature, forecast, weather, isForecast, isLoaded, error, setTemperature, setError, setForecast, setIsLoaded, setWeather } = this.props;
         return (
             <Data
                 city={city}
@@ -14,6 +14,7 @@ class DataContainer extends React.PureComponent {
                 isForecast={isForecast}
                 isLoaded={isLoaded}
                 error={error}
+                weather={weather}
                 setTemperature={setTemperature}
                 setError={setError}
                 setIsLoaded={setIsLoaded}
@@ -27,11 +28,12 @@ class DataContainer extends React.PureComponent {
 const mapStateToProps = state => {
     return {
         city: state.weather.city,
-        temperature: state.data.isSubmitted,
-        forecast: state.data.isForecast,
+        temperature: state.data.temperature,
+        forecast: state.data.forecast,
         isForecast: state.weather.isForecast,
         isLoaded: state.data.isLoaded,
-        error: state.data.error
+        error: state.data.error,
+        weather: state.data.weather
     };
 };
 

@@ -7,7 +7,7 @@
 }
 
 .forecast__element {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     flex-basis: 21%;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
@@ -24,7 +24,7 @@
 
 @media (max-width: 1084px) {
     .forecast {
-        margin: 60px auto 20px;
+        margin: 60px auto 10px;
         justify-content: center;
     }
     .forecast__element {

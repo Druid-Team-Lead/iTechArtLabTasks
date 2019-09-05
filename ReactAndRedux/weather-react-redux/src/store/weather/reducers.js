@@ -14,7 +14,6 @@ export const weatherReducer = (state = defaultState, action) => {
             return { ...state, isForecast: action.payload }
         case WEATHER_CHANGE_SUBMITTED_TYPE:
             return { ...state, isSubmitted: action.payload }
+        default: return state;
     }
-
-    return state;
 };

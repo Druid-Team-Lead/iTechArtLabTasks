@@ -5,6 +5,7 @@ export class Weather extends React.PureComponent {
 
   onCityChange = (e) => {
     this.props.setCityText(e.target.value);
+    this.props.setSubmittedType(false);
   }
 
   onForecastSelect = (e) => {

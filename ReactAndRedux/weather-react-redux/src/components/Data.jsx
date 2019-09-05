@@ -1,12 +1,8 @@
 import React from 'react';
 import { X_RAPIDAPI_HOST, X_RAPIDAPI_KEY } from '../settings/config'
+let counter = 0;
 
 export class Data extends React.Component {
-
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
 
   componentDidMount() {
     let url = "https://community-open-weather-map.p.rapidapi.com/";
@@ -25,13 +21,10 @@ export class Data extends React.Component {
       .then(results => results.json())
       .then(data => {
         console.log(data);
-        if (data.cod != "404") {
-          
+        if (data.cod !== "404") {
           if (this.props.isForecast) {
-            /*
-            data.list.map(item => {
-              this.props.setForecast()
-              this.props.setData({
+            const forecast = data.list.map(item => {
+              return {
                 clouds: item.clouds.all,
                 key: item.dt,
                 iconName: item.weather[0].icon,
@@ -39,24 +32,25 @@ export class Data extends React.Component {
                 windSpeed: item.wind.speed,
                 date: item.dt_txt,
                 weather: item.weather[0].main
-              })
-            })
-            */
-           console.log('forecast');
+              }
+            });
+            this.props.setForecast(forecast);
+            this.props.setError(null);
           } else {
             this.props.setTemperature(Math.round(data.main.temp - 273.15));
-            this.props.setIsLoaded(true);
             this.props.setWeather(data.weather[0].main);
+            this.props.setError(null);
           }
-          this.props.setIsLoaded(true);
         } else {
-          this.props.setError("Can't find the city.");
+          this.props.setError(data.message);
         }
-      },
-      (error) => {
-        this.props.setError(error);
         this.props.setIsLoaded(true);
-      });
+
+      },
+        (error) => {
+          this.props.setError(error);
+          this.props.setIsLoaded(true);
+        });
   }
 
   render() {
@@ -75,25 +69,25 @@ export class Data extends React.Component {
         return (
           <div>
             {isForecast ? <h1>City: {city}</h1> : <h1>City: {city}, {temperature} C°. {weather}</h1>}
-            <section className="forecast">
-              {forecast.map(item => (
-                <div className="forecast__element" key={item.key}>
-                  <div className="forecast__icon">
-                    <img src={`http://openweathermap.org/img/wn/${item.iconName}.png`} alt="" />
+            {isForecast &&
+              <section className="forecast">
+                {forecast.map(item => (
+                  <div className="forecast__element" key={item.key}>
+                    <div className="forecast__icon">
+                      <img src={`http://openweathermap.org/img/wn/${item.iconName}.png`} alt="" />
+                    </div>
+                    <div className="forecast__border_cup">
+                      <p className="forecast__title">{item.weather} - {item.temperature} C°</p>
+                      <p className="forecast__description">{item.date}</p>
+                      <p className="forecast__description">Wind speed: {item.windSpeed}</p>
+                      {item.clouds > 0 ?
+                        <p className="forecast__description">Number of clouds: {item.clouds}</p> :
+                        <p className="forecast__description">No clouds.</p>}
+                    </div>
                   </div>
-                  <div className="forecast__border_cup">
-                    <p className="forecast__title">{item.weather} - {item.temperature} C°</p>
-                    <p className="forecast__description">{item.date}</p>
-                    <p className="forecast__description">Wind speed: {item.windSpeed}</p>
-                    {item.clouds.all > 0 ?
-                      <p className="forecast__description">Number of clouds: {item.clouds}</p> :
-                      <p className="forecast__description">No clouds.</p>}
-                  </div>
-                </div>
-              ))}
-            </section>
+                ))}
+              </section>}
           </div>
-
         );
       }
     }
