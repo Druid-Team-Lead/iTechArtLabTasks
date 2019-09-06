@@ -1,5 +1,5 @@
 import React from 'react';
-import DataContainer from './DataContainer'
+import DataContainer from '../containers/DataContainer'
 
 export class Weather extends React.PureComponent {
 

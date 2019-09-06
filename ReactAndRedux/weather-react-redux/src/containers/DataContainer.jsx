@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Data } from './Data';
-import { setTemperature, setError, setForecast, setIsLoaded, setWeather } from '../store/data/actions'
+import { Data } from '../components/Data';
+import { setTemperature, setError, setForecast, setIsLoaded, setWeather } from '../actions/dataActions'
 
 class DataContainer extends React.PureComponent {
     render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Weather } from './Weather';
-import { setCityText, setForecastType, setSubmittedType } from '../store/weather/actions'
+import { Weather } from '../components/Weather';
+import { setCityText, setForecastType, setSubmittedType } from '../actions/weatherActions'
 
 class WeatherContainer extends React.PureComponent {
     render() {

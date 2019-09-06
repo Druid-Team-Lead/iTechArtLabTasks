@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './store/reducers'
+import { devToolsEnhancer } from 'redux-devtools-extension';
+import rootReducer from './reducers/index'
 
-import WeatherContainer from './components/WeatherContainer';
+import WeatherContainer from './containers/WeatherContainer';
 
 import './style.css';
 import logo from './img/logo.gif';
 
-const store = createStore(rootReducer);
+
+const store = createStore(rootReducer, devToolsEnhancer());
 
 function Application() {
   return (
