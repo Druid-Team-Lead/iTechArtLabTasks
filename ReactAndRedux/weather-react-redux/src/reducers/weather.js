@@ -1,4 +1,4 @@
-import { WEATHER_CHANGE_CITY_TEXT, WEATHER_SELECT_FORECAST_TYPE, WEATHER_CHANGE_SUBMITTED_TYPE } from '../actions/weatherActions';
+import { WEATHER_CHANGE_CITY_TEXT, WEATHER_SELECT_FORECAST_TYPE, WEATHER_CHANGE_SUBMITTED_TYPE } from '../actions/weather';
 
 const defaultState = {
     city: 'Minsk',

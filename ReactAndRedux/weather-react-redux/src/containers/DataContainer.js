@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Data } from '../components/Data';
-import { setTemperature, setError, setForecast, setIsLoaded, setWeather } from '../actions/dataActions'
+import { setTemperature, setError, setForecast, setIsLoaded, setWeather, loadData } from '../actions/data'
 
 class DataContainer extends React.PureComponent {
     render() {
-        const { city, temperature, forecast, weather, isForecast, isLoaded, error, setTemperature, setError, setForecast, setIsLoaded, setWeather } = this.props;
+        const { city, temperature, forecast, weather, isForecast, isLoaded, error, loadData } = this.props;
         return (
             <Data
                 city={city}
@@ -15,11 +15,7 @@ class DataContainer extends React.PureComponent {
                 isLoaded={isLoaded}
                 error={error}
                 weather={weather}
-                setTemperature={setTemperature}
-                setError={setError}
-                setIsLoaded={setIsLoaded}
-                setForecast={setForecast}
-                setWeather={setWeather}
+                loadData={loadData}
             />
         );
     }
@@ -38,11 +34,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    setTemperature,
-    setError,
-    setIsLoaded,
-    setForecast,
-    setWeather,
+    loadData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataContainer);

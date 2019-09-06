@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Weather } from '../components/Weather';
-import { setCityText, setForecastType, setSubmittedType } from '../actions/weatherActions'
+import { setCityText, setForecastType, setSubmittedType } from '../actions/weather'
 
 class WeatherContainer extends React.PureComponent {
     render() {
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setCityText,
     setForecastType,
-    setSubmittedType
+    setSubmittedType,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherContainer);
