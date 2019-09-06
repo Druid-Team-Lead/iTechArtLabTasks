@@ -7,7 +7,7 @@ export const CHANGE_ERROR = 'CHANGE_ERROR';
 export const CHANGE_WEATHER = 'CHANGE_WEATHER';
 
 export const loadData = (isForecast, city) => (dispatch) => {
-    
+    dispatch(setIsLoaded(false));
     let endpoint = isForecast ? "forecast" : "weather";
     callApi(endpoint, city).then(data => {
         if (data.cod !== "404") {

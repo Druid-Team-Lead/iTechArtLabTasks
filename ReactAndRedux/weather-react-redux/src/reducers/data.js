@@ -1,11 +1,9 @@
 import { CHANGE_TEMPERATURE, CHANGE_ERROR, CHANGE_FORECAST, CHANGE_IS_LOADED, CHANGE_WEATHER } from '../actions/data';
 
 const defaultState = {
-    city: 'Minsk',
     temperature: null,
     forecast: [],
     weather: null,
-    isForecast: false,
     isLoaded: false,
     error: null
 };
