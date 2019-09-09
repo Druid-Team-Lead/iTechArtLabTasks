@@ -9,6 +9,7 @@
 /coverage
 .DS_Store
 *.log
+*/.vs
 .idea
 .vscode
 .eslintcache
