@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Onlib.DataAccessLayer;
+using Onlib.Models;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Onlib
 {
@@ -20,6 +24,12 @@ namespace Onlib
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("DBConnectionString");
+            services.AddScoped<IDbConnection>(provider => new SqlConnection(connectionString));
+            services.AddScoped<IRepository<UserModel>, UserRepository>();
+            services.AddScoped<IRepository<BookModel>, BookRepository>();
+            services.AddScoped<IRepository<CommentModel>, CommentRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the React files will be served from this directory
