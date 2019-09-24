@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { actionCreators } from '../store/Books';
 
-class FetchData extends Component {
+class BookTable extends Component {
   componentWillMount() {
-    this.props.requestBooks();
+    this.props.CallApi();
   }
 
   render() {
@@ -19,6 +16,7 @@ class FetchData extends Component {
 }
 
 function renderForecastsTable(props) {
+  const { books } = props;
   return (
     <table className='table'>
       <thead>
@@ -28,7 +26,7 @@ function renderForecastsTable(props) {
         </tr>
       </thead>
       <tbody>
-        {props.books.map(book =>
+        {books.map(book =>
           <tr key={book.id}>
             <td>{book.title}</td>
             <td>{book.description}</td>
@@ -39,7 +37,4 @@ function renderForecastsTable(props) {
   );
 }
 
-export default connect(
-  state => state.books,
-  dispatch => bindActionCreators(actionCreators, dispatch)
-)(FetchData);
+export default BookTable;
