@@ -14,7 +14,7 @@ namespace Onlib.Controllers
         public BookController(IBookRepository repository)
         {
             _repository = repository;
-            CreateAsync();
+            //CreateAsync();
         }
 
         [HttpGet("[action]")]

@@ -40,10 +40,7 @@ namespace Onlib.DataAccessLayer
 
         public async Task<TEntity> GetById(int id)
         {
-            //return await _onlibContext.Set<TEntity>()
-            //    .AsNoTracking()
-            //    .FirstOrDefaultAsync(e => e.Id == id);
-            return null;
+            return await _onlibContext.Set<TEntity>().FindAsync(id);
         }
     }
 }

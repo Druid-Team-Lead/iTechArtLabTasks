@@ -5,7 +5,7 @@ import { actionCreators } from '../store/Books';
 
 class FetchData extends Component {
   componentWillMount() {
-    this.props.requestWeatherForecasts();
+    this.props.requestBooks();
   }
 
   render() {
@@ -19,20 +19,19 @@ class FetchData extends Component {
 }
 
 function renderForecastsTable(props) {
-    console.log(props);
   return (
     <table className='table'>
       <thead>
         <tr>
-          <th>Id</th>
           <th>Title</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
-        {props.forecasts.map(forecast =>
-          <tr key={forecast.id}>
-            <td>{forecast.id}</td>
-            <td>{forecast.title}</td>
+        {props.books.map(book =>
+          <tr key={book.id}>
+            <td>{book.title}</td>
+            <td>{book.description}</td>
           </tr>
         )}
       </tbody>
@@ -41,6 +40,6 @@ function renderForecastsTable(props) {
 }
 
 export default connect(
-  state => state.weatherForecasts,
+  state => state.books,
   dispatch => bindActionCreators(actionCreators, dispatch)
 )(FetchData);
