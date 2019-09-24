@@ -1,14 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Onlib
 {
@@ -24,11 +22,10 @@ namespace Onlib
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("DBConnectionString");
-            services.AddScoped<IDbConnection>(provider => new SqlConnection(connectionString));
-            services.AddScoped<IRepository<UserModel>, UserRepository>();
-            services.AddScoped<IRepository<BookModel>, BookRepository>();
-            services.AddScoped<IRepository<CommentModel>, CommentRepository>();
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<OnlibContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<IBookRepository, BookRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

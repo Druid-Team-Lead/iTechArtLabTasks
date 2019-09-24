@@ -9,18 +9,29 @@ namespace Onlib.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IRepository<BookModel> _books;
+        private readonly IBookRepository _repository;
 
-        public BookController(IRepository<BookModel> books)
+        public BookController(IBookRepository repository)
         {
-            this._books = books;
+            _repository = repository;
+            CreateAsync();
         }
 
         [HttpGet("[action]")]
         public IEnumerable<BookModel> GetBooks()
         {
-            var books = _books.GetAll();
-            return books;
+            var get = _repository.GetAll();
+            return get;
+        }
+
+        public async void CreateAsync()
+        {
+            var booki = new BookModel
+            {
+                Description = "first category - very cool description",
+                Title = "First category"
+            };
+            await _repository.Create(booki);
         }
     }
 }
