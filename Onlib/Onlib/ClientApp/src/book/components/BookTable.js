@@ -1,6 +1,56 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { Grid, Paper } from '@material-ui/core';
+
+
+const useStyles = makeStyles({
+  card: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
+function SimpleCard(props) {
+  const classes = useStyles();
+  console.log(props);
+  const { books } = props.props;
+  
+
+  return (
+    <Grid container spacing={2}>
+      {books.map(book =>
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              Title: {book.title}
+            </Typography>
+            <Typography variant="body2" component="p">
+              Descriptions: {book.description}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Take a look</Button>
+          </CardActions>
+        </Card>
+      )}
+    </Grid>
+  );
+}
 
 class BookTable extends Component {
   componentWillMount() {
@@ -8,9 +58,9 @@ class BookTable extends Component {
   }
 
   render() {
+    
     return (
       <div>
-        <h1>Books</h1>
         {renderForecastsTable(this.props)}
       </div>
     );
@@ -20,29 +70,20 @@ class BookTable extends Component {
 function renderForecastsTable(props) {
   const { books } = props;
   return (
-    <div>
-      <Grid container>
-        <Grid item>
-          <Paper></Paper>
+    <Grid container spacing={2}>
+      {books.map(book =>
+        <Grid item key={book.id}>
+          <Paper>
+            <div>
+              Title: {book.title}
+            </div>
+            <div>
+              Descriptions: {book.description}
+            </div>
+          </Paper>
         </Grid>
-      </Grid>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {books.map(book =>
-            <tr key={book.id}>
-              <td>{book.title}</td>
-              <td>{book.description}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+      )}
+    </Grid>
   );
 }
 

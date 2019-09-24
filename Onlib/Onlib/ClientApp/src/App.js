@@ -1,6 +1,10 @@
 ﻿import React from 'react';
-import FetchData from './book/containers/BookTable';
+import BookTable from './book/containers/BookTable';
+import NavBar from './layout/component/Layout'
 
 export default () => (
-<FetchData />
+    <div>
+        <NavBar />
+        <BookTable />
+    </div>
 );
