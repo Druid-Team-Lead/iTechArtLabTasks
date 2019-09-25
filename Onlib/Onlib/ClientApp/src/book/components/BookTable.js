@@ -1,56 +1,26 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { Grid, Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import {
+  Grid,
+  Typography,
+  Button,
+  CardMedia,
+  CardActionArea,
+  CardContent,
+  CardActions,
+  Card
+} from '@material-ui/core';
 
 
-const useStyles = makeStyles({
+const styles = {
   card: {
-    minWidth: 275,
+    width: 345,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
+  media: {
+    height: 500,
+  }
+};
 
-function SimpleCard(props) {
-  const classes = useStyles();
-  console.log(props);
-  const { books } = props.props;
-  
-
-  return (
-    <Grid container spacing={2}>
-      {books.map(book =>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              Title: {book.title}
-            </Typography>
-            <Typography variant="body2" component="p">
-              Descriptions: {book.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Take a look</Button>
-          </CardActions>
-        </Card>
-      )}
-    </Grid>
-  );
-}
 
 class BookTable extends Component {
   componentWillMount() {
@@ -58,33 +28,34 @@ class BookTable extends Component {
   }
 
   render() {
-    
+    const { books, classes } = this.props;
     return (
-      <div>
-        {renderForecastsTable(this.props)}
+      <div style={{ padding: 20 }}>
+        <Grid container spacing={2}>
+          {books.map(book =>
+            <Grid className={classes.grid} item xs>
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image="https://images1.penguinrandomhouse.com/cover/9781524743352"
+                    title="booki!"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">{book.title}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">{book.description}</Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">View</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          )}
+        </Grid>
       </div>
     );
   }
 }
 
-function renderForecastsTable(props) {
-  const { books } = props;
-  return (
-    <Grid container spacing={2}>
-      {books.map(book =>
-        <Grid item key={book.id}>
-          <Paper>
-            <div>
-              Title: {book.title}
-            </div>
-            <div>
-              Descriptions: {book.description}
-            </div>
-          </Paper>
-        </Grid>
-      )}
-    </Grid>
-  );
-}
-
-export default BookTable;
+export default withStyles(styles)(BookTable);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
@@ -22,6 +23,12 @@ namespace Onlib.Controllers
         {
             var get = _repository.GetAll();
             return get;
+        }
+
+        [HttpPost("[action]")]
+        public async Task AddBook([FromBody] BookModel model)
+        {
+            await _repository.Create(model);
         }
 
         public async void CreateAsync()

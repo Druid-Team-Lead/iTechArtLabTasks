@@ -1,7 +1,8 @@
-import { actionCreators, RECEIVEBOOKS, REQUESTBOOKS } from './actions'
+import { actionCreators, RECEIVEBOOKS, REQUESTBOOKS, ADD_BOOK } from './book'
 
 export {
     actionCreators,
     REQUESTBOOKS,
-    RECEIVEBOOKS
+    RECEIVEBOOKS,
+    ADD_BOOK
 }

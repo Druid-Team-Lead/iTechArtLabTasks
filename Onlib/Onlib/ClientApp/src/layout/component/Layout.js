@@ -4,6 +4,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import AddBook from '../../book/containers/NewBook';
+import BookTable from '../../book/containers/BookTable';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,20 +20,29 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function NabBar() {
+function Layout() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>Online Library</Typography>
-                    <Button color="inherit">sign up</Button>
-                    <Button color="inherit">sign in</Button>
-                </Toolbar>
-            </AppBar>
-        </div>
+        <Router>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" className={classes.title}>
+                            <Link exact to="/">Online Library</Link>
+                        </Typography>
+                        <Button size="small" color="inherit">
+                            <Link to="/newBook/">Add new book</Link>
+                        </Button>
+                        <Button color="inherit">sign up</Button>
+                        <Button color="inherit">sign in</Button>
+                    </Toolbar>
+                </AppBar>
+                <Route path="/" exact component={BookTable} />
+                <Route path="/newBook/" component={AddBook} />
+            </div>
+        </Router>
     );
 }
 
-export default NabBar;
+export default Layout;
