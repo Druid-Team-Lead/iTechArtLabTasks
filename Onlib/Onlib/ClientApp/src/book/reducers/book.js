@@ -26,7 +26,7 @@ export const reducer = (state, action) => {
         case ADD_BOOK: {
             return {
                 ...state,
-                books: Object.assign({}, action.book),
+                //books: Object.assign({}, action.book),
                 forceReload: true
             }
         }
