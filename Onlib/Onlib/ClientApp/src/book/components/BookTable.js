@@ -27,6 +27,10 @@ class BookTable extends Component {
     this.props.CallApi();
   }
 
+  handleView = (e) => {
+    this.props.history.replace("/details/");
+  }
+
   render() {
     const { books, classes } = this.props;
     return (
@@ -50,7 +54,7 @@ class BookTable extends Component {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button size="small" color="primary">View</Button>
+                  <Button size="small" color="primary" onClick={this.handleView}>View</Button>
                 </CardActions>
               </Card>
             </Grid>

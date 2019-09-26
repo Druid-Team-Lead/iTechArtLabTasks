@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import AddBook from '../../book/containers/NewBook';
 import BookTable from '../../book/containers/BookTable';
+import Details from '../../book/containers/Details';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -40,6 +41,7 @@ function Layout() {
                 </AppBar>
                 <Route path="/" exact component={BookTable} />
                 <Route path="/newBook/" component={AddBook} />
+                <Route path="/details/" component={Details} />
             </div>
         </Router>
     );
