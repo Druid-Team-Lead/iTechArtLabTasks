@@ -2,12 +2,14 @@
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as Books from '../book/reducers';
+import callApi from '../middleware/api';
 
 export default function configureStore(history, initialState) {
 
     const middleware = [
         thunk,
-        routerMiddleware(history)
+        routerMiddleware(history),
+        callApi
     ];
 
     // In development, use the browser's Redux dev tools extension if installed

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../actions';
+import { bookOperations } from '../actions';
 import BookTable from '../components/BookTable'
 
 const mapStateToProps = state => {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    CallApi: bindActionCreators(actionCreators, dispatch).requestBooks
+    loadBooks: bindActionCreators(bookOperations, dispatch).loadBooks
   };
 };
 

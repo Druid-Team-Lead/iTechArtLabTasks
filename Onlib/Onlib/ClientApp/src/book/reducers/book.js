@@ -1,4 +1,4 @@
-import { RECEIVEBOOKS, REQUESTBOOKS, ADD_BOOK } from '../actions';
+import * as ActionTypes from '../actions';
 
 const initialState = {
     books: [],
@@ -6,24 +6,26 @@ const initialState = {
     forceReload: false
 };
 
-export const reducer = (state, action) => {
-    state = state || initialState;
+export const reducer = (state = initialState, action) => {
+
+    console.log("book reducer: ");
+    console.log(action);
 
     switch (action.type) {
-        case REQUESTBOOKS: {
+        case ActionTypes.BOOKS_REQUEST: {
             return {
                 ...state,
                 isLoading: true
             };
         }
-        case RECEIVEBOOKS: {
+        case ActionTypes.BOOKS_SUCCESS: {
             return {
                 ...state,
-                books: action.books,
+                books: action.response,
                 isLoading: false
             };
         }
-        case ADD_BOOK: {
+        case ActionTypes.BOOKS_FAILURE: {
             return {
                 ...state,
                 //books: Object.assign({}, action.book),

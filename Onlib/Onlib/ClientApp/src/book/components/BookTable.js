@@ -24,7 +24,7 @@ const styles = {
 
 class BookTable extends Component {
   componentWillMount() {
-    this.props.CallApi();
+    this.props.loadBooks();
   }
 
   handleView = (e) => {

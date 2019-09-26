@@ -1,8 +1,8 @@
-import { actionCreators, RECEIVEBOOKS, REQUESTBOOKS, ADD_BOOK } from './book'
+import { BOOKS_FAILURE, BOOKS_REQUEST, BOOKS_SUCCESS, bookOperations } from './book'
 
 export {
-    actionCreators,
-    REQUESTBOOKS,
-    RECEIVEBOOKS,
-    ADD_BOOK
+    BOOKS_FAILURE,
+    BOOKS_REQUEST,
+    BOOKS_SUCCESS,
+    bookOperations
 }
