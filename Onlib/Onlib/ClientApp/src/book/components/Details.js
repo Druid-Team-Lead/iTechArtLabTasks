@@ -10,6 +10,7 @@ import {
   CardActions,
   Card
 } from '@material-ui/core';
+import Comments from '../../comment/components/Comments'
 
 const styles = {
     card: {
@@ -48,6 +49,7 @@ class Details extends Component {
                         </Card>
                     </Grid>
                 </Grid>
+                <Comments/>
             </div>
         )
     };
