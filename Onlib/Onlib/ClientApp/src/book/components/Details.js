@@ -10,7 +10,7 @@ import {
   CardActions,
   Card
 } from '@material-ui/core';
-import Comments from '../../comment/components/Comments'
+import Comments from '../../comment/containers/Comments'
 
 const styles = {
     card: {
@@ -49,7 +49,7 @@ class Details extends Component {
                         </Card>
                     </Grid>
                 </Grid>
-                <Comments/>
+                {!this.props.isLoading && <Comments/>}
             </div>
         )
     };

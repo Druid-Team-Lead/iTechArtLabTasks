@@ -1,45 +1,36 @@
 import * as ActionTypes from '../actions';
 
 const initialState = {
-    books: [],
+    comments: [],
     isLoading: true,
-    forceReload: false,
-    currentBook: {}
+    bookId: null
 };
 
-export const book = (state = initialState, action) => {
+export const comment = (state = initialState, action) => {
 
     switch (action.type) {
-        case ActionTypes.BOOKS_REQUEST: {
+        case ActionTypes.COMMENTS_REQUEST: {
             return {
                 ...state,
                 isLoading: true
             };
         }
-        case ActionTypes.BOOKS_SUCCESS: {
+        case ActionTypes.COMMENTS_SUCCESS: {
             return {
                 ...state,
-                books: action.response,
+                comments: action.response,
                 isLoading: false
             };
         }
-        case ActionTypes.ADD_BOOK_SUCCESS: {
-            return {
-                ...state,
-                books: Object.assign({}, action.book),
-                forceReload: true
-            }
-        }
-        case ActionTypes.BOOK_REQUEST: {
+        case ActionTypes.ADD_COMMENT_REQUEST: {
             return {
                 ...state,
                 isLoading: true
             }
         }
-        case ActionTypes.BOOK_SUCCESS: {
+        case ActionTypes.ADD_COMMENT_SUCCESS: {
             return {
                 ...state,
-                currentBook: action.response,
                 isLoading: false
             }
         }

@@ -2,6 +2,7 @@
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as bookReducers from '../book/reducers';
+import * as commentReducers from '../comment/reducers';
 import callApi from '../middleware/api';
 
 export default function configureStore(history, initialState) {
@@ -21,7 +22,8 @@ export default function configureStore(history, initialState) {
 
     const rootReducer = combineReducers({
         book: bookReducers.book,
-        routing: routerReducer
+        routing: routerReducer,
+        comment: commentReducers.comment
     });
 
     return createStore(

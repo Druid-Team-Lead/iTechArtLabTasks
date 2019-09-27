@@ -61,9 +61,8 @@ class BookTable extends Component {
   }
 
   handleView = (id) => {
-    this.props.history.push("/details/");
-    console.log(id);
     this.props.loadBook(id);
+    this.props.history.push("/details/");
   }
 
   render() {

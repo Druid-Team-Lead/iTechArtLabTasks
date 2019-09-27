@@ -38,17 +38,19 @@ class Comment extends Component {
 export default class Comments extends Component {
     constructor() {
         super()
-        this.state = { comments: [], newPost: "" };
+        this.state = { comments: [], comment: "" };
     }
 
+    componentDidMount() {
+        this.props.loadComments(this.props.bookId);
+      }
+
     handlePost = () => {
-        this.setState(previousState => ({
-            comments: [...previousState.comments, this.state.newPost]
-        }));
+        this.props.uploadComment({comment: this.state.comment, bookId: this.props.bookId});
     }
 
     handleInput = (e) => {
-        this.setState({ newPost: e.target.value })
+        this.setState({ comment: e.target.value })
     }
 
     render() {
@@ -57,9 +59,9 @@ export default class Comments extends Component {
             <div>
             <Typography variant="h5" component="h3">Comments:</Typography>
                 <Grid container direction="column" justify="center" alignItems="center">
-                    {this.state.comments.map(comment =>
-                        <Grid item>
-                            <Comment comment={comment}/>
+                    {this.props.comments.map(comment =>
+                        <Grid item key={comment.id}>
+                            <Comment comment={comment.comment}/>
                         </Grid>
                     )}
                 </Grid>

@@ -26,6 +26,7 @@ namespace Onlib
 
             services.AddDbContext<OnlibContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

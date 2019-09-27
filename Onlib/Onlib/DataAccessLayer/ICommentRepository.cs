@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Onlib.Models;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Onlib.DataAccessLayer
 {
-    public class ICommentRepository
+    public interface ICommentRepository : IGenericRepository<CommentModel>
     {
+        IQueryable<CommentModel> GetAll(int bookId);
     }
 }

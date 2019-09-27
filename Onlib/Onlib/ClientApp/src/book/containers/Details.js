@@ -4,6 +4,7 @@ import NewBook from '../components/Details';
 const mapStateToProps = state => {
   return {
     book: state.book.currentBook,
+    isLoading: state.book.isLoading
   };
 };
 
