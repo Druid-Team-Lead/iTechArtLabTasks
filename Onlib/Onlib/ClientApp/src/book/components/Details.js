@@ -26,8 +26,8 @@ class Details extends Component {
         const { book, classes } = this.props;
         return (
             <div style={{ padding: 20 }}>
-                <Grid container spacing={2}>
-                    <Grid className={classes.grid} item xs>
+                <Grid container justify="center" alignItems="center">
+                    <Grid className={classes.grid} item>
                         <Card className={classes.card}>
                             <CardActionArea>
                                 <CardMedia

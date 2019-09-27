@@ -10,10 +10,15 @@ namespace Onlib.Models
         }
 
         public DbSet<BookModel> Books { get; set; }
+        public DbSet<CommentModel> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            builder.Entity<CommentModel>()
+                .HasOne(b => b.BookModel)
+                .WithMany(g => g.Comments)
+                .HasForeignKey(s => s.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

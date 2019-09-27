@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Onlib.Models
 {
@@ -10,5 +11,7 @@ namespace Onlib.Models
         public DateTime PublishDate { get; set; }
         public string Description { get; set; }
         public int CopiesNumber { get; set; }
+
+        public ICollection<CommentModel> Comments { get; set; }
     }
 }
