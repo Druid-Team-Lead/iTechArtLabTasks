@@ -5,7 +5,10 @@ import {
     bookOperations,
     ADD_BOOK_FAILURE,
     ADD_BOOK_REQUEST,
-    ADD_BOOK_SUCCESS
+    ADD_BOOK_SUCCESS,
+    BOOK_FAILURE,
+    BOOK_REQUEST,
+    BOOK_SUCCESS
 } from './book'
 
 export {
@@ -15,5 +18,8 @@ export {
     bookOperations,
     ADD_BOOK_FAILURE,
     ADD_BOOK_REQUEST,
-    ADD_BOOK_SUCCESS
+    ADD_BOOK_SUCCESS,
+    BOOK_FAILURE,
+    BOOK_REQUEST,
+    BOOK_SUCCESS
 }

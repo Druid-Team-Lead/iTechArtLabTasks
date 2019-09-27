@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadBooks: bindActionCreators(bookOperations, dispatch).loadBooks
+    loadBooks: bindActionCreators(bookOperations, dispatch).loadBooks,
+    loadBook: bindActionCreators(bookOperations, dispatch).loadBook
   };
 };
 

@@ -3,7 +3,8 @@ import * as ActionTypes from '../actions';
 const initialState = {
     books: [],
     isLoading: true,
-    forceReload: false
+    forceReload: false,
+    currentBook: {}
 };
 
 export const book = (state = initialState, action) => {
@@ -30,6 +31,18 @@ export const book = (state = initialState, action) => {
                 ...state,
                 books: Object.assign({}, action.book),
                 forceReload: true
+            }
+        }
+        case ActionTypes.BOOK_REQUEST: {
+            return {
+                ...state,
+                isLoading: true
+            }
+        }
+        case ActionTypes.BOOK_SUCCESS: {
+            return {
+                ...state,
+                currentBook: action.response
             }
         }
         default:

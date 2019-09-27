@@ -21,14 +21,21 @@ namespace Onlib.Controllers
         [HttpGet("[action]")]
         public IEnumerable<BookModel> GetBooks()
         {
-            var get = _repository.GetAll();
-            return get;
+            var books = _repository.GetAll();
+            return books;
         }
 
         [HttpPost("[action]")]
         public async Task AddBook([FromBody] BookModel model)
         {
             await _repository.Create(model);
+        }
+
+        [HttpGet("[action]/{id}")]
+        public async Task<BookModel> GetBook(int id)
+        {
+            var book = await _repository.GetById(id);
+            return book;
         }
 
         public async void CreateAsync()
