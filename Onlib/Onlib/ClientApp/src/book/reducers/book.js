@@ -6,7 +6,7 @@ const initialState = {
     forceReload: false
 };
 
-export const reducer = (state = initialState, action) => {
+export const book = (state = initialState, action) => {
 
     console.log("book reducer: ");
     console.log(action);
@@ -25,10 +25,10 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false
             };
         }
-        case ActionTypes.BOOKS_FAILURE: {
+        case ActionTypes.ADD_BOOK_SUCCESS: {
             return {
                 ...state,
-                //books: Object.assign({}, action.book),
+                books: Object.assign({}, action.book),
                 forceReload: true
             }
         }

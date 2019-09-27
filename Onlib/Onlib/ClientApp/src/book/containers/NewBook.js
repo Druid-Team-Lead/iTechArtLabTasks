@@ -1,12 +1,12 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../actions';
+import { bookOperations } from '../actions';
 import NewBook from '../components/NewBook';
 
-/*
+
 const mapDispatchToProps = dispatch => {
   return {
-    Save: bindActionCreators(actionCreators, dispatch).addBook
+    Save: bindActionCreators(bookOperations, dispatch).uploadBook
   };
 };
 
@@ -14,4 +14,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(NewBook);
-*/

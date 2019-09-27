@@ -1,5 +1,5 @@
-import { reducer } from './book'
+import { book } from './book'
 
 export {
-    reducer
+    book
 }

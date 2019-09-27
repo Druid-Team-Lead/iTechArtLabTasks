@@ -23,7 +23,7 @@ const styles = {
 
 
 class BookTable extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadBooks();
   }
 
@@ -37,7 +37,7 @@ class BookTable extends Component {
       <div style={{ padding: 20 }}>
         <Grid container spacing={2}>
           {books.map(book =>
-            <Grid className={classes.grid} item xs>
+            <Grid className={classes.grid} item xs key={book.id}>
               <Card className={classes.card}>
                 <CardActionArea>
                   <CardMedia

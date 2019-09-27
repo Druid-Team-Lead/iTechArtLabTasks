@@ -1,9 +1,20 @@
 const API_ROOT = 'api/'
 
-const callApi = (endpoint) => {
+const callApi = (endpoint, body) => {
     const fullUrl = API_ROOT + endpoint;
+    let parameters = null;
 
-    return fetch(fullUrl).then(response =>
+    if(body) {
+        parameters = {
+            method: 'POST',
+            body: body,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+    }
+
+    return fetch(fullUrl, parameters).then(response =>
         response.json().then(json => {
             if (!response.ok) {
                 return Promise.reject(json)
@@ -23,7 +34,7 @@ export default store => next => action => {
     }
 
     let { endpoint } = callAPI
-    const { types } = callAPI
+    const { types, body } = callAPI
 
     if (typeof endpoint === 'function') {
         endpoint = endpoint(store.getState())
@@ -48,7 +59,7 @@ export default store => next => action => {
     const [requestType, successType, failureType] = types
     next(actionWith({ type: requestType }))
 
-    return callApi(endpoint).then(
+    return callApi(endpoint, body).then(
         response => next(actionWith({
             response,
             type: successType
