@@ -1,4 +1,4 @@
-import { CALL_API } from '../../middleware/api'
+import { CALL_API } from '../../middleware/apiMiddleware'
 
 export const COMMENTS_REQUEST = 'COMMENTS_REQUEST'
 export const COMMENTS_SUCCESS = 'COMMENTS_SUCCESS'
