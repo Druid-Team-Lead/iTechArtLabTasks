@@ -25,9 +25,10 @@ namespace Onlib.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task AddComment([FromBody] CommentModel model)
+        public async Task<int> AddComment([FromBody] CommentModel model)
         {
-            await _repository.Create(model);
+            var isSaved = await _repository.Create(model);
+            return isSaved;
         }
     }
 }

@@ -6,7 +6,7 @@ import BookTable from '../components/BookTable'
 const mapStateToProps = state => {
   return {
     books: state.book.books,
-    isLoading: state.book.isLoading
+    isLoading: state.book.isBooksLoading
   };
 };
 

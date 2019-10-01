@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
+using Onlib.WebSocketHub;
 
 namespace Onlib
 {

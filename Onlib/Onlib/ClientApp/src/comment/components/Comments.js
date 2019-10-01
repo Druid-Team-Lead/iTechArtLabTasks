@@ -46,7 +46,7 @@ export default class Comments extends Component {
       }
 
     handlePost = () => {
-        this.props.uploadComment({comment: this.state.comment, bookId: this.props.bookId});
+        this.props.uploadComment({comment: this.state.comment, bookId: this.props.bookId.toString()});
     }
 
     handleInput = (e) => {

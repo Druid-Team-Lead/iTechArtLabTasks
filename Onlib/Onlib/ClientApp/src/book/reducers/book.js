@@ -2,9 +2,10 @@ import * as ActionTypes from '../actions';
 
 const initialState = {
     books: [],
-    isLoading: true,
-    forceReload: false,
-    currentBook: {}
+    isBooksLoading: true,
+    isAddingLoading: false,
+    currentBook: {},
+    error: null
 };
 
 export const book = (state = initialState, action) => {
@@ -13,34 +14,47 @@ export const book = (state = initialState, action) => {
         case ActionTypes.BOOKS_REQUEST: {
             return {
                 ...state,
-                isLoading: true
+                isBooksLoading: true,
+                currentBook: {}
             };
         }
         case ActionTypes.BOOKS_SUCCESS: {
             return {
                 ...state,
                 books: action.response,
-                isLoading: false
+                isBooksLoading: false
+            };
+        }
+        case ActionTypes.ADD_BOOK_REQUEST: {
+            return {
+                ...state,
+                isAddingLoading: true,
+                error: null
             };
         }
         case ActionTypes.ADD_BOOK_SUCCESS: {
             return {
                 ...state,
-                books: Object.assign({}, action.book),
-                forceReload: true
+                isAddingLoading: false,
+            }
+        }
+        case ActionTypes.ADD_BOOK_FAILURE: {
+            return {
+                ...state,
+                error: action.error
             }
         }
         case ActionTypes.BOOK_REQUEST: {
             return {
                 ...state,
-                isLoading: true
+                isBooksLoading: true
             }
         }
         case ActionTypes.BOOK_SUCCESS: {
             return {
                 ...state,
                 currentBook: action.response,
-                isLoading: false
+                isBooksLoading: false
             }
         }
         default:

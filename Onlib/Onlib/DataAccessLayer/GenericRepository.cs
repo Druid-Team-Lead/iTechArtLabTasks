@@ -19,10 +19,11 @@ namespace Onlib.DataAccessLayer
             return _onlibContext.Set<TEntity>().AsNoTracking();
         }
 
-        public async Task Create(TEntity entity)
+        public async Task<int> Create(TEntity entity)
         {
             await _onlibContext.Set<TEntity>().AddAsync(entity);
-            await _onlibContext.SaveChangesAsync();
+            var isSaved = await _onlibContext.SaveChangesAsync();
+            return isSaved;
         }
 
         public async Task Update(int id, TEntity entity)

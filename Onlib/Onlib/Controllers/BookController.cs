@@ -26,9 +26,10 @@ namespace Onlib.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task AddBook([FromBody] BookModel model)
+        public async Task<int> AddBook([FromBody] BookModel model)
         {
-            await _repository.Create(model);
+            var isSaved = await _repository.Create(model);
+            return isSaved;
         }
 
         [HttpGet("[action]/{id}")]

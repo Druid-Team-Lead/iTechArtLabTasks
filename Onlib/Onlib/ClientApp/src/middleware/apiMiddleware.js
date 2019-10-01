@@ -19,8 +19,8 @@ const callApi = (endpoint, body) => {
             if (!response.ok) {
                 return Promise.reject(json)
             }
-
-            return Promise.resolve(json)
+            let lol = Promise.resolve(json);
+            return lol;
         })
     )
 }
@@ -39,7 +39,6 @@ export default store => next => action => {
     if (typeof endpoint === 'function') {
         endpoint = endpoint(store.getState())
     }
-
     if (typeof endpoint !== 'string') {
         throw new Error('Specify a string endpoint URL.')
     }

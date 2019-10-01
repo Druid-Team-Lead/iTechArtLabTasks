@@ -3,7 +3,8 @@ import * as ActionTypes from '../actions';
 const initialState = {
     comments: [],
     isLoading: true,
-    bookId: null
+    bookId: null,
+    error: null
 };
 
 export const comment = (state = initialState, action) => {
@@ -32,6 +33,12 @@ export const comment = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false
+            }
+        }
+        case ActionTypes.ADD_COMMENT_FAILURE: {
+            return {
+                ...state,
+                error: action.error
             }
         }
         default:
