@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 import configureStore from './store/configureStore';
-import App from './App';
+//import App from './oldApp/App';
 import './reset.css'
 import registerServiceWorker from './registerServiceWorker';
 
@@ -12,6 +12,7 @@ import { store } from './_helpers';
 import { App } from './App';
 
 // Create browser history to use in the Redux store
+
 /*
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const history = createBrowserHistory({ basename: baseUrl });
@@ -23,6 +24,7 @@ const store = configureStore(history, initialState);
 
 const rootElement = document.getElementById('root');
 
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -33,9 +35,11 @@ ReactDOM.render(
 
 registerServiceWorker();
 */
+
+
 ReactDOM.render(
   <Provider store={store}>
       <App />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('root')
 );

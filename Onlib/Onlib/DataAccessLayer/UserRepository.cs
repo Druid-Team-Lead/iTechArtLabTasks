@@ -1,6 +1,7 @@
 ﻿using Onlib.Models;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Onlib.DataAccessLayer
 {
@@ -18,7 +19,7 @@ namespace Onlib.DataAccessLayer
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _onlibContext.Users.Find(username);
+            var user = _onlibContext.Set<UserModel>().AsNoTracking().Where(x => x.UserName == username).FirstOrDefault();
 
             // check if username exists
             if (user == null)

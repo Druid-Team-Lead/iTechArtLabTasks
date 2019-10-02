@@ -60,7 +60,7 @@ namespace Onlib.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult Register([FromBody]UserModel user)
         {
             try
@@ -76,21 +76,21 @@ namespace Onlib.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public IActionResult GetAll()
         {
             var users = _repository.GetAll();
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("[action]/{id}")]
         public IActionResult GetById(int id)
         {
             var user = _repository.GetById(id);
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("[action]/{id}")]
         public IActionResult Update(int id, [FromBody]UserModel user)
         {
 
@@ -107,7 +107,7 @@ namespace Onlib.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("[action]/{id}")]
         public IActionResult Delete(int id)
         {
             _repository.Delete(id);

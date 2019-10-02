@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
@@ -69,8 +70,11 @@ namespace Onlib
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        [System.Obsolete]
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            _ = loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            _ = loggerFactory.AddDebug();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -99,13 +103,15 @@ namespace Onlib
                 routes.MapHub<SignalRHub>("/hub");
             });
 
+            app.UseMvc();
+            /*
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
-
+            */
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
