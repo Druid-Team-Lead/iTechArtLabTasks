@@ -8,7 +8,11 @@ import App from './App';
 import './reset.css'
 import registerServiceWorker from './registerServiceWorker';
 
+import { store } from './_helpers';
+import { App } from './App';
+
 // Create browser history to use in the Redux store
+/*
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const history = createBrowserHistory({ basename: baseUrl });
 
@@ -28,3 +32,10 @@ ReactDOM.render(
   rootElement);
 
 registerServiceWorker();
+*/
+ReactDOM.render(
+  <Provider store={store}>
+      <App />
+  </Provider>,
+  document.getElementById('app')
+);
