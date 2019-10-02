@@ -13,5 +13,6 @@ namespace Onlib.Models
         public int CopiesNumber { get; set; }
 
         public ICollection<CommentModel> Comments { get; set; }
+        public ICollection<BookUserModel> BooksUsers { get; set; }
     }
 }

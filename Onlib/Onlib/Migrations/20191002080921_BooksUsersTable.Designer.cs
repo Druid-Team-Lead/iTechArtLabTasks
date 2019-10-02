@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Onlib.Models;
 
 namespace Onlib.Migrations
 {
     [DbContext(typeof(OnlibContext))]
-    partial class OnlibContextModelSnapshot : ModelSnapshot
+    [Migration("20191002080921_BooksUsersTable")]
+    partial class BooksUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,15 +48,11 @@ namespace Onlib.Migrations
 
                     b.Property<int>("UserId");
 
-                    b.Property<string>("BookStatus");
-
-                    b.Property<DateTime>("StatusActivateTime");
-
                     b.HasKey("BookId", "UserId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BooksUsers");
+                    b.ToTable("BookUserModel");
                 });
 
             modelBuilder.Entity("Onlib.Models.CommentModel", b =>
