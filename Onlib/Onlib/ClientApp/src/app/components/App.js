@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 export default function App(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const { user, loggedIn } = props;
+    const { user, loggedIn, books } = props;
     const classes = useStyles();
 
     const handleClick = event => {
@@ -92,6 +92,7 @@ export default function App(props) {
                         <Typography variant="h6" className={classes.title}>
                             <Link exact to="/" className={classes.link}>Online Library</Link>
                         </Typography>
+                        {books.length == 0 && <Typography>You can add them! >>></Typography>}
                         <Link to="/newBook" className={classes.link}>
                             <Button variant="outlined" color="inherit" className={classes.button}>
                                 Add new book

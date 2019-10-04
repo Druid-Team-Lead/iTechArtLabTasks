@@ -69,10 +69,13 @@ class BookTable extends Component {
     const { books, classes } = this.props;
     return (
       <div style={{ padding: 20 }}>
+        {books.length == 0 && <Typography variant="h3" gutterBottom align="center">
+          I looked - there are no books at all :(
+          </Typography>}
         <Grid container spacing={4} justify="flex-start">
           {books.map(book =>
             <Grid className={classes.grid} item key={book.id}>
-              <BookItem view={this.handleView} classes={classes} book={book}/>
+              <BookItem view={this.handleView} classes={classes} book={book} />
             </Grid>
           )}
         </Grid>

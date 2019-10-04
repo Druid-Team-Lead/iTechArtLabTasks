@@ -15,7 +15,6 @@ namespace Onlib.Controllers
         public BookController(IBookRepository repository)
         {
             _repository = repository;
-            //_ = SeedData();
         }
 
         [HttpGet("[action]")]
@@ -37,25 +36,6 @@ namespace Onlib.Controllers
         {
             var book = await _repository.GetById(id);
             return book;
-        }
-
-        public async Task SeedData()
-        {
-            await _repository.Create(new BookModel
-            {
-                Description = "very cool description 1111",
-                Title = "Book 1"
-            });
-            await _repository.Create(new BookModel
-            {
-                Description = "very cool description 2222",
-                Title = "Book 2"
-            });
-            await _repository.Create(new BookModel
-            {
-                Description = "very cool description 3333",
-                Title = "Book 3"
-            });
         }
     }
 }

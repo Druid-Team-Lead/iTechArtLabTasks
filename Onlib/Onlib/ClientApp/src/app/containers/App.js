@@ -4,7 +4,8 @@ import App from '../components/App';
 const mapStateToProps = state => {
   return {
     user: state.authentication.user,
-    loggedIn: state.authentication.loggedIn
+    loggedIn: state.authentication.loggedIn,
+    books: state.book.books
   };
 };
 
