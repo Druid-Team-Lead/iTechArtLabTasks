@@ -47,6 +47,9 @@ export class RegisterPage extends React.Component {
     render() {
         const { registering } = this.props;
         const { user, submitted } = this.state;
+        if(registering) {
+            this.props.history.push("/login");
+        }
         return (
             <form autoComplete="off" onSubmit={this.handleSubmit}>
                 <Grid container direction="column" justify="center" alignItems="center">

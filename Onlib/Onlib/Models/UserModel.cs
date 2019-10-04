@@ -14,5 +14,6 @@ namespace Onlib.Models
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public ICollection<BookUserModel> BooksUsers { get; set; }
+        public ICollection<UserCommentModel> UsersComments { get; set; }
     }
 }

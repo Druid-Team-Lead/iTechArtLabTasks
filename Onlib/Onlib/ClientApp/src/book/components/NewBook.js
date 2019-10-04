@@ -28,7 +28,7 @@ class AddBook extends Component {
             description: null,
             author: null,
             publishDate: null,
-            copiesNumber: 0
+            copiesNumber: null
         };
     }
     handleSubmit = (e) => {

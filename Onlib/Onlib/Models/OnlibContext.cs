@@ -13,6 +13,7 @@ namespace Onlib.Models
         public DbSet<CommentModel> Comments { get; set; }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<BookUserModel> BooksUsers { get; set; }
+        public DbSet<UserCommentModel> UsersComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -21,6 +22,7 @@ namespace Onlib.Models
                 .WithMany(g => g.Comments)
                 .HasForeignKey(s => s.BookId)
                 .OnDelete(DeleteBehavior.Cascade);
+
             builder.Entity<BookUserModel>()
                 .HasKey(bu => new { bu.BookId, bu.UserId });
             builder.Entity<BookUserModel>()
@@ -31,6 +33,17 @@ namespace Onlib.Models
                 .HasOne(b => b.User)
                 .WithMany(u => u.BooksUsers)
                 .HasForeignKey(k => k.UserId);
+
+            builder.Entity<UserCommentModel>()
+                .HasKey(bu => new { bu.CommentId, bu.UserId });
+            builder.Entity<UserCommentModel>()
+                .HasOne(b => b.User)
+                .WithMany(u => u.UsersComments)
+                .HasForeignKey(k => k.UserId);
+            builder.Entity<UserCommentModel>()
+                .HasOne(b => b.Comment)
+                .WithMany(u => u.UsersComments)
+                .HasForeignKey(k => k.CommentId);
         }
     }
 }
