@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     AppBar,
     Toolbar,
@@ -10,8 +9,17 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import AddBook from '../../book/containers/NewBook';
 import BookTable from '../../book/containers/BookTable';
 import Details from '../../book/containers/Details';
-import { LoginPage } from '../../auth/components/LoginPage'
+import { LoginPage } from '../../auth/containers/LoginPage'
 import { RegisterPage } from '../../auth/containers/RegisterPage'
+import { withStyles } from "@material-ui/styles";
+import { makeStyles } from '@material-ui/core/styles';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -32,9 +40,48 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function App() {
+export default function App(props) {
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const { user, loggedIn } = props;
     const classes = useStyles();
 
+    const handleClick = event => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    let login = (
+        <React.Fragment>
+            <Link to="/register" className={classes.link}>
+                <Button variant="outlined" color="inherit" className={classes.button}>sign up</Button>
+            </Link>
+            <Link to="/login" className={classes.link}>
+                <Button variant="outlined" color="inherit" className={classes.button}>sign in</Button>
+            </Link>
+        </React.Fragment>
+    );
+    if (loggedIn) {
+        login = (
+            <React.Fragment>
+                <Button aria-controls="simple-menu" variant="outlined" color="inherit" aria-haspopup="true" onClick={handleClick}>
+                    {user.userName}
+                </Button>
+                <Menu
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <MenuItem onClick={handleClose}>Profile (do nothing)</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+            </React.Fragment>
+        );
+    }
     return (
         <Router>
             <div className={classes.root}>
@@ -48,16 +95,7 @@ function App() {
                                 Add new book
                             </Button>
                         </Link>
-                        <Link to="/register" className={classes.link}>
-                            <Button variant="outlined" color="inherit" className={classes.button}>
-                                sign up
-                            </Button>
-                        </Link>
-                        <Link to="/login" className={classes.link}>
-                            <Button variant="outlined" color="inherit" className={classes.button}>
-                                sign in
-                            </Button>
-                        </Link>
+                        {login}
                     </Toolbar>
                 </AppBar>
                 <Route path="/" exact component={BookTable} />
@@ -69,5 +107,3 @@ function App() {
         </Router>
     );
 }
-
-export default App;
