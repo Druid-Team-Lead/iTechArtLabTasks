@@ -1,5 +1,5 @@
 import { userConstants } from '../constants';
-import { userService } from '../../_services';
+import { userService } from '../../middleware/user.service';
 import { alertActions } from './';
 import { history } from '../helpers';
 

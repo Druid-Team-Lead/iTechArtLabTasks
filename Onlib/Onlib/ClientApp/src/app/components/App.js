@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import AddBook from '../../book/containers/NewBook';
 import BookTable from '../../book/containers/BookTable';
 import Details from '../../book/containers/Details';
+import { LoginPage } from '../../auth/components/LoginPage'
+import { RegisterPage } from '../../auth/containers/RegisterPage'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Layout() {
+function App() {
     const classes = useStyles();
 
     return (
@@ -35,18 +37,25 @@ function Layout() {
                         <Button size="small" color="inherit">
                             <Link to="/newBook/">Add new book</Link>
                         </Button>
-                        <Button color="inherit">sign up</Button>
-                        <Button color="inherit">sign in</Button>
+                        <Button color="inherit">
+                            <Link to="/register">sign up</Link>
+                        </Button>
+
+                        <Link to="/login">
+                            <Button color="inherit">sign in</Button>
+
+                        </Link>
+
                     </Toolbar>
                 </AppBar>
                 <Route path="/" exact component={BookTable} />
                 <Route path="/newBook/" component={AddBook} />
                 <Route path="/details/" component={Details} />
-
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegisterPage} />
             </div>
         </Router>
     );
 }
 
-export default Layout;
-
+export default App;

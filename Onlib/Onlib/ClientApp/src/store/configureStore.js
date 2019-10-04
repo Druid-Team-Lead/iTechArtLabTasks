@@ -5,6 +5,10 @@ import * as bookReducers from '../book/reducers';
 import * as commentReducers from '../comment/reducers';
 import api from '../middleware/apiMiddleware';
 import signalRMiddleware from '../middleware/signalRMiddleware';
+import { authentication } from '../auth/reducers/authentication.reducer';
+import { registration } from '../auth/reducers/registration.reducer';
+import { users } from '../auth/reducers/users.reducer';
+import { alert } from '../auth/reducers/alert.reducer';
 
 
 export default function configureStore(history, initialState) {
@@ -26,7 +30,11 @@ export default function configureStore(history, initialState) {
     const rootReducer = combineReducers({
         book: bookReducers.book,
         routing: routerReducer,
-        comment: commentReducers.comment
+        comment: commentReducers.comment,
+        authentication,
+        registration,
+        users,
+        alert
     });
 
     return createStore(
