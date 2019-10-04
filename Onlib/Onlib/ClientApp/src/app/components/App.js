@@ -72,12 +72,14 @@ export default function App(props) {
                 </Button>
                 <Menu
                     anchorEl={anchorEl}
-                    keepMounted
+                    keepMounte
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
                     <MenuItem onClick={handleClose}>Profile (do nothing)</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem>
+                        <Link to="/login" className={classes.link}>Logout</Link>
+                    </MenuItem>
                 </Menu>
             </React.Fragment>
         );

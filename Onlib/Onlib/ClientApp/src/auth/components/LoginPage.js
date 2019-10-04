@@ -41,6 +41,9 @@ export class LoginPage extends React.Component {
     render() {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
+        if(loggingIn) {
+            this.props.history.push("/");
+        }
         return (
             <form autoComplete="off" onSubmit={this.handleSubmit}>
                 <Grid container direction="column" justify="center" alignItems="center">

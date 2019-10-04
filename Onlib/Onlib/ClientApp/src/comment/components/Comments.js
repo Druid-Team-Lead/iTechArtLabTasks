@@ -79,5 +79,3 @@ export default class Comments extends Component {
         );
     }
 }
-
-//export default withStyles(styles, Comments)
