@@ -4,23 +4,19 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 import configureStore from './store/configureStore';
-//import App from './oldApp/App';
+import App from './oldApp/App';
 import './reset.css'
 import registerServiceWorker from './registerServiceWorker';
 
-import { store } from './_helpers';
-import { App } from './App';
+//import { store } from './_helpers';
+//import { App } from './App';
 
-// Create browser history to use in the Redux store
 
-/*
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const history = createBrowserHistory({ basename: baseUrl });
 
-// Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState = window.initialReduxState;
 const store = configureStore(history, initialState);
-//const unsubscribe = store.subscribe(() => console.log(store.getState()))
 
 const rootElement = document.getElementById('root');
 
@@ -34,12 +30,3 @@ ReactDOM.render(
   rootElement);
 
 registerServiceWorker();
-*/
-
-
-ReactDOM.render(
-  <Provider store={store}>
-      <App />
-  </Provider>,
-  document.getElementById('root')
-);
