@@ -69,9 +69,9 @@ class BookTable extends Component {
     const { books, classes } = this.props;
     return (
       <div style={{ padding: 20 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4} justify="flex-start">
           {books.map(book =>
-            <Grid className={classes.grid} item xs key={book.id}>
+            <Grid className={classes.grid} item key={book.id}>
               <BookItem view={this.handleView} classes={classes} book={book}/>
             </Grid>
           )}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Card, CardContent, CardActions } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -61,63 +61,72 @@ class AddBook extends Component {
     render() {
         const classes = this.props;
         return (
-            <form className={classes.container} noValidate autoComplete="off">
+            <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
                 <Grid container direction="column" justify="center" alignItems="center">
                     <Grid item>
                         <TextField
+                            variant="outlined"
                             label="Title"
                             className={classes.textField}
                             margin="normal"
                             onChange={this.handleTitle}
                             value={this.state.title}
+                            required
                         />
                     </Grid>
                     <Grid item>
                         <TextField
+                            variant="outlined"
                             label="Description"
                             className={classes.textField}
                             margin="normal"
                             onChange={this.handleDescription}
                             value={this.state.description}
+                            required
                         />
                     </Grid>
                     <Grid item>
                         <TextField
+                            variant="outlined"
                             label="Author"
                             className={classes.textField}
                             margin="normal"
                             onChange={this.handleAuthor}
                             value={this.state.author}
+                            required
                         />
                     </Grid>
                     <Grid item>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <KeyboardDatePicker
+                                inputVariant="outlined"
                                 margin="normal"
-                                id="date-picker-dialog"
                                 label="Date picker dialog"
                                 format="MM/dd/yyyy"
                                 onChange={this.handleDate}
+                                className={classes.textField}
                                 value={this.state.publishDate}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
+                                required
                             />
                         </MuiPickersUtilsProvider>
                     </Grid>
                     <Grid item>
                         <TextField
+                            variant="outlined"
                             label="Copies number"
                             className={classes.textField}
                             margin="normal"
                             onChange={this.handleCopiesNumber}
                             value={this.state.copiesNumber}
+                            required
+                            type="number"
                         />
                     </Grid>
                     <Grid item>
-                        <Button color="inherit" size="large" onClick={this.handleSubmit}>
-                        Add
-                        </Button>
+                        <Button type="submit" color="primary" variant="contained" size="large">Add</Button>
                     </Grid>
                 </Grid>
             </form>
