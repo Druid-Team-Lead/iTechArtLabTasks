@@ -67,6 +67,11 @@ export default function App(props) {
     if (loggedIn) {
         login = (
             <React.Fragment>
+                <Link to="/newBook" className={classes.link}>
+                    <Button variant="outlined" color="inherit" className={classes.button}>
+                        Add new book
+                            </Button>
+                </Link>
                 <Button aria-controls="simple-menu" variant="outlined" color="inherit" aria-haspopup="true" onClick={handleClick}>
                     {user.userName}
                 </Button>
@@ -93,11 +98,6 @@ export default function App(props) {
                             <Link exact to="/" className={classes.link}>Online Library</Link>
                         </Typography>
                         {books.length == 0 && <Typography>You can add them! >>></Typography>}
-                        <Link to="/newBook" className={classes.link}>
-                            <Button variant="outlined" color="inherit" className={classes.button}>
-                                Add new book
-                            </Button>
-                        </Link>
                         {login}
                     </Toolbar>
                 </AppBar>
