@@ -16,6 +16,7 @@ namespace Onlib.DataAccessLayer
         public IQueryable<UserCommentModel> GetAll(int bookId)
         {
             var result = from comments in _onlibContext.Comments
+                         where comments.BookId == bookId
                          join userComments in _onlibContext.UsersComments
                          on comments.Id equals userComments.CommentId
                          join users in _onlibContext.Users

@@ -15,30 +15,28 @@ import {
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    menu: {
-        width: 200,
+    paper: {
+        width: 600,
+        "margin-bottom": 15,
+        padding: 5
     },
 }
 
 class Comment extends Component {
     render() {
         return (
-            <Paper>
-                <Typography variant="h5" component="h3">{this.props.userName}</Typography>
-                <Typography component="p">{this.props.comment}</Typography>
+            <Paper className={this.props.paper}>
+                <Typography variant="h5" component="h3">Nickname: {this.props.userName}</Typography>
+                <Typography component="p">Comment: {this.props.comment}</Typography>
             </Paper>
         )
     }
 }
 
-export default class Comments extends Component {
+class Comments extends Component {
     constructor() {
         super()
-        this.state = { comments: [], comment: "" };
+        this.state = { comment: "" };
     }
 
     componentDidMount() {
@@ -54,14 +52,15 @@ export default class Comments extends Component {
     }
 
     render() {
-        const { loggedIn } = this.props;
+        const { loggedIn, classes } = this.props;
         return (
             <div>
-                <Typography variant="h5" component="h3">Comments:</Typography>
-                <Grid container direction="column" justify="center" alignItems="center">
+                {this.props.comments.length == 0 ? <Typography variant="h5" component="h3">No comments yet. Sign in to put comment.</Typography>
+                 : <Typography variant="h5" component="h3">Comments:</Typography>}
+                <Grid container direction="column" justify="center" alignItems="flex-start">
                     {this.props.comments.map(comment =>
                         <Grid item key={comment.id}>
-                            <Comment comment={comment.comment.comment} userName={comment.user.userName} />
+                            <Comment comment={comment.comment.comment} userName={comment.user.userName} paper={classes.paper} />
                         </Grid>
                     )}
                 </Grid>
@@ -84,3 +83,5 @@ export default class Comments extends Component {
         );
     }
 }
+
+export default withStyles(styles)(Comments);

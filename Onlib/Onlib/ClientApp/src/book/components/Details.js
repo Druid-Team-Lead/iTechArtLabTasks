@@ -44,7 +44,7 @@ class Details extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary" onClick={this.handleView}>View</Button>
+                                <Button size="small" color="primary">Order</Button>
                             </CardActions>
                         </Card>
                     </Grid>
