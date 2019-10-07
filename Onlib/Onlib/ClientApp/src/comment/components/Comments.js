@@ -28,7 +28,7 @@ class Comment extends Component {
     render() {
         return (
             <Paper>
-                <Typography variant="h5" component="h3">Nickname</Typography>
+                <Typography variant="h5" component="h3">{this.props.userName}</Typography>
                 <Typography component="p">{this.props.comment}</Typography>
             </Paper>
         )
@@ -43,10 +43,10 @@ export default class Comments extends Component {
 
     componentDidMount() {
         this.props.loadComments(this.props.bookId);
-      }
+    }
 
     handlePost = () => {
-        this.props.uploadComment({comment: this.state.comment, bookId: this.props.bookId.toString()});
+        this.props.uploadComment({ comment: { comment: this.state.comment, bookId: this.props.bookId.toString() }, userId: this.props.user.id });
     }
 
     handleInput = (e) => {
@@ -54,27 +54,32 @@ export default class Comments extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { loggedIn } = this.props;
         return (
             <div>
-            <Typography variant="h5" component="h3">Comments:</Typography>
+                <Typography variant="h5" component="h3">Comments:</Typography>
                 <Grid container direction="column" justify="center" alignItems="center">
                     {this.props.comments.map(comment =>
                         <Grid item key={comment.id}>
-                            <Comment comment={comment.comment}/>
+                            <Comment comment={comment.comment.comment} userName={comment.user.userName} />
                         </Grid>
                     )}
                 </Grid>
-                <TextField
-                    label="Your comments..."
-                    margin="dense"
-                    variant="outlined"
-                    multiline
-                    rowsMax="15"
-                    fullWidth
-                    onChange={this.handleInput}
-                />
-                <Button variant="contained" color="primary" onClick={this.handlePost}>Post</Button>
+                {loggedIn &&
+                    <React.Fragment>
+                        <TextField
+                            label="Your comments..."
+                            margin="dense"
+                            variant="outlined"
+                            multiline
+                            rowsMax="15"
+                            fullWidth
+                            onChange={this.handleInput}
+                        />
+                        <Button variant="contained" color="primary" onClick={this.handlePost}>Post</Button>
+                    </React.Fragment>
+                }
+
             </div>
         );
     }

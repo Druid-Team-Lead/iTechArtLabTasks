@@ -49,7 +49,7 @@ class Details extends Component {
                         </Card>
                     </Grid>
                 </Grid>
-                {!this.props.isLoading && this.props.loggedIn && <Comments/>}
+                {!this.props.isLoading && <Comments/>}
             </div>
         )
     };

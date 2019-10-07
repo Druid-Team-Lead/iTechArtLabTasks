@@ -77,9 +77,9 @@ export default function App(props) {
                     onClose={handleClose}
                 >
                     <MenuItem onClick={handleClose}>Profile (do nothing)</MenuItem>
-                    <MenuItem>
-                        <Link to="/login" className={classes.link}>Logout</Link>
-                    </MenuItem>
+                    <Link to="/login" className={classes.link}>
+                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </Link>
                 </Menu>
             </React.Fragment>
         );

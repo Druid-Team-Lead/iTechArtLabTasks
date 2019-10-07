@@ -18,14 +18,14 @@ namespace Onlib.Controllers
         }
 
         [HttpGet("[action]/{bookId}")]
-        public IEnumerable<CommentModel> GetComments(int bookId)
+        public IEnumerable<UserCommentModel> GetComments(int bookId)
         {
             var comments = _repository.GetAll(bookId);
             return comments;
         }
 
         [HttpPost("[action]")]
-        public async Task<int> AddComment([FromBody] CommentModel model)
+        public async Task<int> AddComment([FromBody]UserCommentModel model)
         {
             var isSaved = await _repository.Create(model);
             return isSaved;

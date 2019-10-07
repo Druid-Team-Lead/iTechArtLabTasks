@@ -3,8 +3,8 @@ using System.Linq;
 
 namespace Onlib.DataAccessLayer
 {
-    public interface ICommentRepository : IGenericRepository<CommentModel>
+    public interface ICommentRepository : IGenericRepository<UserCommentModel>
     {
-        IQueryable<CommentModel> GetAll(int bookId);
+        IQueryable<UserCommentModel> GetAll(int bookId);
     }
 }

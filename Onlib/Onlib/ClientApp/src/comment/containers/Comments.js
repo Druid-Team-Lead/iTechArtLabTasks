@@ -7,7 +7,9 @@ const mapStateToProps = state => {
   return {
     comments: state.comment.comments,
     isLoading: state.comment.isLoading,
-    bookId: state.book.currentBook.id
+    bookId: state.book.currentBook.id,
+    user: state.authentication.user,
+    loggedIn: state.authentication.loggedIn
   };
 };
 

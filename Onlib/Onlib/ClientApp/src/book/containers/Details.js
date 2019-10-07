@@ -4,8 +4,7 @@ import NewBook from '../components/Details';
 const mapStateToProps = state => {
   return {
     book: state.book.currentBook,
-    isLoading: state.book.isBooksLoading,
-    loggedIn: state.authentication.loggedIn
+    isLoading: state.book.isBooksLoading
   };
 };
 
