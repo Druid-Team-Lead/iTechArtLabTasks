@@ -11,17 +11,11 @@ import BookTable from '../../book/containers/BookTable';
 import Details from '../../book/containers/Details';
 import { LoginPage } from '../../auth/containers/LoginPage'
 import { RegisterPage } from '../../auth/containers/RegisterPage'
-import { withStyles } from "@material-ui/styles";
 import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
     },
@@ -77,7 +71,7 @@ export default function App(props) {
                 </Button>
                 <Menu
                     anchorEl={anchorEl}
-                    keepMounte
+                    keepMounted
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
@@ -95,13 +89,13 @@ export default function App(props) {
                 <AppBar position="static" className={classes.appBar}>
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
-                            <Link exact to="/" className={classes.link}>Online Library</Link>
+                            <Link to="/" className={classes.link}>Online Library</Link>
                         </Typography>
-                        {books.length == 0 && <Typography>You can add them! >>></Typography>}
+                        {books.length === 0 && <Typography>You can add them! >>></Typography>}
                         {login}
                     </Toolbar>
                 </AppBar>
-                <Route path="/" exact component={BookTable} />
+                <Route exact path="/" component={BookTable} />
                 <Route path="/newBook" component={AddBook} />
                 <Route path="/details" component={Details} />
                 <Route path="/login" component={LoginPage} />

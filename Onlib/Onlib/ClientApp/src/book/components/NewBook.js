@@ -24,11 +24,11 @@ class AddBook extends Component {
     constructor() {
         super();
         this.state = {
-            title: null,
-            description: null,
-            author: null,
+            title: "",
+            description: "",
+            author: "",
             publishDate: null,
-            copiesNumber: null
+            copiesNumber: ""
         };
     }
     handleSubmit = (e) => {

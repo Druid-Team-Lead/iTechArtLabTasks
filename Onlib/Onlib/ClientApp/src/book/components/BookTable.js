@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/styles'
 import {
   Grid,
@@ -21,9 +21,9 @@ const styles = {
   }
 };
 
-class BookItem extends Component {
+class BookItem extends PureComponent {
 
-  handleView = (e) => {
+  handleView = () => {
     const id = this.props.book.id;
     this.props.view(id);
   }
@@ -36,7 +36,7 @@ class BookItem extends Component {
           <CardMedia
             className={classes.media}
             image="https://images1.penguinrandomhouse.com/cover/9781524743352"
-            title="booki!"
+            title={book.title}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">{book.title}</Typography>
@@ -54,7 +54,7 @@ class BookItem extends Component {
   }
 }
 
-class BookTable extends Component {
+class BookTable extends PureComponent {
 
   componentDidMount() {
     this.props.loadBooks();
@@ -69,7 +69,7 @@ class BookTable extends Component {
     const { books, classes } = this.props;
     return (
       <div style={{ padding: 20 }}>
-        {books.length == 0 && <Typography variant="h3" gutterBottom align="center">
+        {books.length === 0 && <Typography variant="h3" gutterBottom align="center">
           I looked - there are no books at all :(
           </Typography>}
         <Grid container spacing={4} justify="flex-start">

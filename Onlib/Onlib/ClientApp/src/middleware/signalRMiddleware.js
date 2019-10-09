@@ -2,7 +2,7 @@ import {
     JsonHubProtocol,
     HttpTransportType,
     HubConnectionBuilder,
-    LogLevel
+    //LogLevel
 } from '@aspnet/signalr';
 import * as CommentActions from '../comment/actions';
 import * as BookActions from '../book/actions';
@@ -18,13 +18,13 @@ const transport = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
 
 const options = {
     transport,
-    logMessageContent: true,
-    logger: LogLevel.Trace,
+    //logMessageContent: true,
+    //logger: LogLevel.Trace,
     //accessTokenFactory: () => action.user.access_token
 };
 
 const connection = new HubConnectionBuilder()
-    .withUrl(connectionHub) // options
+    .withUrl(connectionHub, options)
     .withHubProtocol(protocol)
     .build();
 

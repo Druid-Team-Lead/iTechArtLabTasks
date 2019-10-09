@@ -3,15 +3,8 @@ import {
     Grid,
     Typography,
     Button,
-    CardMedia,
-    CardActionArea,
-    CardContent,
-    CardActions,
-    Card,
     TextField,
-    Paper,
-    GridList
-} from '@material-ui/core';
+    Paper} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
@@ -55,7 +48,7 @@ class Comments extends Component {
         const { loggedIn, classes } = this.props;
         return (
             <div>
-                {this.props.comments.length == 0 ? <Typography variant="h5" component="h3">No comments yet. Sign in to put comment.</Typography>
+                {this.props.comments.length === 0 ? <Typography variant="h5" component="h3">No comments yet. Sign in to put comment.</Typography>
                  : <Typography variant="h5" component="h3">Comments:</Typography>}
                 <Grid container direction="column" justify="center" alignItems="flex-start">
                     {this.props.comments.map(comment =>
