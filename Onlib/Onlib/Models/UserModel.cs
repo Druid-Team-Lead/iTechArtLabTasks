@@ -11,6 +11,7 @@ namespace Onlib.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string UserStatus { get; set; }
+        public bool IsModerator { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public ICollection<BookUserModel> BooksUsers { get; set; }

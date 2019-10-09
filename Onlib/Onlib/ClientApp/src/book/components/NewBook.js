@@ -24,42 +24,45 @@ class AddBook extends Component {
     constructor() {
         super();
         this.state = {
-            title: "",
-            description: "",
-            author: "",
-            publishDate: null,
-            copiesNumber: ""
+            book: {
+                title: "",
+                description: "",
+                author: "",
+                publishDate: null,
+                copiesNumber: ""
+            }
         };
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.Save(this.state);
+        this.props.Save(this.state.book);
         this.props.history.replace("/");
     }
 
-    handleTitle = (e) => {
-        this.setState({ title: e.target.value });
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        const { book } = this.state;
+        this.setState({
+            book: {
+                ...book,
+                [name]: value
+            }
+        });
     }
 
-    handleDescription = (e) => {
-        this.setState({ description: e.target.value });
+    handleDate = (date) => {
+        const { book } = this.state;
+        this.setState({
+            book: {
+                ...book,
+                publishDate: date
+            }
+        });
     }
-
-    handleAuthor = (e) => {
-        this.setState({ author: e.target.value });
-    }
-
-    handleDate = (publishDate) => {
-        this.setState({ publishDate });
-    }
-
-    handleCopiesNumber = (e) => {
-        this.setState({ copiesNumber: e.target.value });
-    }
-
 
     render() {
         const classes = this.props;
+        const { book } = this.state;
         return (
             <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
                 <Grid container direction="column" justify="center" alignItems="center">
@@ -69,8 +72,9 @@ class AddBook extends Component {
                             label="Title"
                             className={classes.textField}
                             margin="normal"
-                            onChange={this.handleTitle}
-                            value={this.state.title}
+                            onChange={this.handleChange}
+                            value={book.title}
+                            name="title"
                             required
                         />
                     </Grid>
@@ -80,8 +84,9 @@ class AddBook extends Component {
                             label="Description"
                             className={classes.textField}
                             margin="normal"
-                            onChange={this.handleDescription}
-                            value={this.state.description}
+                            onChange={this.handleChange}
+                            value={book.description}
+                            name="description"
                             required
                         />
                     </Grid>
@@ -91,8 +96,9 @@ class AddBook extends Component {
                             label="Author"
                             className={classes.textField}
                             margin="normal"
-                            onChange={this.handleAuthor}
-                            value={this.state.author}
+                            onChange={this.handleChange}
+                            value={book.author}
+                            name="author"
                             required
                         />
                     </Grid>
@@ -105,7 +111,7 @@ class AddBook extends Component {
                                 format="MM/dd/yyyy"
                                 onChange={this.handleDate}
                                 className={classes.textField}
-                                value={this.state.publishDate}
+                                value={book.publishDate}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -119,10 +125,11 @@ class AddBook extends Component {
                             label="Copies number"
                             className={classes.textField}
                             margin="normal"
-                            onChange={this.handleCopiesNumber}
-                            value={this.state.copiesNumber}
+                            onChange={this.handleChange}
+                            value={book.copiesNumber}
                             required
                             type="number"
+                            name="copiesNumber"
                         />
                     </Grid>
                     <Grid item>

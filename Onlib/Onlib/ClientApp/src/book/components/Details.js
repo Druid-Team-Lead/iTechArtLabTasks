@@ -33,7 +33,7 @@ class Details extends Component {
                                 <CardMedia
                                     className={classes.media}
                                     image="https://images1.penguinrandomhouse.com/cover/9781524743352"
-                                    title="booki!"
+                                    title={book.title}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">{book.title}</Typography>

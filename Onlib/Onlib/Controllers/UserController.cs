@@ -55,7 +55,8 @@ namespace Onlib.Controllers
                 user.UserName,
                 user.FirstName,
                 user.LastName,
-                Token = tokenString
+                Token = tokenString,
+                user.IsModerator
             });
         }
 

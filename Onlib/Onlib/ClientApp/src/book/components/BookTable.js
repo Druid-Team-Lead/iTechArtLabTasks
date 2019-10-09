@@ -42,7 +42,7 @@ class BookItem extends PureComponent {
             <Typography gutterBottom variant="h5" component="h2">{book.title}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Description: {book.description}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Author: {book.author}</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Publish Date: {book.publishDate}</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">Publish Date: {new Date(book.publishDate).toDateString()}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Copies Number: {book.copiesNumber}</Typography>
           </CardContent>
         </CardActionArea>
