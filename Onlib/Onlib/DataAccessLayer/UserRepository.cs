@@ -37,10 +37,12 @@ namespace Onlib.DataAccessLayer
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Password is required");
+                throw new ArgumentException("Password is required.");
 
             if (_onlibContext.Users.Any(x => x.UserName == user.UserName))
-                throw new Exception("Username " + user.UserName + " is already taken");
+                throw new Exception("Username " + user.UserName + " is already taken.");
+            if (_onlibContext.Users.Any(x => x.Email == user.Email))
+                throw new Exception("Email " + user.Email + " is already taken.");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);

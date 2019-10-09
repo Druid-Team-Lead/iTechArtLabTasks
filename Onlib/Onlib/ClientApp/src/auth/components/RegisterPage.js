@@ -19,7 +19,8 @@ export class RegisterPage extends React.Component {
                 lastName: '',
                 username: '',
                 password: '',
-                isModerator: false
+                isModerator: false,
+                email: ''
             }
         };
     }
@@ -27,7 +28,7 @@ export class RegisterPage extends React.Component {
     handleChange = (e) => {
         let { name, value } = e.target;
         const { user } = this.state;
-        if(name === "isModerator") {
+        if (name === "isModerator") {
             value = value === "true" ? false : true
         }
         this.setState({
@@ -48,11 +49,15 @@ export class RegisterPage extends React.Component {
     }
 
     render() {
-        const { registering } = this.props;
+        const { registering, isFailed, errorMessage } = this.props;
         const { user } = this.state;
-        if (registering) {
+        console.log(this.props)
+        /*
+        console.log(isFailed)
+        if (registering && !isFailed) {
             this.props.history.push("/login");
         }
+        */
         return (
             <form autoComplete="off" onSubmit={this.handleSubmit}>
                 <Grid container direction="column" justify="center" alignItems="center">
@@ -75,6 +80,17 @@ export class RegisterPage extends React.Component {
                             margin="normal"
                             onChange={this.handleChange}
                             value={user.lastName}
+                            required
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            variant="outlined"
+                            name="email"
+                            label="Email"
+                            margin="normal"
+                            onChange={this.handleChange}
+                            value={user.email}
                             required
                         />
                     </Grid>
@@ -118,6 +134,10 @@ export class RegisterPage extends React.Component {
                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" alt="spinner" />
                         }
                     </Grid>
+                    {isFailed &&
+                        <Grid item>
+                            <Typography>{errorMessage}</Typography>
+                        </Grid>}
                 </Grid>
             </form>
         );
