@@ -11,6 +11,7 @@ namespace Onlib.Models
         public DateTime PublishDate { get; set; }
         public string Description { get; set; }
         public int CopiesNumber { get; set; }
+        public BookCoverModel Cover { get; set; }
 
         public ICollection<CommentModel> Comments { get; set; }
         public ICollection<BookUserModel> BooksUsers { get; set; }

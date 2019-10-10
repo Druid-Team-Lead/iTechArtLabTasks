@@ -14,6 +14,7 @@ namespace Onlib.Models
         public DbSet<UserModel> Users { get; set; }
         public DbSet<BookUserModel> BooksUsers { get; set; }
         public DbSet<UserCommentModel> UsersComments { get; set; }
+        public DbSet<BookCoverModel> BooksCovers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -44,6 +45,11 @@ namespace Onlib.Models
                 .HasOne(b => b.Comment)
                 .WithMany(u => u.UsersComments)
                 .HasForeignKey(k => k.CommentId);
+
+            builder.Entity<BookModel>()
+                .HasOne(b => b.Cover)
+                .WithOne(g => g.BookModel)
+                .HasForeignKey<BookCoverModel>(f => f.BookId);
         }
     }
 }
