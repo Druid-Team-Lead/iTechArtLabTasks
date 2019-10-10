@@ -42,7 +42,6 @@ const signalRMiddleware = store => next => async (action) => {
     }
     if (action.type === BookActions.BOOK_SUCCESS) {
         connection.on("CommentsChanged", (id) => {
-            console.log(id);
             let load = bindActionCreators(CommentActions.commentOperations, store.dispatch).loadComments
             load(id);
         })

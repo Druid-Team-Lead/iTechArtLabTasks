@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
@@ -25,8 +28,18 @@ namespace Onlib.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<int> AddBook([FromBody] BookModel model)
+        public async Task<int> AddBook([FromBody]BookModel model)
         {
+            //if(model.ImageToBeUploaded != null)
+            //{
+            //    using (var memoryStream = new MemoryStream())
+            //    {
+            //        await model.ImageToBeUploaded.CopyToAsync(memoryStream);
+            //        var imageToBeUploadedByteArray = memoryStream.ToArray();
+            //        model.Cover.Image = imageToBeUploadedByteArray;
+            //    }
+            //}
+            model.Cover.Image = Convert.FromBase64String(model.ImageToBeUploaded);
             var isSaved = await _repository.Create(model);
             return isSaved;
         }

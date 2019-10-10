@@ -8,7 +8,7 @@ namespace Onlib.DataAccessLayer
         IQueryable<TEntity> GetAll();
         Task<TEntity> GetById(int id);
         Task<int> Create(TEntity entity);
-        Task Update(int id, TEntity entity);
+        Task<int> Update(int id, TEntity entity);
         Task Delete(int id);
     }
 }

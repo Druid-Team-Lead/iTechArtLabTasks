@@ -12,8 +12,8 @@ const callApi = (endpoint, body) => {
                 'Content-Type': 'application/json',
             }
         }
+        console.log(body);
     }
-
     return fetch(fullUrl, parameters).then(response =>
         response.json().then(json => {
             if (!response.ok) {

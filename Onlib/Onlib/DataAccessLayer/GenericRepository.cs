@@ -26,10 +26,11 @@ namespace Onlib.DataAccessLayer
             return isSaved;
         }
 
-        public async Task Update(int id, TEntity entity)
+        public async Task<int> Update(int id, TEntity entity)
         {
             _onlibContext.Set<TEntity>().Update(entity);
-            await _onlibContext.SaveChangesAsync();
+            var isSaved = await _onlibContext.SaveChangesAsync();
+            return isSaved;
         }
 
         public async Task Delete(int id)

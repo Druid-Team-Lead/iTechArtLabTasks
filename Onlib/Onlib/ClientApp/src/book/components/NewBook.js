@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Input } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -36,7 +36,8 @@ class AddBook extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.Save(this.state.book);
-        this.props.history.replace("/");
+        console.log(this.state.book);
+        this.props.history.push("/");
     }
 
     handleChange = (e) => {
@@ -59,6 +60,27 @@ class AddBook extends Component {
             }
         });
     }
+
+    handleFile = (e) => {
+        const { files } = e.target;
+        const { book } = this.state;
+        this.toBase64(files[0]).then(data => {
+            this.setState({
+                book: {
+                    ...book,
+                    imageToBeUploaded: data
+                }
+            });
+        });
+
+    }
+
+    toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
 
     render() {
         const classes = this.props;
@@ -131,6 +153,9 @@ class AddBook extends Component {
                             type="number"
                             name="copiesNumber"
                         />
+                    </Grid>
+                    <Grid item>
+                        <input type="file" accept="image/*" onChange={this.handleFile} value={book.stub} />
                     </Grid>
                     <Grid item>
                         <Button type="submit" color="primary" variant="contained" size="large">Add</Button>
