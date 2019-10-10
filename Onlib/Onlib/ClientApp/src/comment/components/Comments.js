@@ -32,10 +32,7 @@ class Comments extends Component {
     constructor(props) {
         super(props);
         const { cookies } = props;
-        if(this.props.bookId) {
-            cookies.set('bookId', this.props.bookId, { path: '/' });
-        }
-        
+
         this.state = {
             bookId: cookies.get('bookId'),
             comment: ""

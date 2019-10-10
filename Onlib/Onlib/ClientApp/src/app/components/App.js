@@ -14,6 +14,7 @@ import { RegisterPage } from '../../auth/containers/RegisterPage'
 import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { PrivateRoute } from '../../auth/components/PrivateRoute';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(() => ({
 export default function App(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const { user, loggedIn, books } = props;
+    const { user, loggedIn } = props;
     const classes = useStyles();
 
     const handleClick = event => {
@@ -61,11 +62,13 @@ export default function App(props) {
     if (loggedIn) {
         login = (
             <React.Fragment>
-                <Link to="/newBook" className={classes.link}>
-                    <Button variant="outlined" color="inherit" className={classes.button}>
-                        Add new book
+                {user.isModerator &&
+                    <Link to="/newBook" className={classes.link}>
+                        <Button variant="outlined" color="inherit" className={classes.button}>
+                            Add new book
                             </Button>
-                </Link>
+                    </Link>
+                }
                 <Button aria-controls="simple-menu" variant="outlined" color="inherit" aria-haspopup="true" onClick={handleClick}>
                     {user.userName}
                 </Button>
@@ -91,12 +94,11 @@ export default function App(props) {
                         <Typography variant="h6" className={classes.title}>
                             <Link to="/" className={classes.link}>Online Library</Link>
                         </Typography>
-                        {books.length === 0 && <Typography>You can add them! >>></Typography>}
                         {login}
                     </Toolbar>
                 </AppBar>
                 <Route exact path="/" component={BookTable} />
-                <Route path="/newBook" component={AddBook} />
+                <PrivateRoute path="/newBook" component={AddBook} />
                 <Route path="/details" component={Details} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
