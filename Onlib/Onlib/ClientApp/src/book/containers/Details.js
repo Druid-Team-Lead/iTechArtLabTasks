@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { bookOperations } from '../actions';
 import NewBook from '../components/Details';
 
 const mapStateToProps = state => {
@@ -8,7 +10,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    loadBook: bindActionCreators(bookOperations, dispatch).loadBook
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(NewBook);

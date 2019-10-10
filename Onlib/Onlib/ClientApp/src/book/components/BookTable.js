@@ -10,6 +10,7 @@ import {
   CardActions,
   Card
 } from '@material-ui/core';
+import { withCookies, Cookies } from 'react-cookie';
 
 
 const styles = {
@@ -61,6 +62,8 @@ class BookTable extends PureComponent {
   }
 
   handleView = (id) => {
+    const { cookies } = this.props;
+    cookies.set('bookId', id, { path: '/' });
     this.props.loadBook(id);
     this.props.history.push("/details/");
   }
@@ -84,4 +87,5 @@ class BookTable extends PureComponent {
   }
 }
 
-export default withStyles(styles)(BookTable);
+const BookTableWithCookies = withCookies(BookTable)
+export default withStyles(styles)(BookTableWithCookies);

@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles'
 import {
-  Grid,
-  Typography,
-  Button,
-  CardMedia,
-  CardActionArea,
-  CardContent,
-  CardActions,
-  Card
+    Grid,
+    Typography,
+    Button,
+    CardMedia,
+    CardActionArea,
+    CardContent,
+    CardActions,
+    Card
 } from '@material-ui/core';
 import Comments from '../../comment/containers/Comments'
+import { withCookies } from 'react-cookie';
 
 const styles = {
     card: {
-      width: 345,
+        width: 345,
     },
     media: {
-      height: 500,
+        height: 500,
     }
-  };
+};
 
 class Details extends Component {
+
+    componentDidMount() {
+        const { cookies } = this.props
+        this.props.loadBook(cookies.get('bookId'));
+    }
+
     render() {
         const { book, classes } = this.props;
         return (
@@ -49,10 +56,11 @@ class Details extends Component {
                         </Card>
                     </Grid>
                 </Grid>
-                {!this.props.isLoading && <Comments/>}
+                {!this.props.isLoading && <Comments />}
             </div>
         )
     };
 };
 
-export default withStyles(styles)(Details);
+const DetailsWithCookies = withCookies(Details)
+export default withStyles(styles)(DetailsWithCookies);

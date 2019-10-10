@@ -4,8 +4,10 @@ import {
     Typography,
     Button,
     TextField,
-    Paper} from '@material-ui/core';
+    Paper
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
+import { withCookies, Cookies } from 'react-cookie';
 
 const styles = {
     paper: {
@@ -19,7 +21,7 @@ class Comment extends Component {
     render() {
         return (
             <Paper className={this.props.paper}>
-                <Typography variant="h5" component="h3">Nickname: {this.props.userName}</Typography>
+                <Typography component="p">Nickname: {this.props.userName}</Typography>
                 <Typography component="p">Comment: {this.props.comment}</Typography>
             </Paper>
         )
@@ -27,13 +29,21 @@ class Comment extends Component {
 }
 
 class Comments extends Component {
-    constructor() {
-        super()
-        this.state = { comment: "" };
+    constructor(props) {
+        super(props);
+        const { cookies } = props;
+        if(this.props.bookId) {
+            cookies.set('bookId', this.props.bookId, { path: '/' });
+        }
+        
+        this.state = {
+            bookId: cookies.get('bookId'),
+            comment: ""
+        };
     }
 
     componentDidMount() {
-        this.props.loadComments(this.props.bookId);
+        this.props.loadComments(this.state.bookId);
     }
 
     handlePost = () => {
@@ -49,7 +59,7 @@ class Comments extends Component {
         return (
             <div>
                 {this.props.comments.length === 0 ? <Typography variant="h5" component="h3">No comments yet. Sign in to put comment.</Typography>
-                 : <Typography variant="h5" component="h3">Comments:</Typography>}
+                    : <Typography variant="h5" component="h3">Comments:</Typography>}
                 <Grid container direction="column" justify="center" alignItems="flex-start">
                     {this.props.comments.map(comment =>
                         <Grid item key={comment.id}>
@@ -77,4 +87,5 @@ class Comments extends Component {
     }
 }
 
-export default withStyles(styles)(Comments);
+const CommentsWithCookies = withCookies(Comments);
+export default withStyles(styles)(CommentsWithCookies);
