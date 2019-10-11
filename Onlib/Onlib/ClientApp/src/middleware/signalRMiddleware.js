@@ -36,6 +36,7 @@ startSignalRConnection(connection);
 
 const signalRMiddleware = store => next => async (action) => {
 
+    // Get new comments if changed
     if (action.type === CommentActions.ADD_COMMENT_SUCCESS) {
         let bookId = store.getState().book.currentBook.id
         connection.invoke("UpdateComments", bookId);
@@ -48,6 +49,19 @@ const signalRMiddleware = store => next => async (action) => {
     }
     if (action.type === BookActions.BOOKS_REQUEST) {
         connection.off("CommentsChanged");
+    }
+
+    // Get new book if added
+    if (action.type === BookActions.ADD_BOOK_SUCCESS) {
+        connection.invoke("UpdateBooks");
+    }
+    if (action.type === BookActions.BOOKS_SUCCESS || action.type === BookActions.BOOK_REQUEST) {
+        connection.on("NewBookAdded", () => {
+            const load = bindActionCreators(BookActions.bookOperations, store.dispatch).loadBooks;
+            load();
+        })
+    } else {
+        connection.off("UpdateBooks");
     }
 
     return next(action);

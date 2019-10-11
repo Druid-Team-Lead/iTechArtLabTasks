@@ -9,5 +9,10 @@ namespace Onlib.WebSocketHub
         {
             await Clients.All.SendAsync("CommentsChanged", bookId);
         }
+
+        public async Task UpdateBooks()
+        {
+            await Clients.All.SendAsync("NewBookAdded");
+        }
     }
 }

@@ -51,6 +51,10 @@ class AddBook extends Component {
                 console.log(this.state.book);
                 this.props.history.push("/");
             });
+        } else {
+            this.props.Save(this.state.book);
+            console.log(this.state.book);
+            this.props.history.push("/");
         }
     }
 
