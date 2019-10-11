@@ -39,7 +39,11 @@ namespace Onlib.Controllers
             //        model.Cover.Image = imageToBeUploadedByteArray;
             //    }
             //}
-            model.Cover.Image = Convert.FromBase64String(model.ImageToBeUploaded);
+            if(model.ImageToBeUploaded != null)
+            {
+                model.Cover.Image = Convert.FromBase64String(model.ImageToBeUploaded);
+            }
+            
             var isSaved = await _repository.Create(model);
             return isSaved;
         }

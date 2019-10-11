@@ -64,7 +64,6 @@ class BookTable extends PureComponent {
   handleView = (id) => {
     const { cookies } = this.props;
     cookies.set('bookId', id, { path: '/' });
-    this.props.loadBook(id);
     this.props.history.push("/details/");
   }
 
