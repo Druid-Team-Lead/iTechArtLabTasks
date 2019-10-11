@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Onlib.Models;
 
 namespace Onlib.DataAccessLayer
@@ -33,6 +35,30 @@ namespace Onlib.DataAccessLayer
                              Title = books.Title
                          };
             return result;
+        }
+
+        public async Task<BookModel> GetByIdWithCover(int id)
+        {
+            var result = from books in _onlibContext.Books
+                         where books.Id == id
+                         join covers in _onlibContext.BooksCovers
+                         on books.Id equals covers.BookId into Covers
+                         from m in Covers.DefaultIfEmpty()
+                         select new BookModel
+                         {
+                             Id = books.Id,
+                             Author = books.Author,
+                             CopiesNumber = books.CopiesNumber,
+                             Cover = m == null ? null : new BookCoverModel
+                             {
+                                 Id = m.Id,
+                                 Image = m.Image
+                             },
+                             Description = books.Description,
+                             PublishDate = books.PublishDate,
+                             Title = books.Title
+                         };
+            return await result.FirstAsync();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,8 @@ namespace Onlib.Controllers
         {
             if(model.ImageToBeUploaded != null)
             {
-                model.ImageToBeUploaded = model.ImageToBeUploaded.Replace("data:image/png;base64,", "");
+                var base64 = Regex.Replace(model.ImageToBeUploaded, "data:image/(png|jpeg|jpg);base64,", "");
+                model.ImageToBeUploaded = base64;
                 model.Cover = new BookCoverModel
                 {
                     Image = Convert.FromBase64String(model.ImageToBeUploaded)
@@ -46,7 +48,7 @@ namespace Onlib.Controllers
         [HttpGet("[action]/{id}")]
         public async Task<BookModel> GetBook(int id)
         {
-            var book = await _repository.GetById(id);
+            var book = await _repository.GetByIdWithCover(id);
             return book;
         }
     }
