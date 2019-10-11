@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { PrivateRoute } from '../../auth/components/PrivateRoute';
+import Profile from '../../user/containers/Profile';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -78,7 +79,9 @@ export default function App(props) {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleClose}>Profile (do nothing)</MenuItem>
+                    <Link to="/profile" className={classes.link}>
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </Link>
                     <Link to="/login" className={classes.link}>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Link>
@@ -99,6 +102,7 @@ export default function App(props) {
                 </AppBar>
                 <Route exact path="/" component={BookTable} />
                 <PrivateRoute path="/newBook" component={AddBook} />
+                <PrivateRoute path="/profile" component={Profile} />
                 <Route path="/details" component={Details} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />

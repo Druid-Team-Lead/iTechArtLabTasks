@@ -29,6 +29,14 @@ class Details extends Component {
         this.props.loadBook(cookies.get('bookId'));
     }
 
+    order = () => {
+
+    }
+
+    receive = () => {
+
+    }
+
     render() {
         const { book, classes } = this.props;
         return (
@@ -51,7 +59,8 @@ class Details extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary">Order</Button>
+                                <Button onClick={this.order} size="small" color="primary">Order</Button>
+                                <Button onClick={this.receive} size="small" color="primary">Receive</Button>
                             </CardActions>
                         </Card>
                     </Grid>
