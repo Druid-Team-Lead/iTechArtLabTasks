@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { LoginPage } from '../components/LoginPage'
 
 function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
+    const { loggingIn, loggedIn } = state.authentication;
     return {
-        loggingIn
+        loggingIn,
+        loggedIn
     };
 }
 

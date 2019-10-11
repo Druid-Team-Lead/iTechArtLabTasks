@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { RegisterPage } from '../components/RegisterPage'
-import { alertConstants } from '../constants'
 
 function mapStateToProps(state) {
     const { registering } = state.registration;
