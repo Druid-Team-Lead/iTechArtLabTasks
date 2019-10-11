@@ -38,7 +38,7 @@ class AddBook extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { book } = this.state;
-        if(book.imageToBeUploaded) {
+        if (book.imageToBeUploaded) {
             this.toBase64(book.imageToBeUploaded).then(data => {
                 this.setState({
                     book: {
@@ -46,11 +46,12 @@ class AddBook extends Component {
                         imageToBeUploaded: data
                     }
                 });
+            }).then(() => {
+                this.props.Save(this.state.book);
+                console.log(this.state.book);
+                this.props.history.push("/");
             });
         }
-        this.props.Save(this.state.book);
-        console.log(this.state.book);
-        this.props.history.push("/");
     }
 
     handleChange = (e) => {

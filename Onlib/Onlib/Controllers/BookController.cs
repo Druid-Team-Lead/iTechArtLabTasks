@@ -23,25 +23,20 @@ namespace Onlib.Controllers
         [HttpGet("[action]")]
         public IEnumerable<BookModel> GetBooks()
         {
-            var books = _repository.GetAll();
+            var books = _repository.GetAllBooksWithCovers();
             return books;
         }
 
         [HttpPost("[action]")]
         public async Task<int> AddBook([FromBody]BookModel model)
         {
-            //if(model.ImageToBeUploaded != null)
-            //{
-            //    using (var memoryStream = new MemoryStream())
-            //    {
-            //        await model.ImageToBeUploaded.CopyToAsync(memoryStream);
-            //        var imageToBeUploadedByteArray = memoryStream.ToArray();
-            //        model.Cover.Image = imageToBeUploadedByteArray;
-            //    }
-            //}
             if(model.ImageToBeUploaded != null)
             {
-                model.Cover.Image = Convert.FromBase64String(model.ImageToBeUploaded);
+                model.ImageToBeUploaded = model.ImageToBeUploaded.Replace("data:image/png;base64,", "");
+                model.Cover = new BookCoverModel
+                {
+                    Image = Convert.FromBase64String(model.ImageToBeUploaded)
+                };
             }
             
             var isSaved = await _repository.Create(model);

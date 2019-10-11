@@ -36,7 +36,7 @@ class BookItem extends PureComponent {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://images1.penguinrandomhouse.com/cover/9781524743352"
+            image={book.cover ? `data:image/png;base64,${book.cover.image}` : "https://images1.penguinrandomhouse.com/cover/9781524743352" }
             title={book.title}
           />
           <CardContent>
