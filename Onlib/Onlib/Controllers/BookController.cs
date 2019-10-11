@@ -51,5 +51,33 @@ namespace Onlib.Controllers
             var book = await _repository.GetByIdWithCover(id);
             return book;
         }
+
+        [HttpPost("[action]")]
+        public async Task<int> Order(int bookId, int userId)
+        {
+            var isSaved = await _repository.Order(bookId, userId);
+            return isSaved;
+        }
+
+        [HttpPost("[action]")]
+        public async Task<int> Receive(int bookId, int userId)
+        {
+            var isSaved = await _repository.Recevie(bookId, userId);
+            return isSaved;
+        }
+
+        [HttpGet("[action]")]
+        public async Task<BookUserModel> GetOrderOrReceive(int bookId, int userId)
+        {
+            var result = await _repository.GetOrderOrReceive(bookId, userId);
+            return result;
+        }
+
+        [HttpPost("[action]")]
+        public async Task<int> Return(int bookId, int userId)
+        {
+            var isReturned = await _repository.ReturnOrderOrReceive(bookId, userId);
+            return isReturned;
+        }
     }
 }
