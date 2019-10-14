@@ -13,12 +13,12 @@ const putOrder = (bookId, userId) => ({
 })
 
 export const ORDERS_REQUEST = 'ORDERS_REQUEST'
-export const ORDERS_REQUEST = 'ORDERS_REQUEST'
-export const ORDERS_REQUEST = 'ORDERS_REQUEST'
+export const ORDERS_SUCCESS = 'ORDERS_SUCCESS'
+export const ORDERS_FAILURE = 'ORDERS_FAILURE'
 
-const fetchBooks = () => ({
+const fetchOrders = () => ({
     [CALL_API]: {
-        types: [ORDERS_REQUEST, ORDERS_REQUEST, ORDERS_REQUEST],
+        types: [ORDERS_REQUEST, ORDERS_SUCCESS, ORDERS_FAILURE],
         endpoint: 'Book/GetOrders'
     }
 });
@@ -28,6 +28,6 @@ export const orderOperations = {
         return dispatch(putOrder(bookId, userId))
     },
     loadOrders: () => async (dispatch, getState) => {
-        return dispatch(fetchBooks());
+        return dispatch(fetchOrders());
     },
 }
