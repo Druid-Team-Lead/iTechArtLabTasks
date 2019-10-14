@@ -34,6 +34,17 @@ const fetchBook = (id) => ({
     }
 })
 
+export const ORDER_REQUEST = 'ORDER_REQUEST'
+export const ORDER_SUCCESS = 'ORDER_SUCCESS'
+export const ORDER_FAILURE = 'ORDER_FAILURE'
+
+const putOrder = (bookId, userId) => ({
+    [CALL_API]: {
+        types: [ORDER_REQUEST, ORDER_SUCCESS, ORDER_FAILURE],
+        endpoint: `Book/Order/${bookId}&${userId}`
+    }
+})
+
 export const bookOperations = {
     loadBooks: () => async (dispatch, getState) => {
         return dispatch(fetchBooks());
@@ -43,5 +54,8 @@ export const bookOperations = {
     },
     loadBook: (id) => async (dispatch, getState) => {
         return dispatch(fetchBook(id))
-    }
+    },
+    makeOrder: (bookId, userId) => async (dispatch, getState) => {
+        return dispatch(putOrder(bookId, userId))
+    },
 }

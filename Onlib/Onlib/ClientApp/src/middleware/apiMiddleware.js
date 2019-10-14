@@ -19,8 +19,7 @@ const callApi = (endpoint, body) => {
             if (!response.ok) {
                 return Promise.reject(json)
             }
-            let lol = Promise.resolve(json);
-            return lol;
+            return Promise.resolve(json);
         })
     )
 }
