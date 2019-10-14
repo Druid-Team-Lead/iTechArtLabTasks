@@ -60,7 +60,7 @@ class Comments extends Component {
                 <Grid container direction="column" justify="center" alignItems="flex-start">
                     {this.props.comments.map(comment =>
                         <Grid item key={comment.id}>
-                            <Comment comment={comment.comment} nickname={comment.author.userName} paper={classes.paper} />
+                            <Comment comment={comment.comment} nickname={comment.author.userName} paper={classes.paper}/>
                         </Grid>
                     )}
                 </Grid>

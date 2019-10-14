@@ -41,7 +41,8 @@ export const ORDER_FAILURE = 'ORDER_FAILURE'
 const putOrder = (bookId, userId) => ({
     [CALL_API]: {
         types: [ORDER_REQUEST, ORDER_SUCCESS, ORDER_FAILURE],
-        endpoint: `Book/Order/${bookId}&${userId}`
+        endpoint: "Book/Order",
+        body: JSON.stringify({bookId, userId})
     }
 })
 

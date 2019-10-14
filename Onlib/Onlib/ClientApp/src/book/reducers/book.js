@@ -4,6 +4,7 @@ const initialState = {
     books: [],
     isBooksLoading: true,
     isAddingLoading: false,
+    isOrderCreated: false,
     currentBook: {},
     error: null
 };
@@ -55,6 +56,23 @@ export const book = (state = initialState, action) => {
                 ...state,
                 currentBook: action.response,
                 isBooksLoading: false
+            }
+        }
+        case ActionTypes.ORDER_REQUEST: {
+            return {
+                ...state,
+                isOrderCreated: false
+            }
+        }
+        case ActionTypes.ORDER_SUCCESS: {
+            return {
+                ...state,
+                isOrderCreated: true
+            }
+        }
+        case ActionTypes.ORDER_REQUEST: {
+            return {
+                ...state
             }
         }
         default:

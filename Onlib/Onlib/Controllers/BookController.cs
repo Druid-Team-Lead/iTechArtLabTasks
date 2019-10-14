@@ -56,31 +56,43 @@ namespace Onlib.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<int> Order(int bookId, int userId)
+        public async Task<int> Order([FromBody]BookUserViewModel model)
         {
-            var isSaved = await _repository.Order(bookId, userId);
+            var mapped = _mapper.Map<BookUserViewModel, BookUserModel>(model);
+            var isSaved = await _repository.Order(mapped);
             return isSaved;
         }
 
         [HttpPost("[action]")]
-        public async Task<int> Receive(int bookId, int userId)
+        public async Task<int> Receive([FromBody]BookUserViewModel model)
         {
-            var isSaved = await _repository.Recevie(bookId, userId);
+            var mapped = _mapper.Map<BookUserViewModel, BookUserModel>(model);
+            var isSaved = await _repository.Recevie(mapped);
             return isSaved;
         }
 
         [HttpGet("[action]")]
-        public async Task<BookUserModel> GetOrderOrReceive(int bookId, int userId)
+        public async Task<BookUserModel> GetOrderOrReceive([FromBody]BookUserViewModel model)
         {
-            var result = await _repository.GetOrderOrReceive(bookId, userId);
+            var mapped = _mapper.Map<BookUserViewModel, BookUserModel>(model);
+            var result = await _repository.GetOrderOrReceive(mapped);
             return result;
         }
 
         [HttpPost("[action]")]
-        public async Task<int> Return(int bookId, int userId)
+        public async Task<int> Return([FromBody]BookUserViewModel model)
         {
-            var isReturned = await _repository.ReturnOrderOrReceive(bookId, userId);
+            var mapped = _mapper.Map<BookUserViewModel, BookUserModel>(model);
+            var isReturned = await _repository.ReturnOrderOrReceive(mapped);
             return isReturned;
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<BookUserViewModel> GetOrders()
+        {
+            var orders = _repository.GetAllOrders();
+            var mapped = _mapper.Map<IQueryable<BookUserModel>, IEnumerable<BookUserViewModel>>(orders);
+            return mapped;
         }
     }
 }

@@ -24,6 +24,9 @@ namespace Onlib.ViewModels
             CreateMap<UserModel, UserViewModel>();
             CreateMap<UserViewModel, UserModel>();
 
+            CreateMap<BookUserModel, BookUserViewModel>();
+            CreateMap<BookUserViewModel, BookUserModel>();
+
         }
     }
 }

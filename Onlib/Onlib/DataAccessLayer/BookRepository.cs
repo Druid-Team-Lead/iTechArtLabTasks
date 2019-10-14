@@ -38,6 +38,11 @@ namespace Onlib.DataAccessLayer
             return result;
         }
 
+        public IQueryable<BookUserModel> GetAllOrders()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<BookModel> GetByIdWithCover(int id)
         {
             var result = from books in _onlibContext.Books
@@ -62,28 +67,24 @@ namespace Onlib.DataAccessLayer
             return await result.FirstAsync();
         }
 
-        public async Task<BookUserModel> GetOrderOrReceive(int bookId, int userId)
+        public async Task<BookUserModel> GetOrderOrReceive(BookUserModel bookUser)
         {
             var query = from orders in _onlibContext.BooksUsers
-                        where orders.BookId == bookId && orders.UserId == userId
+                        where orders.BookId == bookUser.BookId && orders.UserId == bookUser.UserId
                         select orders;
             return await query.FirstAsync();
         }
 
-        public async Task<int> Order(int bookId, int userId)
+        public async Task<int> Order(BookUserModel bookUser)
         {
-            var order = new BookUserModel
-            {
-                BookId = bookId,
-                UserId = userId,
-                StatusActivateTime = DateTime.Now,
-                BookStatus = "Booked"
-            };
-            await _onlibContext.Set<BookUserModel>().AddAsync(order);
+            bookUser.BookStatus = "Booked";
+            bookUser.StatusActivateTime = DateTime.Now;
+
+            await _onlibContext.Set<BookUserModel>().AddAsync(bookUser);
 
             // one book was taken so we should remove one from interface
             var query = from books in _onlibContext.Books
-                        where books.Id == bookId
+                        where books.Id == bookUser.BookId
                         select books;
 
             foreach (BookModel book in query)
@@ -95,10 +96,10 @@ namespace Onlib.DataAccessLayer
             return isSaved;
         }
 
-        public async Task<int> Recevie(int bookId, int userId)
+        public async Task<int> Recevie(BookUserModel bookUser)
         {
             var query = from orders in _onlibContext.BooksUsers
-                        where orders.BookId == bookId && orders.UserId == userId
+                        where orders.BookId == bookUser.BookId && orders.UserId == bookUser.UserId
                         select orders;
             
             foreach(BookUserModel order in query)
@@ -111,17 +112,17 @@ namespace Onlib.DataAccessLayer
             return isSaved;
         }
 
-        public async Task<int> ReturnOrderOrReceive(int bookId, int userId)
+        public async Task<int> ReturnOrderOrReceive(BookUserModel bookUser)
         {
             var query = from orders in _onlibContext.BooksUsers
-                        where orders.BookId == bookId && orders.UserId == userId
+                        where orders.BookId == bookUser.BookId && orders.UserId == bookUser.UserId
                         select orders;
 
             _onlibContext.BooksUsers.RemoveRange(query);
 
             // one book was returned so we should add one to interface
             var queryBooks = from books in _onlibContext.Books
-                             where books.Id == bookId
+                             where books.Id == bookUser.BookId
                              select books;
 
             foreach (BookModel book in queryBooks)

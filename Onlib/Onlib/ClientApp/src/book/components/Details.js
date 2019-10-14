@@ -30,7 +30,8 @@ class Details extends Component {
     }
 
     order = () => {
-
+        const { cookies } = this.props
+        this.props.makeOrder(cookies.get('bookId'), this.props.userId)
     }
 
     receive = () => {
