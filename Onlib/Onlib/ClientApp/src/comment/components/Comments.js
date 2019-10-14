@@ -21,7 +21,7 @@ class Comment extends Component {
     render() {
         return (
             <Paper className={this.props.paper}>
-                <Typography component="p">Nickname: {this.props.userName}</Typography>
+                <Typography component="p">Nickname: {this.props.nickname}</Typography>
                 <Typography component="p">Comment: {this.props.comment}</Typography>
             </Paper>
         )
@@ -44,7 +44,7 @@ class Comments extends Component {
     }
 
     handlePost = () => {
-        this.props.uploadComment({ comment: { comment: this.state.comment, bookId: this.props.bookId.toString() }, userId: this.props.user.id });
+        this.props.uploadComment({ comment: this.state.comment, bookId: this.props.bookId.toString(), author: { id: this.props.user.id } });
     }
 
     handleInput = (e) => {
@@ -60,7 +60,7 @@ class Comments extends Component {
                 <Grid container direction="column" justify="center" alignItems="flex-start">
                     {this.props.comments.map(comment =>
                         <Grid item key={comment.id}>
-                            <Comment comment={comment.comment.comment} userName={comment.user.userName} paper={classes.paper} />
+                            <Comment comment={comment.comment} nickname={comment.author.userName} paper={classes.paper} />
                         </Grid>
                     )}
                 </Grid>

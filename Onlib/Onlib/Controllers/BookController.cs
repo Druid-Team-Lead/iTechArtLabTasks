@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
+using Onlib.ViewModels;
 
 namespace Onlib.Controllers
 {
@@ -15,41 +16,43 @@ namespace Onlib.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookRepository _repository;
+        private readonly IMapper _mapper;
 
-        public BookController(IBookRepository repository)
+        public BookController(IBookRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<BookModel> GetBooks()
+        public IEnumerable<BookViewModel> GetBooks()
         {
             var books = _repository.GetAllBooksWithCovers();
-            return books;
+            var mapped = _mapper.Map<IQueryable<BookModel>, IEnumerable<BookViewModel>>(books);
+            return mapped;
         }
 
         [HttpPost("[action]")]
-        public async Task<int> AddBook([FromBody]BookModel model)
+        public async Task<int> AddBook([FromBody]BookViewModel model)
         {
             if(model.ImageToBeUploaded != null)
             {
                 var base64 = Regex.Replace(model.ImageToBeUploaded, "data:image/(png|jpeg|jpg);base64,", "");
                 model.ImageToBeUploaded = base64;
-                model.Cover = new BookCoverModel
-                {
-                    Image = Convert.FromBase64String(model.ImageToBeUploaded)
-                };
+                model.Cover = Convert.FromBase64String(model.ImageToBeUploaded);
             }
-            
-            var isSaved = await _repository.Create(model);
+
+            var mapped = _mapper.Map<BookViewModel, BookModel>(model);
+            var isSaved = await _repository.Create(mapped);
             return isSaved;
         }
 
         [HttpGet("[action]/{id}")]
-        public async Task<BookModel> GetBook(int id)
+        public async Task<BookViewModel> GetBook(int id)
         {
             var book = await _repository.GetByIdWithCover(id);
-            return book;
+            var mapped = _mapper.Map<BookModel, BookViewModel>(book);
+            return mapped;
         }
 
         [HttpPost("[action]")]

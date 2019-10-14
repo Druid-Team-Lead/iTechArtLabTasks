@@ -8,6 +8,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Onlib.DataAccessLayer;
 using Onlib.Models;
+using AutoMapper;
+using Onlib.ViewModels;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Onlib.Controllers
 {
@@ -16,20 +21,21 @@ namespace Onlib.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IUserRepository _repository;
+        private readonly IUserRepository _repository;
         private readonly AppSettings _appSettings;
-
-        public UserController(IUserRepository repository, IOptions<AppSettings> appSettings)
+        private readonly IMapper _mapper;
+        public UserController(IUserRepository repository, IOptions<AppSettings> appSettings, IMapper mapper)
         {
             _repository = repository;
             _appSettings = appSettings.Value;
+            _mapper = mapper;
         }
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]UserModel userDto)
+        public IActionResult Authenticate([FromBody]UserViewModel model)
         {
-            var user = _repository.Authenticate(userDto.UserName, userDto.Password);
+            var user = _repository.Authenticate(model.UserName, model.Password);
 
             if (user == null)
                 return Unauthorized();
@@ -49,26 +55,20 @@ namespace Onlib.Controllers
             var tokenString = tokenHandler.WriteToken(token);
 
             // return basic user info (without password) and token to store client side
-            return Ok(new
-            {
-                user.Id,
-                user.UserName,
-                user.FirstName,
-                user.LastName,
-                Token = tokenString,
-                user.IsModerator,
-                user.Email
-            });
+            var mapped = _mapper.Map<UserModel, UserViewModel>(user);
+            mapped.Token = tokenString;
+            return Ok(mapped);
         }
 
         [AllowAnonymous]
         [HttpPost("[action]")]
-        public IActionResult Register([FromBody]UserModel user)
+        public IActionResult Register([FromBody]UserViewModel user)
         {
             try
             {
                 // save 
-                _repository.Create(user, user.Password);
+                var mapped = _mapper.Map<UserViewModel, UserModel>(user);
+                _repository.Create(mapped, mapped.Password);
                 return Ok();
             }
             catch (Exception ex)
@@ -82,24 +82,26 @@ namespace Onlib.Controllers
         public IActionResult GetAll()
         {
             var users = _repository.GetAll();
-            return Ok(users);
+            var mapped = _mapper.Map<IQueryable<UserModel>, IEnumerable<UserViewModel>>(users);
+            return Ok(mapped);
         }
 
         [HttpGet("[action]/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var user = _repository.GetById(id);
-            return Ok(user);
+            var user = await _repository.GetById(id);
+            var mapped = _mapper.Map<UserModel, UserViewModel>(user);
+            return Ok(mapped);
         }
 
         [HttpPut("[action]/{id}")]
-        public IActionResult Update(int id, [FromBody]UserModel user)
+        public IActionResult Update(int id, [FromBody]UserViewModel user)
         {
 
             try
             {
-                // save 
-                _repository.Update(user, user.Password);
+                var mapped = _mapper.Map<UserViewModel, UserModel>(user);
+                _repository.Update(mapped, mapped.Password);
                 return Ok();
             }
             catch (Exception ex)
