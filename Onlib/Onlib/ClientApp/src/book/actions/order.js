@@ -7,7 +7,7 @@ export const ORDER_FAILURE = 'ORDER_FAILURE'
 const putOrder = (bookId, userId) => ({
     [CALL_API]: {
         types: [ORDER_REQUEST, ORDER_SUCCESS, ORDER_FAILURE],
-        endpoint: "Book/Order",
+        endpoint: "Order/MakeOrder",
         body: JSON.stringify({bookId, userId})
     }
 })
@@ -16,10 +16,10 @@ export const ORDERS_REQUEST = 'ORDERS_REQUEST'
 export const ORDERS_SUCCESS = 'ORDERS_SUCCESS'
 export const ORDERS_FAILURE = 'ORDERS_FAILURE'
 
-const fetchOrders = () => ({
+const fetchOrders = (userId) => ({
     [CALL_API]: {
         types: [ORDERS_REQUEST, ORDERS_SUCCESS, ORDERS_FAILURE],
-        endpoint: 'Book/GetOrders'
+        endpoint: `Order/GetOrders/${userId}`
     }
 });
 
@@ -27,7 +27,7 @@ export const orderOperations = {
     makeOrder: (bookId, userId) => async (dispatch, getState) => {
         return dispatch(putOrder(bookId, userId))
     },
-    loadOrders: () => async (dispatch, getState) => {
-        return dispatch(fetchOrders());
+    loadOrders: (userId) => async (dispatch, getState) => {
+        return dispatch(fetchOrders(userId));
     },
 }

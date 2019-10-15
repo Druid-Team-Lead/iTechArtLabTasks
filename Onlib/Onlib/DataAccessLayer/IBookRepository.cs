@@ -8,10 +8,5 @@ namespace Onlib.DataAccessLayer
     {
         IQueryable<BookModel> GetAllBooksWithCovers();
         Task<BookModel> GetByIdWithCover(int id);
-        Task<int> Order(BookUserModel order);
-        Task<int> Recevie(BookUserModel recevie);
-        Task<BookUserModel> GetOrderOrReceive(BookUserModel order);
-        Task<int> ReturnOrderOrReceive(BookUserModel recevie);
-        IQueryable<BookUserModel> GetAllOrders();
     }
 }

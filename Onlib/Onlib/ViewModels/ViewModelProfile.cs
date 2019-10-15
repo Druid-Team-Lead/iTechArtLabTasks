@@ -24,7 +24,8 @@ namespace Onlib.ViewModels
             CreateMap<UserModel, UserViewModel>();
             CreateMap<UserViewModel, UserModel>();
 
-            CreateMap<BookUserModel, BookUserViewModel>();
+            CreateMap<BookUserModel, BookUserViewModel>()
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Book.Title));
             CreateMap<BookUserViewModel, BookUserModel>();
 
         }

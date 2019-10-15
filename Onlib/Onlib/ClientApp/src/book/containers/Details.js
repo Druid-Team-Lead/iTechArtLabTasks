@@ -8,6 +8,7 @@ const mapStateToProps = state => {
   return {
     book: state.book.currentBook,
     isLoading: state.book.isBooksLoading,
+    isLoaded: state.book.isBooksLoaded,
     userId: state.authentication.user.id
   };
 };

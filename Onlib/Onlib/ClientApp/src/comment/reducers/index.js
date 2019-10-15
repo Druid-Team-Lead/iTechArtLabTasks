@@ -1,5 +1,1 @@
-import { comment } from './comment'
-
-export {
-    comment
-}
+export * from './comment'

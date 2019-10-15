@@ -29,6 +29,7 @@ export default function configureStore(history, initialState) {
 
     const rootReducer = combineReducers({
         book: bookReducers.book,
+        order: bookReducers.order,
         routing: routerReducer,
         comment: commentReducers.comment,
         authentication,

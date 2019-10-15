@@ -2,7 +2,8 @@ import * as ActionTypes from '../actions';
 
 const initialState = {
     books: [],
-    isBooksLoading: true,
+    isBooksLoading: false,
+    isBooksLoaded: false,
     isAddingLoading: false,
     isOrderCreated: false,
     currentBook: {},
@@ -23,7 +24,15 @@ export const book = (state = initialState, action) => {
             return {
                 ...state,
                 books: action.response,
-                isBooksLoading: false
+                isBooksLoading: false,
+                isBooksLoaded: true
+            };
+        }
+        case ActionTypes.BOOKS_FAILURE: {
+            return {
+                ...state,
+                isBooksLoading: false,
+                isBooksLoaded: false
             };
         }
         case ActionTypes.ADD_BOOK_REQUEST: {
@@ -56,23 +65,6 @@ export const book = (state = initialState, action) => {
                 ...state,
                 currentBook: action.response,
                 isBooksLoading: false
-            }
-        }
-        case ActionTypes.ORDER_REQUEST: {
-            return {
-                ...state,
-                isOrderCreated: false
-            }
-        }
-        case ActionTypes.ORDER_SUCCESS: {
-            return {
-                ...state,
-                isOrderCreated: true
-            }
-        }
-        case ActionTypes.ORDER_REQUEST: {
-            return {
-                ...state
             }
         }
         default:

@@ -5,8 +5,10 @@ import {
     MenuItem,
     withStyles,
     Grid,
-    Typography
+    Typography,
+    Button
 } from '@material-ui/core';
+import { withCookies } from 'react-cookie';
 
 const styles = {
     root: {
@@ -42,7 +44,7 @@ class Profile extends React.PureComponent {
     }
 
     render() {
-        const { user, classes } = this.props;
+        const { user, classes, orders } = this.props;
         const { isGeneral, isBookedBooks, isBooksOnHand } = this.state;
         return (
             <div className={classes.root}>
@@ -66,7 +68,7 @@ class Profile extends React.PureComponent {
                     </MenuList>
                 </Paper>
                 {isGeneral && <General user={user} />}
-                {isBookedBooks && <BookedBooks />}
+                {isBookedBooks && <BookedBooksWithCookies loadOrders={this.props.loadOrders} userId={user.id} orders={orders} history={this.props.history}/>}
                 {isBooksOnHand && <BooksOnHand />}
             </div>
 
@@ -78,24 +80,24 @@ class Profile extends React.PureComponent {
 function General(props) {
     const { user } = props;
     return (
-        <Grid>
+        <Grid container direction="column" justify="flex-start" alignItems="flex-start">
             <Grid item>
-                <Typography variant="h5" component="h4">
+                <Typography variant="h6" component="h5">
                     Username: {user.userName}
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="h5" component="h4">
+                <Typography variant="h6" component="h5">
                     Name: {user.lastName} {user.firstName}
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="h5" component="h4">
+                <Typography variant="h6" component="h5">
                     Email: {user.email}
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="h5" component="h4">
+                <Typography variant="h6" component="h5">
                     Role: {user.isModerator ? "Moderator" : "User"}
                 </Typography>
             </Grid>
@@ -103,13 +105,36 @@ function General(props) {
     );
 }
 
-function BookedBooks(props) {
-    return (
-        <div>
-            BookedBooks
-        </div>
-    );
+class BookedBooks extends React.PureComponent {
+    componentDidMount() {
+        const { userId, loadOrders } = this.props;
+        loadOrders(userId);
+    }
+
+    handleView = (id) => {
+        const { cookies, history } = this.props;
+        cookies.set('bookId', id, { path: '/' });
+        history.push("/details/");
+    }
+
+    render() {
+        const { orders } = this.props;
+
+        return (
+            <Grid container direction="column" justify="flex-start" alignItems="flex-start">
+                {orders.map(order =>
+                    <Grid item key={order.bookId}>
+                        <Typography variant="h6" component="h5">
+                            Book title:<Button onClick={(e) => this.handleView(order.bookId, e)} size="small" color="inherit" variant="outlined"> {order.title} </Button>; 
+                            Status: {order.bookStatus}; Booked from: {new Date(order.statusActivateTime).toLocaleString("en-US")}
+                        </Typography>
+                    </Grid>
+                )}
+            </Grid>
+        );
+    }
 }
+const BookedBooksWithCookies = withCookies(BookedBooks)
 
 function BooksOnHand(props) {
     return (

@@ -8,7 +8,8 @@ import {
   CardActionArea,
   CardContent,
   CardActions,
-  Card
+  Card,
+  CircularProgress
 } from '@material-ui/core';
 import { withCookies, Cookies } from 'react-cookie';
 
@@ -19,7 +20,14 @@ const styles = {
   },
   media: {
     height: 500,
-  }
+  },
+  buttonProgress: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
 };
 
 class BookItem extends PureComponent {
@@ -36,14 +44,14 @@ class BookItem extends PureComponent {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={book.cover ? `data:image/png;base64,${book.cover}` : "https://thebookworm1305.files.wordpress.com/2013/05/classic_red_book_cover.jpg" }
+            image={book.cover ? `data:image/png;base64,${book.cover}` : "https://thebookworm1305.files.wordpress.com/2013/05/classic_red_book_cover.jpg"}
             title={book.title}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">{book.title}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Description: {book.description}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Author: {book.author}</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Publish Date: {new Date(book.publishDate).toDateString()}</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">Publish Date: {new Date(book.publishDate).toLocaleString("en-US")}</Typography>
             <Typography variant="body2" color="textSecondary" component="p">Copies Number: {book.copiesNumber}</Typography>
           </CardContent>
         </CardActionArea>
@@ -68,12 +76,13 @@ class BookTable extends PureComponent {
   }
 
   render() {
-    const { books, classes } = this.props;
+    const { books, classes, isLoading, isLoaded } = this.props;
     return (
       <div style={{ padding: 20 }}>
-        {books.length === 0 && <Typography variant="h3" gutterBottom align="center">
+        {books.length === 0 && isLoaded && !isLoading && <Typography variant="h3" gutterBottom align="center">
           I looked - there are no books at all :(
           </Typography>}
+        {isLoading && <CircularProgress size={40} className={classes.buttonProgress} color="secondary"/>}
         <Grid container spacing={4} justify="flex-start">
           {books.map(book =>
             <Grid className={classes.grid} item key={book.id}>

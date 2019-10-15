@@ -61,7 +61,6 @@ class Details extends Component {
                             </CardActionArea>
                             <CardActions>
                                 <Button onClick={this.order} size="small" color="primary">Order</Button>
-                                <Button onClick={this.receive} size="small" color="primary">Receive</Button>
                             </CardActions>
                         </Card>
                     </Grid>
