@@ -14,5 +14,10 @@ namespace Onlib.WebSocketHub
         {
             await Clients.All.SendAsync("NewBookAdded");
         }
+
+        public async Task NewOrder()
+        {
+            await Clients.All.SendAsync("OrderCreated");
+        }
     }
 }

@@ -8,7 +8,8 @@ import {
     CardActionArea,
     CardContent,
     CardActions,
-    Card
+    Card,
+    CircularProgress
 } from '@material-ui/core';
 import Comments from '../../comment/containers/Comments'
 import { withCookies } from 'react-cookie';
@@ -37,6 +38,9 @@ class Details extends Component {
 
     order = () => {
         const { cookies } = this.props
+        if(this.props.userId == 0) {
+            this.props.history.push("/login")
+        }
         this.props.makeOrder(cookies.get('bookId'), this.props.userId)
     }
 
@@ -45,8 +49,7 @@ class Details extends Component {
     }
 
     render() {
-        const { book, classes, order } = this.props;
-        console.log(order)
+        const { book, classes, order, isOrderOnCreating, isOrderCreated } = this.props;
         return (
             <div style={{ padding: 20 }}>
                 <Grid container justify="center" alignItems="center">
@@ -67,10 +70,13 @@ class Details extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                {order ? 
-                                    <Button onClick={this.order} size="small" color="primary">Receive</Button> :
-                                    <Button onClick={this.receive} size="small" color="primary">Order</Button>
+                                {order || isOrderCreated ? 
+                                    <Button onClick={this.receive} disabled={isOrderOnCreating ? true : false} size="small" color="primary">Receive</Button> :
+                                    <Button onClick={this.order} disabled={isOrderOnCreating || book.copiesNumber == 0 ? true : false} size="small" color="primary">Order</Button>
                                 }
+                                {isOrderOnCreating && <CircularProgress size={24} color="primary" />}
+                                {isOrderCreated && <Typography>(order already created)</Typography>}
+                                {book.copiesNumber == 0 && !isOrderCreated && <Typography>There are currently no free copies.</Typography>}
                             </CardActions>
                         </Card>
                     </Grid>

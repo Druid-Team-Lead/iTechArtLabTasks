@@ -46,9 +46,15 @@ const signalRMiddleware = store => next => async (action) => {
             let load = bindActionCreators(CommentActions.commentOperations, store.dispatch).loadComments
             load(id);
         })
+        connection.on("OrderCreated", () => {
+            let bookId = store.getState().book.currentBook.id
+            const load = bindActionCreators(BookActions.bookOperations, store.dispatch).loadBook;
+            load(bookId);
+        })
     }
     if (action.type === BookActions.BOOKS_REQUEST) {
         connection.off("CommentsChanged");
+        connection.off("OrderCreated")
     }
 
     // Get new book if added
@@ -63,6 +69,12 @@ const signalRMiddleware = store => next => async (action) => {
     } else {
         connection.off("UpdateBooks");
     }
+
+    // New order
+    if (action.type === BookActions.ORDER_SUCCESS) {
+        connection.invoke("NewOrder");
+    }
+
 
     return next(action);
 };

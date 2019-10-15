@@ -9,8 +9,10 @@ const mapStateToProps = state => {
     book: state.book.currentBook,
     isLoading: state.book.isBooksLoading,
     isLoaded: state.book.isBooksLoaded,
-    userId: state.authentication.user.id,
-    order: state.order.currentOrder
+    userId: state.authentication.user ? state.authentication.user.id : 0,
+    order: state.order.currentOrder,
+    isOrderOnCreating: state.order.isOrderOnCreating,
+    isOrderCreated: state.order.isOrderCreated
   };
 };
 

@@ -2,6 +2,7 @@ import * as ActionTypes from '../actions';
 
 const initialState = {
     isOrderCreated: false,
+    isOrderOnCreating: false,
 
     orders: [],
     isOrdersLoading: false,
@@ -20,13 +21,15 @@ export const order = (state = initialState, action) => {
         case ActionTypes.ORDER_REQUEST: {
             return {
                 ...state,
-                isOrderCreated: false
+                isOrderCreated: false,
+                isOrderOnCreating: true,
             }
         }
         case ActionTypes.ORDER_SUCCESS: {
             return {
                 ...state,
-                isOrderCreated: true
+                isOrderCreated: true,
+                isOrderOnCreating: false
             }
         }
         case ActionTypes.ORDER_FAILURE: {
@@ -38,7 +41,8 @@ export const order = (state = initialState, action) => {
         case ActionTypes.ORDERS_REQUEST: {
             return {
                 ...state,
-                isOrdersLoading: true
+                isOrdersLoading: true,
+                currentOrder: null
             }
         }
         case ActionTypes.ORDERS_SUCCESS: {
@@ -69,7 +73,8 @@ export const order = (state = initialState, action) => {
                 ...state,
                 currentOrder: action.response,
                 isOrderLoading: false,
-                isOrderLoaded: true
+                isOrderLoaded: true,
+                isOrderCreated: true
             }
         }
         case ActionTypes.GET_ORDER_FAILURE: {
@@ -78,6 +83,7 @@ export const order = (state = initialState, action) => {
                 isOrderLoading: false,
                 isOrderLoaded: false,
                 currentOrder: null,
+                isOrderCreated: false,
                 error: action.error
             }
         }
