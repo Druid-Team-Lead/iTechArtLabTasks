@@ -41,7 +41,7 @@ namespace Onlib.DataAccessLayer
             var query = from orders in _onlibContext.BooksUsers
                         where orders.BookId == bookUser.BookId && orders.UserId == bookUser.UserId
                         select orders;
-            return await query.FirstAsync();
+            return query.Any() ? await query.FirstAsync() : null;
         }
 
         public async Task<int> Order(BookUserModel bookUser)

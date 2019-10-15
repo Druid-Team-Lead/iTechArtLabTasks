@@ -38,11 +38,14 @@ namespace Onlib.Controllers
             return isSaved;
         }
 
-        [HttpGet("[action]")]
-        public async Task<BookUserModel> GetOrderOrReceive([FromBody]BookUserViewModel model)
+        [HttpGet("[action]/{bookId}/{userId}")]
+        public async Task<BookUserModel> GetOrderOrReceive(int bookId, int userId)
         {
-            var mapped = _mapper.Map<BookUserViewModel, BookUserModel>(model);
-            var result = await _repository.GetOrderOrReceive(mapped);
+            var result = await _repository.GetOrderOrReceive(new BookUserModel
+            {
+                BookId = bookId,
+                UserId = userId
+            });
             return result;
         }
 

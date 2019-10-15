@@ -24,9 +24,15 @@ const styles = {
 
 class Details extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         const { cookies } = this.props
-        this.props.loadBook(cookies.get('bookId'));
+        const bookId = cookies.get('bookId')
+        this.props.loadBook(bookId);
+        this.props.getOrder(bookId, this.props.userId)
     }
 
     order = () => {
@@ -39,7 +45,8 @@ class Details extends Component {
     }
 
     render() {
-        const { book, classes } = this.props;
+        const { book, classes, order } = this.props;
+        console.log(order)
         return (
             <div style={{ padding: 20 }}>
                 <Grid container justify="center" alignItems="center">
@@ -60,7 +67,10 @@ class Details extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button onClick={this.order} size="small" color="primary">Order</Button>
+                                {order ? 
+                                    <Button onClick={this.order} size="small" color="primary">Receive</Button> :
+                                    <Button onClick={this.receive} size="small" color="primary">Order</Button>
+                                }
                             </CardActions>
                         </Card>
                     </Grid>

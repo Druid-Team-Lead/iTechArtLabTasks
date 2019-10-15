@@ -23,11 +23,25 @@ const fetchOrders = (userId) => ({
     }
 });
 
+export const GET_ORDER_REQUEST = 'GET_ORDER_REQUEST'
+export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS'
+export const GET_ORDER_FAILURE = 'GET_ORDER_FAILURE'
+
+const fetchOrder = (boodId, userId) => ({
+    [CALL_API]: {
+        types: [GET_ORDER_REQUEST, GET_ORDER_SUCCESS, GET_ORDER_FAILURE],
+        endpoint: `Order/GetOrderOrReceive/${boodId}/${userId}`
+    }
+})
+
 export const orderOperations = {
     makeOrder: (bookId, userId) => async (dispatch, getState) => {
         return dispatch(putOrder(bookId, userId))
     },
     loadOrders: (userId) => async (dispatch, getState) => {
         return dispatch(fetchOrders(userId));
+    },
+    getOrder: (bookId, userId) => async (dispatch, getState) => {
+        return dispatch(fetchOrder(bookId, userId));
     },
 }
