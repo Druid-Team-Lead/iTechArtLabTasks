@@ -14,6 +14,10 @@ using Onlib.WebSocketHub;
 using AutoMapper;
 using System.Text;
 using Onlib.ViewModels;
+using Quartz.Impl;
+using Quartz;
+using Quartz.Spi;
+using Onlib.Scheduler;
 
 namespace Onlib
 {
@@ -33,6 +37,17 @@ namespace Onlib
             services.AddCors();
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
+
+            // Add Quartz services
+            services.AddSingleton<IJobFactory, SingletonJobFactory>();
+            services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+            // Add our job
+            services.AddSingleton<HelloWorldJob>();
+            services.AddSingleton(new JobSchedule(
+                jobType: typeof(HelloWorldJob),
+                cronExpression: "0/5 * * * * ?")); // run every 5 seconds
+            services.AddHostedService<QuartzHostedService>();
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
